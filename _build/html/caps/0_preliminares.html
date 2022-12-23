@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Selección de datos" href="1_seleccion_datos.html" />
+    <link rel="next" title="Estadística descriptiva básica" href="2-estadisticos.html" />
     <link rel="prev" title="Aprendizaje automático" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="es">
@@ -123,8 +123,48 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="1_seleccion_datos.html">
-   Selección de datos
+  <a class="reference internal" href="2-estadisticos.html">
+   Estadística descriptiva básica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3-sel_carac.html">
+   Extracción de características
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4-no_supervisado.html">
+   Aprendizaje no supervisado
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5-supervisado.html">
+   Aprendizaje supervisado
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6-clasificacion.html">
+   Clasificación
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7-diseno_experimentos.html">
+   Diseño de experimentos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8-comparativas_desempeno.html">
+   Comparativas de desempeño
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="9-resultados.html">
+   Resultados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-articulo.html">
+   Artículo científico
   </a>
  </li>
 </ul>
@@ -282,12 +322,63 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-es-el-aprendizaje-automatico">
+   ¿Qué es el aprendizaje automático?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#herramientas-necesarias">
+   Herramientas necesarias
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-git">
+     Tutorial Git
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-markdown">
+     Tutorial Markdown
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-python">
+     Tutorial Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-colab">
+     Tutorial Colab
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -299,6 +390,46 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#que-es-el-aprendizaje-automatico">
+   ¿Qué es el aprendizaje automático?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#herramientas-necesarias">
+   Herramientas necesarias
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-git">
+     Tutorial Git
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-markdown">
+     Tutorial Markdown
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-python">
+     Tutorial Python
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial-colab">
+     Tutorial Colab
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -308,6 +439,24 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="preliminares">
 <h1>Preliminares<a class="headerlink" href="#preliminares" title="Enlazar permanentemente con este título">#</a></h1>
+<section id="que-es-el-aprendizaje-automatico">
+<h2>¿Qué es el aprendizaje automático?<a class="headerlink" href="#que-es-el-aprendizaje-automatico" title="Enlazar permanentemente con este título">#</a></h2>
+</section>
+<section id="herramientas-necesarias">
+<h2>Herramientas necesarias<a class="headerlink" href="#herramientas-necesarias" title="Enlazar permanentemente con este título">#</a></h2>
+<section id="tutorial-git">
+<h3>Tutorial Git<a class="headerlink" href="#tutorial-git" title="Enlazar permanentemente con este título">#</a></h3>
+</section>
+<section id="tutorial-markdown">
+<h3>Tutorial Markdown<a class="headerlink" href="#tutorial-markdown" title="Enlazar permanentemente con este título">#</a></h3>
+</section>
+<section id="tutorial-python">
+<h3>Tutorial Python<a class="headerlink" href="#tutorial-python" title="Enlazar permanentemente con este título">#</a></h3>
+</section>
+<section id="tutorial-colab">
+<h3>Tutorial Colab<a class="headerlink" href="#tutorial-colab" title="Enlazar permanentemente con este título">#</a></h3>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -344,10 +493,10 @@ title="Print to PDF"
             <p class="prev-next-title">Aprendizaje automático</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="1_seleccion_datos.html" title="siguiente página">
+    <a class='right-next' id="next-link" href="2-estadisticos.html" title="siguiente página">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">siguiente</p>
-        <p class="prev-next-title">Selección de datos</p>
+        <p class="prev-next-title">Estadística descriptiva básica</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
