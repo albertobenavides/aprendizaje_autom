@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Estadística descriptiva básica" href="2-estadisticos.html" />
+    <link rel="next" title="Datos" href="1_datos.html" />
     <link rel="prev" title="Aprendizaje automático" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="es">
@@ -123,47 +123,52 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="2-estadisticos.html">
+  <a class="reference internal" href="1_datos.html">
+   Datos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_estadisticos.html">
    Estadística descriptiva básica
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="3-sel_carac.html">
+  <a class="reference internal" href="3_sel_carac.html">
    Extracción de características
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="4-no_supervisado.html">
+  <a class="reference internal" href="4_no_supervisado.html">
    Aprendizaje no supervisado
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="5-supervisado.html">
+  <a class="reference internal" href="5_supervisado.html">
    Aprendizaje supervisado
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="6-clasificacion.html">
+  <a class="reference internal" href="6_clasificacion.html">
    Clasificación
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="7-diseno_experimentos.html">
+  <a class="reference internal" href="7_diseno_experimentos.html">
    Diseño de experimentos
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="8-comparativas_desempeno.html">
+  <a class="reference internal" href="8_comparativas_desempeno.html">
    Comparativas de desempeño
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="9-resultados.html">
+  <a class="reference internal" href="9_resultados.html">
    Resultados
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="10-articulo.html">
+  <a class="reference internal" href="10_articulo.html">
    Artículo científico
   </a>
  </li>
@@ -218,6 +223,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/albertobenavides/aprendizaje_autom/master?urlpath=tree/docs/caps/0_preliminares.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -285,7 +319,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/caps/0_preliminares.md"
+        <a href="../_sources/caps/0_preliminares.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -296,7 +330,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -350,31 +384,40 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#herramientas-necesarias">
-   Herramientas necesarias
+  <a class="reference internal nav-link" href="#control-de-versiones">
+   Control de versiones
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instrucciones-esenciales-de-git">
+   Instrucciones esenciales de Git
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gitignore">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .gitignore
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markdown">
+   Markdown
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tutorial-git">
-     Tutorial Git
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tutorial-markdown">
-     Tutorial Markdown
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tutorial-python">
-     Tutorial Python
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tutorial-colab">
-     Tutorial Colab
+    <a class="reference internal nav-link" href="#python">
+     Python
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fuentes">
+   Fuentes
+  </a>
  </li>
 </ul>
 
@@ -401,31 +444,40 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#herramientas-necesarias">
-   Herramientas necesarias
+  <a class="reference internal nav-link" href="#control-de-versiones">
+   Control de versiones
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instrucciones-esenciales-de-git">
+   Instrucciones esenciales de Git
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gitignore">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .gitignore
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markdown">
+   Markdown
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tutorial-git">
-     Tutorial Git
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tutorial-markdown">
-     Tutorial Markdown
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tutorial-python">
-     Tutorial Python
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#tutorial-colab">
-     Tutorial Colab
+    <a class="reference internal nav-link" href="#python">
+     Python
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fuentes">
+   Fuentes
+  </a>
  </li>
 </ul>
 
@@ -441,21 +493,103 @@ title="Print to PDF"
 <h1>Preliminares<a class="headerlink" href="#preliminares" title="Enlazar permanentemente con este título">#</a></h1>
 <section id="que-es-el-aprendizaje-automatico">
 <h2>¿Qué es el aprendizaje automático?<a class="headerlink" href="#que-es-el-aprendizaje-automatico" title="Enlazar permanentemente con este título">#</a></h2>
+<ul class="simple">
+<li><p>Se usa para predecir y clasificar.</p></li>
+<li><p>Usado en estadística, minería de datos, inteligencia artificial.</p></li>
+<li><p><a class="reference external" href="https://justindomke.wordpress.com/2021/09/28/the-human-regression-ensemble/">The human regression ensemble</a></p></li>
+</ul>
 </section>
-<section id="herramientas-necesarias">
-<h2>Herramientas necesarias<a class="headerlink" href="#herramientas-necesarias" title="Enlazar permanentemente con este título">#</a></h2>
-<section id="tutorial-git">
-<h3>Tutorial Git<a class="headerlink" href="#tutorial-git" title="Enlazar permanentemente con este título">#</a></h3>
+<section id="control-de-versiones">
+<h2>Control de versiones<a class="headerlink" href="#control-de-versiones" title="Enlazar permanentemente con este título">#</a></h2>
+<p>El <strong>control de versiones</strong> se usa para seguir cambios en proyectos informáticos individuales o colaborativos. Los cambios se almacenan virtualmente en un <em>repositorio</em>. Las versiones del código se guardan mediante <em>commits</em> o instantáneas, que pueden compararse o recuperarse. Estas versiones pueden ramificarse, modificarse independientemente e implementarse de manera ordenada.</p>
+<p>(Git)[<a class="reference external" href="https://git-scm.com/">https://git-scm.com/</a>] es el sistema más usado para control de versiones. (Github)[<a class="reference external" href="https://github.com/">https://github.com/</a>] es un servidor que hospeda repositorios de manera gratuita.</p>
 </section>
-<section id="tutorial-markdown">
-<h3>Tutorial Markdown<a class="headerlink" href="#tutorial-markdown" title="Enlazar permanentemente con este título">#</a></h3>
+<section id="instrucciones-esenciales-de-git">
+<h2>Instrucciones esenciales de Git<a class="headerlink" href="#instrucciones-esenciales-de-git" title="Enlazar permanentemente con este título">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rem Iniciar un repositorio en una carpeta
+git init
+
+rem Clonar un repositorio existente
+git clone url
+
+rem Estado del repositorio
+git status
+
+rem Preparar un archivo o directorio
+git add &lt;archivo_o_directorio&gt;
+
+rem Desagregar un archivo o directorio
+git reset arch
+
+rem Crear un commit
+git commit -m &quot;Mensaje&quot;
+
+rem Crea una rama
+git branch &lt;rama&gt;
+
+rem Cambia a una rama
+git checkout &lt;rama&gt;
+
+rem Une una rama a la actual
+git merge &lt;rama&gt;
+
+rem Añadir la url como remoto
+git remote add &lt;nombre&gt; &lt;url&gt;
+
+rem Enviar actualizaciones a un remoto
+git push &lt;remoto&gt; &lt;rama&gt;
+
+rem Obtiene cambios de un repositorio remoto
+git pull &lt;remoto&gt;
+
+rem Deshacer cambios
+git reset –hard
+
+rem Borrar archivos nuevos
+git clean -fxd
+</pre></div>
+</div>
 </section>
-<section id="tutorial-python">
-<h3>Tutorial Python<a class="headerlink" href="#tutorial-python" title="Enlazar permanentemente con este título">#</a></h3>
+<section id="gitignore">
+<h2><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code><a class="headerlink" href="#gitignore" title="Enlazar permanentemente con este título">#</a></h2>
+<p>En el archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> se especifican qué archivos o carpetas deben ser excluidos del control de versiones.</p>
 </section>
-<section id="tutorial-colab">
-<h3>Tutorial Colab<a class="headerlink" href="#tutorial-colab" title="Enlazar permanentemente con este título">#</a></h3>
+<section id="markdown">
+<h2>Markdown<a class="headerlink" href="#markdown" title="Enlazar permanentemente con este título">#</a></h2>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Encabezado 1</span>
+<span class="gh"># Encabezado 2</span>
+
+Párrafo con <span class="ge">*cursiva*</span>, <span class="gs">**negritas**</span>, <span class="gd">~~tachados~~</span>.
+
+<span class="k">1.</span> Lista
+<span class="k">2.</span> Numerada
+
+<span class="k">*</span> Lista
+<span class="k">*</span> No ordenada
+
+[<span class="nt">Vínculo a Google</span>](<span class="na">www.google.com</span>)
+
+![<span class="nt">Imagen</span>](<span class="na">https://fakeimg.pl/150/</span>)
+
+<span class="sb">`código`</span>
+</pre></div>
+</div>
+<section id="python">
+<h3>Python<a class="headerlink" href="#python" title="Enlazar permanentemente con este título">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://colab.research.google.com/">Google Colab</a></p></li>
+<li><p><a class="reference external" href="https://colab.research.google.com/drive/1uoxgduAnH3e4Pz0YHLAyMnw2Cpilqqpy?usp=sharing">Tutorial</a></p></li>
+</ul>
 </section>
+</section>
+<hr class="docutils" />
+<section id="fuentes">
+<h2>Fuentes<a class="headerlink" href="#fuentes" title="Enlazar permanentemente con este título">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud">https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud</a></p></li>
+<li><p><a class="reference external" href="https://daringfireball.net/projects/markdown/syntax">https://daringfireball.net/projects/markdown/syntax</a></p></li>
+<li><p><a class="reference external" href="https://www.w3schools.com/python/python_ref_string.asp">https://www.w3schools.com/python/python_ref_string.asp</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -493,10 +627,10 @@ title="Print to PDF"
             <p class="prev-next-title">Aprendizaje automático</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="2-estadisticos.html" title="siguiente página">
+    <a class='right-next' id="next-link" href="1_datos.html" title="siguiente página">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">siguiente</p>
-        <p class="prev-next-title">Estadística descriptiva básica</p>
+        <p class="prev-next-title">Datos</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
