@@ -27,6 +27,7 @@ Presentación
 - Usos
     - Predicción
     - Clasificación
+- [The human regression ensemble](https://justindomke.wordpress.com/2021/09/28/the-human-regression-ensemble/)
 
 --- 
 

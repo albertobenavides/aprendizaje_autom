@@ -469,7 +469,7 @@ df_pollutants = df_pollutants[~df_pollutants.timestamp.isna()]
 df_pollutants[df_pollutants.columns[0]] = pd.to_datetime(df_pollutants.timestamp)
 
 
-# In[271]:
+# In[38]:
 
 
 # Primer y último registro
@@ -478,20 +478,20 @@ df_pollutants.iloc[[0, -1], ]
 
 # Valores fuera de rango
 
-# In[273]:
+# In[39]:
 
 
 df_pollutants_def
 
 
-# In[272]:
+# In[40]:
 
 
 # Nombre de variables de sensores
 sensor_variables = ['PM10', 'PM2_5', 'O3', 'NO', 'NO2', 'NOX','SO2', 'CO', 'T', 'RH', 'BP', 'SR', 'RF', 'WV', 'WD']
 
 
-# In[274]:
+# In[41]:
 
 
 # Agregar nombre de variable en df_pollutants_def
@@ -501,13 +501,13 @@ df_pollutants_def
 
 # [`numpy`](https://numpy.org/) es una librería de Python para realizar operaciones matemáticas con arreglos y matrices.
 
-# In[285]:
+# In[42]:
 
 
 import numpy as np
 
 
-# In[286]:
+# In[43]:
 
 
 # Copia de dataframe
@@ -524,7 +524,7 @@ for l, s in df_pollutants_def.iterrows():
 errors
 
 
-# In[287]:
+# In[44]:
 
 
 df_pollutants_copy
@@ -532,13 +532,13 @@ df_pollutants_copy
 
 # Visualización
 
-# In[288]:
+# In[45]:
 
 
 import matplotlib.pyplot as plt
 
 
-# In[292]:
+# In[46]:
 
 
 t = df_pollutants_copy.groupby('station')['timestamp']
@@ -565,14 +565,14 @@ plt.show()
 
 # Se selecciona un rango con el que trabajar. En este caso, de 01-01-2017 a 31-12-2019.
 
-# In[293]:
+# In[47]:
 
 
 df_pollutants_2017 = df_pollutants[df_pollutants.timestamp.dt.year >= 2017]
 df_pollutants_2017
 
 
-# In[296]:
+# In[48]:
 
 
 def imputations(cols, df):
@@ -618,7 +618,7 @@ def imputations(cols, df):
     plt.show()
 
 
-# In[298]:
+# In[49]:
 
 
 imputations(['CO'], df_pollutants_2017)
@@ -626,14 +626,14 @@ imputations(['CO'], df_pollutants_2017)
 
 # Ahora se agrega información geográfica de las estaciones de monitoreo.
 
-# In[299]:
+# In[50]:
 
 
 df_stations = pd.read_csv('../data/estaciones_coords.csv')
 df_stations
 
 
-# In[300]:
+# In[51]:
 
 
 df_pollutants_coords = df_stations.merge(
@@ -647,7 +647,7 @@ df_pollutants_coords.head()
 
 # Dada la naturaleza de los datos, se sabe que $\text{NO}_x$ es la suma de $\text{NO}$ y $\text{NO}_2$. Se rellenan valores de alguna de estas variables, con la suma o resta de las dos restantes.
 
-# In[305]:
+# In[52]:
 
 
 # Conteo de vacíos
@@ -655,7 +655,7 @@ nox_na = df_pollutants_coords[['NO', 'NO2', 'NOX']].isna().sum()
 nox_na
 
 
-# In[306]:
+# In[53]:
 
 
 # NOx vacíos
@@ -664,7 +664,7 @@ df_nox_na = df_pollutants_coords[(~df_pollutants_coords.NO.isna()) & (~df_pollut
 df_pollutants_coords.loc[df_nox_na.index, 'NOX'] = df_pollutants_coords.loc[df_nox_na.index, 'NO'] + df_pollutants_coords.loc[df_nox_na.index, 'NO2']
 
 
-# In[307]:
+# In[54]:
 
 
 # Con NO
@@ -673,7 +673,7 @@ df_no_na = df_pollutants_coords[(~df_pollutants_coords.NOX.isna()) & (~df_pollut
 df_pollutants_coords.loc[df_no_na.index, 'NO'] = df_pollutants_coords.loc[df_no_na.index, 'NOX'] - df_pollutants_coords.loc[df_no_na.index, 'NO2']
 
 
-# In[308]:
+# In[55]:
 
 
 # Y NO2
@@ -682,7 +682,7 @@ df_no2_na = df_pollutants_coords[(~df_pollutants_coords.NOX.isna()) & (~df_pollu
 df_pollutants_coords.loc[df_no2_na.index, 'NO2'] = df_pollutants_coords.loc[df_no2_na.index, 'NOX'] - df_pollutants_coords.loc[df_no2_na.index, 'NO']
 
 
-# In[309]:
+# In[56]:
 
 
 # Reconstrucción
@@ -692,7 +692,7 @@ nox_na - nox_na_new
 
 # Ahora, se convierten todas las columnas de variables y sus valores, en una columna llamada variable y otra llamada valor, que se asignan a cada una de ellas, con los demás atributos.
 
-# In[315]:
+# In[57]:
 
 
 # https://pandas.pydata.org/docs/reference/api/pandas.melt.html
@@ -706,7 +706,7 @@ df_pollutants_melt
 
 # Para interpolar, no hace falta el nombre de la estación ni su abreviatura.
 
-# In[324]:
+# In[58]:
 
 
 df_sel = df_pollutants_melt[['timestamp', 'lat', 'lon', 'h', 'variable', 'value']]
@@ -715,7 +715,7 @@ df_sel
 
 # Más preprocesamiento, pero ahora enfocado a los métodos que nos interesan. Como los métodos de AA no trabajan con fechas, se convierten las fechas a enteros basados en la medida de [inicio de época de Unix](https://docs.python.org/3/library/time.html).
 
-# In[325]:
+# In[59]:
 
 
 # https://stackoverflow.com/a/54312941
@@ -726,7 +726,7 @@ df_sel
 
 # Ahora, para tomar en cuenta las variables como parámetros de los modelos, se utiliza el método de one-hot endoding.
 
-# In[326]:
+# In[60]:
 
 
 # https://towardsdatascience.com/ways-to-handle-categorical-data-before-train-ml-models-with-implementation-ffc213dc84ec
@@ -737,13 +737,13 @@ df_sel
 
 # Muchos de los algoritmos de AA tienen como supuestos que los datos estén normalizados. Existen muchas maneras de hacerlo. Aquí se usa [`MinMaxScaler`](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html), que devuelve cada columna a un rango $[0, 1] \in \mathbb{R}$,
 
-# In[330]:
+# In[61]:
 
 
 from sklearn.preprocessing import MinMaxScaler
 
 
-# In[331]:
+# In[62]:
 
 
 scaler = MinMaxScaler()
@@ -756,7 +756,7 @@ df_scaled
 
 # Selección de valores no vacíos.
 
-# In[332]:
+# In[63]:
 
 
 df_dropna = df_scaled.dropna()
@@ -767,7 +767,7 @@ df_dropna
 
 # Entrenamiento
 
-# In[333]:
+# In[64]:
 
 
 # https://stackoverflow.com/a/35531218
@@ -778,7 +778,7 @@ y_train = df_train[['value']]
 
 # Prueba
 
-# In[ ]:
+# In[65]:
 
 
 df_test = df_dropna.drop(df_train.index)
