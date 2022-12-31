@@ -129,7 +129,7 @@ from IPython.display import Markdown
 
 
 df_pollutants_def = pd.DataFrame(pollutants)
-Markdown(df_pollutants_def.to_markdown(index = False))
+display(Markdown(df_pollutants_def.to_markdown(index = False)))
 
 
 # El objetivo de este estudio radica en hacer interpolación espacio temporal mediante métodos de aprendizaje automático.
@@ -473,7 +473,7 @@ df_pollutants[df_pollutants.columns[0]] = pd.to_datetime(df_pollutants.timestamp
 
 
 # Primer y último registro
-df_pollutants.iloc[[0, -1], ]
+df_pollutants.iloc[[0, -1],]
 
 
 # Valores fuera de rango

@@ -1,0 +1,749 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Aprendizaje automático &#8212; Aprendizaje automático</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="es">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Aprendizaje automático</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Aprendizaje automático
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/0_preliminares.html">
+   Preliminares
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/1_datos.html">
+   Datos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/2_estadisticos.html">
+   Estadística descriptiva básica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/3_sel_carac.html">
+   Extracción de características
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/4_no_supervisado.html">
+   Aprendizaje no supervisado
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/5_supervisado.html">
+   Aprendizaje supervisado
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/6_clasificacion.html">
+   Clasificación
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/7_diseno_experimentos.html">
+   Diseño de experimentos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/8_comparativas_desempeno.html">
+   Comparativas de desempeño
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/9_resultados.html">
+   Resultados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../caps/10_articulo.html">
+   Artículo científico
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/albertobenavides/aprendizaje_autom"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/albertobenavides/aprendizaje_autom/issues/new?title=Issue%20on%20page%20%2Fpresentation/0_preliminares.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/presentation/0_preliminares.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Aprendizaje automático
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Aprendizaje automático
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-de-versiones">
+   Control de versiones
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#herramientas-para-el-control-de-versiones">
+   Herramientas para el control de versiones
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git">
+   Git
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-cont">
+   Git (cont.)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gitignore">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .gitignore
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markdown">
+   Markdown
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Python
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     Google Colab
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial">
+     🤓 Tutorial
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#actividad-en-clase">
+   Actividad en clase
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea">
+   Tarea
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Aprendizaje automático</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Aprendizaje automático
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Aprendizaje automático
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#control-de-versiones">
+   Control de versiones
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#herramientas-para-el-control-de-versiones">
+   Herramientas para el control de versiones
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git">
+   Git
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#git-cont">
+   Git (cont.)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gitignore">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .gitignore
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markdown">
+   Markdown
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python">
+   Python
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#google-colab">
+     Google Colab
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tutorial">
+     🤓 Tutorial
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#actividad-en-clase">
+   Actividad en clase
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea">
+   Tarea
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="aprendizaje-automatico">
+<h1>Aprendizaje automático<a class="headerlink" href="#aprendizaje-automatico" title="Enlazar permanentemente con este título">#</a></h1>
+<p>Presentación</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Aprendizaje automático<a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">#</a></h1>
+<ul class="simple">
+<li><p>Técnicas computacionales</p></li>
+<li><p>Bases</p>
+<ul>
+<li><p>Estadística</p></li>
+<li><p>Minería de datos</p></li>
+<li><p>Ciencia de datos</p></li>
+</ul>
+</li>
+<li><p>Usos</p>
+<ul>
+<li><p>Predicción</p></li>
+<li><p>Clasificación</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://justindomke.wordpress.com/2021/09/28/the-human-regression-ensemble/">The human regression ensemble</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="control-de-versiones">
+<h1>Control de versiones<a class="headerlink" href="#control-de-versiones" title="Enlazar permanentemente con este título">#</a></h1>
+<ul class="simple">
+<li><p>Técnica computacional</p></li>
+<li><p>Seguir cambios en proyectos informáticos</p>
+<ul>
+<li><p>Individuales</p></li>
+<li><p>Colaborativos</p></li>
+</ul>
+</li>
+<li><p>Almacenados virtualmente en <strong>repositorios</strong></p></li>
+<li><p>Versión <span class="math notranslate nohighlight">\(\approx\)</span> Instantánea :camera:</p></li>
+<li><p>Versiones pueden</p>
+<ul>
+<li><p>compararse o recuperarse</p></li>
+<li><p>ramificarse, modificarse independientemente e implementarse de manera ordenada</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="herramientas-para-el-control-de-versiones">
+<h1>Herramientas para el control de versiones<a class="headerlink" href="#herramientas-para-el-control-de-versiones" title="Enlazar permanentemente con este título">#</a></h1>
+<p><a class="reference external" href="https://git-scm.com/">Git</a> es el sistema más usado para control de versiones</p>
+<p><a class="reference external" href="https://github.com/">Github</a> es un servidor que hospeda repositorios de manera gratuita</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="git">
+<h1>Git<a class="headerlink" href="#git" title="Enlazar permanentemente con este título">#</a></h1>
+<div class="columns">
+<div>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span>rem Iniciar un repositorio
+git init
+
+rem Clonar un repositorio existente
+git clone url
+
+rem Estado del repositorio
+git status
+
+rem Preparar un archivo o directorio
+git add &lt;archivo_o_directorio&gt;
+
+rem Desagregar un archivo o directorio
+git reset arch
+
+rem Crear un commit
+git commit -m &quot;Mensaje&quot;
+</pre></div>
+</div>
+</div>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span>rem Crea una rama
+git branch &lt;rama&gt;
+
+rem Cambia a una rama
+git checkout &lt;rama&gt;
+
+rem Une una rama a la actual
+git merge &lt;rama&gt;
+
+rem Añadir la url como remoto
+git remote add &lt;nombre&gt; &lt;url&gt;
+
+rem Enviar actualizaciones a un remoto
+git push &lt;remoto&gt; &lt;rama&gt;
+
+rem Obtiene cambios de remoto
+git pull &lt;remoto&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="git-cont">
+<h1>Git (cont.)<a class="headerlink" href="#git-cont" title="Enlazar permanentemente con este título">#</a></h1>
+<div class="highlight-cmd notranslate"><div class="highlight"><pre><span></span>rem Deshacer cambios
+git reset –hard
+
+rem Borrar archivos nuevos
+git clean -fxd
+</pre></div>
+</div>
+<section id="gitignore">
+<h2><code class="docutils literal notranslate"><span class="pre">.gitignore</span></code><a class="headerlink" href="#gitignore" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Especifica archivos o carpetas excluidos del control de versiones</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="markdown">
+<h1>Markdown<a class="headerlink" href="#markdown" title="Enlazar permanentemente con este título">#</a></h1>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Encabezado 1</span>
+<span class="gh"># Encabezado 2</span>
+
+Párrafo con <span class="ge">*cursiva*</span>, <span class="gs">**negritas**</span>, <span class="gd">~~tachados~~</span>.
+
+<span class="k">1.</span> Lista
+<span class="k">2.</span> Numerada
+
+<span class="k">*</span> Lista
+<span class="k">*</span> No ordenada
+
+[<span class="nt">Vínculo a Google</span>](<span class="na">www.google.com</span>)
+
+![<span class="nt">Imagen</span>](<span class="na">https://fakeimg.pl/150/</span>)
+
+<span class="sb">`código`</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="python">
+<h1>Python<a class="headerlink" href="#python" title="Enlazar permanentemente con este título">#</a></h1>
+<section id="google-colab">
+<h2><a class="reference external" href="https://colab.research.google.com/">Google Colab</a><a class="headerlink" href="#google-colab" title="Enlazar permanentemente con este título">#</a></h2>
+</section>
+<section id="tutorial">
+<h2>🤓 <a class="reference external" href="https://colab.research.google.com/drive/1uoxgduAnH3e4Pz0YHLAyMnw2Cpilqqpy?usp=sharing">Tutorial</a><a class="headerlink" href="#tutorial" title="Enlazar permanentemente con este título">#</a></h2>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="actividad-en-clase">
+<h1>Actividad en clase<a class="headerlink" href="#actividad-en-clase" title="Enlazar permanentemente con este título">#</a></h1>
+<ul class="simple">
+<li><p>2 puntos extra</p></li>
+<li><p>Crear repositorio para el curso que contenga</p>
+<ul>
+<li><p>en el <code class="docutils literal notranslate"><span class="pre">read.me</span></code>, una breve descripción de tu repositorio para este curso (primer commit)</p></li>
+<li><p>un archivo Jupyter para la primera tarea (segundo commit)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tarea">
+<h1>Tarea<a class="headerlink" href="#tarea" title="Enlazar permanentemente con este título">#</a></h1>
+<ul class="simple">
+<li><p>10 puntos</p></li>
+<li><p>Definir un conjunto de datos sobre el que se trabajará durante el curso</p></li>
+<li><p>Justificar su elección</p></li>
+<li><p>Establecer objetivos a lograr en el curso</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./presentation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Alberto Benavides<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
