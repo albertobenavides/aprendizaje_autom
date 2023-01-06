@@ -155,13 +155,13 @@ Párrafo con *cursiva*, **negritas**, ~~tachados~~.
 - 2 puntos extra
 - Crear repositorio para el curso que contenga 
   - en el `read.me`, una breve descripción de tu repositorio para este curso (primer commit)
-  - un archivo Jupyter para la primera tarea (segundo commit)
+  - un archivo Jupyter para la primera tarea con un ejemplo de regresión lineal o correlación hecho en Python (segundo commit)
 
 ---
 
 # Tarea
 
-- 10 puntos
+- 8 puntos
 - Definir un conjunto de datos sobre el que se trabajará durante el curso
 - Justificar su elección
 - Establecer objetivos a lograr en el curso
