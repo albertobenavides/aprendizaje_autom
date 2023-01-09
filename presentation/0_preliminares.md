@@ -17,6 +17,69 @@ Presentación
 
 ---
 
+# Ponderación del curso
+
+<center>
+  <table>
+    <tr>
+      <th>Descripción</th>
+      <th>Cantidad</th>
+      <th>Puntos</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <td>Actividades en clase</td>
+      <td style="text-align:center">10</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">20</td>
+    </tr>
+    <tr>
+      <td>Tareas</td>
+      <td style="text-align:center">10</td>
+      <td style="text-align:center">8</td>
+      <td style="text-align:center">80</td>
+    </tr>
+    <tr>
+      <td>PIA (Artículo)</td>
+      <td style="text-align:center">10</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">10</td>
+    </tr>
+    <tr>
+      <td colspan="3">Total</td>
+      <td style="text-align:center">110</td>
+    </tr>
+  </table>
+</center>
+
+---
+
+# Sesiones
+
+<div class="columns">
+<div>
+
+**9 enero**: Presentación del curso
+**16 enero**: Carga de datos y preprocesamiento
+**23 enero**: Estadística descriptiva básica
+**30 enero**: Selección de características
+**6 febrero (asueto)**: Aprendizaje no supervisado
+
+</div>
+<div>
+
+**13 febrero**: Clasificación
+**20 febrero**: Regresión
+**27 febrero**: Diseño de experimentos
+**6 marzo**: Comparativas de desempeño
+**20 marzo (asueto)**: Latex y artículo
+**27 marzo**: Artículo
+
+</div>
+</div>
+
+---
+
 # Aprendizaje automático
 
 - Técnicas computacionales
@@ -148,14 +211,16 @@ Párrafo con *cursiva*, **negritas**, ~~tachados~~.
 
 ## 🤓 [Tutorial](https://colab.research.google.com/drive/1uoxgduAnH3e4Pz0YHLAyMnw2Cpilqqpy?usp=sharing)
 
+Ver integración entre Google Collab y Github.
+
 ---
 
 # Actividad en clase
 
 - 2 puntos extra
 - Crear repositorio para el curso que contenga 
-  - en el `read.me`, una breve descripción de tu repositorio para este curso (primer commit)
-  - un archivo Jupyter para la primera tarea con un ejemplo de regresión lineal o correlación hecho en Python (segundo commit)
+  - en el `read.me`, una breve descripción de tu repositorio para este curso (primer *commit*)
+  - un archivo Jupyter para la primera tarea con un ejemplo de regresión lineal o correlación hecho en puro Python (segundo *commit*)
 
 ---
 
@@ -165,3 +230,4 @@ Párrafo con *cursiva*, **negritas**, ~~tachados~~.
 - Definir un conjunto de datos sobre el que se trabajará durante el curso
 - Justificar su elección
 - Establecer objetivos a lograr en el curso
+- Subir explicación en el repositorio en un cuaderno de Jupyter
