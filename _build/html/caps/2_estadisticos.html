@@ -51,11 +51,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
-    <link rel="next" title="Extracción de características" href="3_sel_carac.html" />
+    <link rel="next" title="Selección de características" href="3_sel_carac.html" />
     <link rel="prev" title="Datos" href="1_datos.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="es">
@@ -134,7 +136,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="3_sel_carac.html">
-   Extracción de características
+   Selección de características
   </a>
  </li>
  <li class="toctree-l1">
@@ -223,6 +225,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/albertobenavides/aprendizaje_autom/master?urlpath=tree/docs/caps/2_estadisticos.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -355,8 +386,71 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#medidas-de-tendencia-central">
+   Medidas de tendencia central
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#media">
+     Media
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mediana">
+     Mediana
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moda">
+     Moda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#medidas-de-dispersion">
+   Medidas de dispersión
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#varianza">
+     Varianza
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#desviacion-estandar">
+     Desviación estándar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sesgo-bias">
+     Sesgo (
+     <em>
+      bias
+     </em>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cuantiles">
+     Cuantiles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rangos">
+     Rangos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#visualizacion">
    Visualización
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pruebas-de-correlacion">
+   Pruebas de correlación
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -365,13 +459,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parametricos-y-no-parametricos">
-   Paramétricos y no paramétricos
+  <a class="reference internal nav-link" href="#tarea-en-clase-2-puntos">
+   Tarea en clase (2 puntos)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pruebas-de-correlacion">
-   Pruebas de correlación
+  <a class="reference internal nav-link" href="#tarea-8-puntos">
+   Tarea (8 puntos)
   </a>
  </li>
 </ul>
@@ -399,8 +493,71 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#medidas-de-tendencia-central">
+   Medidas de tendencia central
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#media">
+     Media
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mediana">
+     Mediana
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moda">
+     Moda
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#medidas-de-dispersion">
+   Medidas de dispersión
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#varianza">
+     Varianza
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#desviacion-estandar">
+     Desviación estándar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sesgo-bias">
+     Sesgo (
+     <em>
+      bias
+     </em>
+     )
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cuantiles">
+     Cuantiles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rangos">
+     Rangos
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#visualizacion">
    Visualización
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pruebas-de-correlacion">
+   Pruebas de correlación
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -409,13 +566,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parametricos-y-no-parametricos">
-   Paramétricos y no paramétricos
+  <a class="reference internal nav-link" href="#tarea-en-clase-2-puntos">
+   Tarea en clase (2 puntos)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pruebas-de-correlacion">
-   Pruebas de correlación
+  <a class="reference internal nav-link" href="#tarea-8-puntos">
+   Tarea (8 puntos)
   </a>
  </li>
 </ul>
@@ -432,18 +589,2756 @@ title="Print to PDF"
 <h1>Estadística descriptiva básica<a class="headerlink" href="#estadistica-descriptiva-basica" title="Enlazar permanentemente con este título">#</a></h1>
 <section id="estadisticos">
 <h2>Estadísticos<a class="headerlink" href="#estadisticos" title="Enlazar permanentemente con este título">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/results/df_sel.csv&#39;</span><span class="p">)</span>
+<span class="n">df_sel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>143.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-01-01 01:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>183.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-01-01 02:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>142.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-01-01 03:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>101.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-01-01 04:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>85.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5124400</th>
+      <td>2019-12-31 19:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>WD</td>
+      <td>82.0</td>
+    </tr>
+    <tr>
+      <th>5124401</th>
+      <td>2019-12-31 20:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>WD</td>
+      <td>87.0</td>
+    </tr>
+    <tr>
+      <th>5124402</th>
+      <td>2019-12-31 21:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>WD</td>
+      <td>98.0</td>
+    </tr>
+    <tr>
+      <th>5124403</th>
+      <td>2019-12-31 22:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>WD</td>
+      <td>104.0</td>
+    </tr>
+    <tr>
+      <th>5124404</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>WD</td>
+      <td>137.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5124405 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tipo de dato</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df_sel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tipo de datos de las columnas</span>
+<span class="n">df_sel</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timestamp     object
+lat          float64
+lon          float64
+h              int64
+variable      object
+value        float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A dato temporal</span>
+<span class="n">df_sel</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_sel</span><span class="o">.</span><span class="n">timestamp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sel</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timestamp    datetime64[ns]
+lat                 float64
+lon                 float64
+h                     int64
+variable             object
+value               float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rápidamente se pueden encontrar descriptores estadísticos de los datos con <code class="docutils literal notranslate"><span class="pre">describe</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sel</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>5.124405e+06</td>
+      <td>5.124405e+06</td>
+      <td>5.124405e+06</td>
+      <td>3.429819e+06</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>2.568126e+01</td>
+      <td>-1.002964e+02</td>
+      <td>5.370769e+02</td>
+      <td>9.077452e+01</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.118940e-01</td>
+      <td>1.476078e-01</td>
+      <td>1.092896e+02</td>
+      <td>2.000451e+02</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>2.536000e+01</td>
+      <td>-1.005860e+02</td>
+      <td>3.400000e+02</td>
+      <td>-2.060000e+01</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2.566500e+01</td>
+      <td>-1.003660e+02</td>
+      <td>4.760000e+02</td>
+      <td>2.000000e+00</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2.567600e+01</td>
+      <td>-1.003099e+02</td>
+      <td>5.280000e+02</td>
+      <td>1.636000e+01</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.575700e+01</td>
+      <td>-1.002489e+02</td>
+      <td>6.300000e+02</td>
+      <td>5.600000e+01</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2.580000e+01</td>
+      <td>-9.999550e+01</td>
+      <td>7.160000e+02</td>
+      <td>8.254400e+02</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Pero esto no es muy informativo dado que hay diferentes variables, estaciones de monitoreo y tiempos de lectura. Para ello se puede separar el conjunto de datos en subconjuntos. Por ejemplo, por variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gp_sel_variable</span> <span class="o">=</span> <span class="n">df_sel</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;variable&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Esto se puede iterar (se muestra sólo una iteración como ejemplo).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">gp_sel_variable</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Etcétera&#39;</span><span class="p">)</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BP
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3416270</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>BP</td>
+      <td>709.2</td>
+    </tr>
+    <tr>
+      <th>3416271</th>
+      <td>2017-01-01 01:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>BP</td>
+      <td>708.9</td>
+    </tr>
+    <tr>
+      <th>3416272</th>
+      <td>2017-01-01 02:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>BP</td>
+      <td>708.5</td>
+    </tr>
+    <tr>
+      <th>3416273</th>
+      <td>2017-01-01 03:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>BP</td>
+      <td>708.2</td>
+    </tr>
+    <tr>
+      <th>3416274</th>
+      <td>2017-01-01 04:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>BP</td>
+      <td>707.9</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3757892</th>
+      <td>2019-12-31 19:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>BP</td>
+      <td>715.1</td>
+    </tr>
+    <tr>
+      <th>3757893</th>
+      <td>2019-12-31 20:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>BP</td>
+      <td>714.9</td>
+    </tr>
+    <tr>
+      <th>3757894</th>
+      <td>2019-12-31 21:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>BP</td>
+      <td>715.0</td>
+    </tr>
+    <tr>
+      <th>3757895</th>
+      <td>2019-12-31 22:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>BP</td>
+      <td>715.1</td>
+    </tr>
+    <tr>
+      <th>3757896</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>BP</td>
+      <td>715.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>341627 rows × 6 columns</p>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Etcétera
+</pre></div>
+</div>
+</div>
+</div>
+<p>También es posible filtrar resultados.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pm10</span> <span class="o">=</span> <span class="n">df_sel</span><span class="p">[</span><span class="n">df_sel</span><span class="o">.</span><span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;PM10&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ya con esto, se pueden obtener el resumen estadístico de los datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pm10</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    308536.000000
+mean         59.192723
+std          42.661375
+min           2.000000
+25%          32.000000
+50%          49.000000
+75%          74.000000
+max         791.000000
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="medidas-de-tendencia-central">
+<h2>Medidas de tendencia central<a class="headerlink" href="#medidas-de-tendencia-central" title="Enlazar permanentemente con este título">#</a></h2>
+<section id="media">
+<h3>Media<a class="headerlink" href="#media" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Suma de todos los elementos <span class="math notranslate nohighlight">\(x_i\)</span> de conjunto <span class="math notranslate nohighlight">\(X\)</span> dividida entre el número total de elementos <span class="math notranslate nohighlight">\(n\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\sum_i^n x_i / n.\]</div>
+<p>Aunque se pueden usar funciones nativas de Python o integradas de <code class="docutils literal notranslate"><span class="pre">pandas</span></code> o <code class="docutils literal notranslate"><span class="pre">numpy</span></code> para los cálculos de los estadísticos, aprovecharemos esta sección para conocer la librería <a class="reference external" href="https://docs.python.org/3/library/statistics.html"><code class="docutils literal notranslate"><span class="pre">statistics</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statistics</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df_pm10</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aquí tenemos un problema, pues aparece <code class="docutils literal notranslate"><span class="pre">nan</span></code> como resultado de la media. Esto sucede porque en el conjunto de registros de <code class="docutils literal notranslate"><span class="pre">value</span></code> hay valores no numéricos (<em>not a number</em> o <code class="docutils literal notranslate"><span class="pre">nan</span></code>). Veamos cuántos <code class="docutils literal notranslate"><span class="pre">nan</span></code> hay.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Qué celdas son nan</span>
+<span class="n">df_pm10</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>341622</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>341623</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>341624</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>341625</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>341626</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>341627 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Total de nan por columna</span>
+<span class="n">df_pm10</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timestamp        0
+lat              0
+lon              0
+h                0
+variable         0
+value        33091
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Total de nan por fila (aquí es trivial calcularlo)</span>
+<span class="n">df_pm10</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         0
+1         0
+2         0
+3         0
+4         0
+         ..
+341622    0
+341623    0
+341624    0
+341625    0
+341626    0
+Length: 341627, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Con esto vemos cuáles valores son nan</span>
+<span class="n">filtro</span> <span class="o">=</span> <span class="n">df_pm10</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+<span class="n">filtro</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         False
+1         False
+2         False
+3         False
+4         False
+          ...  
+341622    False
+341623    False
+341624    False
+341625    False
+341626    False
+Name: value, Length: 341627, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Esto nos devuelve las filas que son True en el filtro anterior</span>
+<span class="c1"># O sea, todos los nan en value</span>
+<span class="n">df_pm10_nan</span> <span class="o">=</span> <span class="n">df_pm10</span><span class="p">[</span><span class="n">filtro</span><span class="p">]</span>
+<span class="n">df_pm10_nan</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>219</th>
+      <td>2017-01-10 03:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>2017-01-10 16:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>255</th>
+      <td>2017-01-11 15:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>294</th>
+      <td>2017-01-13 06:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>419</th>
+      <td>2017-01-18 11:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>341424</th>
+      <td>2019-12-23 13:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>341425</th>
+      <td>2019-12-23 14:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>341426</th>
+      <td>2019-12-23 15:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>341476</th>
+      <td>2019-12-25 17:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>341603</th>
+      <td>2019-12-31 00:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>33091 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>Podemos contarlos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_pm10_nan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33091
+</pre></div>
+</div>
+</div>
+</div>
+<p>También se puede encontrar la proporción de valores faltantes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_pm10_nan</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_pm10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.09686295286965023
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora, pueden realizarse varias estrategias para calcular la media de estos valores. La más común es ignorar los <code class="docutils literal notranslate"><span class="pre">nan</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Elimina los valores nan</span>
+<span class="n">df_pm10</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>143.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-01-01 01:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>183.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-01-01 02:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>142.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-01-01 03:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>101.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-01-01 04:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>85.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>341622</th>
+      <td>2019-12-31 19:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>12.0</td>
+    </tr>
+    <tr>
+      <th>341623</th>
+      <td>2019-12-31 20:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>341624</th>
+      <td>2019-12-31 21:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>341625</th>
+      <td>2019-12-31 22:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>20.0</td>
+    </tr>
+    <tr>
+      <th>341626</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>20.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>308536 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Media sin nan</span>
+<span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df_pm10</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59.19272334508777
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cálculo de media más rápida para grandes conjuntos de datos</span>
+<span class="n">statistics</span><span class="o">.</span><span class="n">fmean</span><span class="p">(</span><span class="n">df_pm10</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>59.19272334508777
+</pre></div>
+</div>
+</div>
+</div>
+<p>La <strong>media ponderada</strong> es una medida de tendencia central que da a los <span class="math notranslate nohighlight">\(n\)</span> valores de un conjunto de datos <span class="math notranslate nohighlight">\(x\)</span> un peso <span class="math notranslate nohighlight">\(w_i; i = [1, n]\)</span>, para luego calcular la media de los valores multiplicados por su peso asignado, tal que</p>
+<div class="math notranslate nohighlight">
+\[\frac{\sum_i w_i x_i}{\sum_i w_i}.\]</div>
+<p>Es recomendable que <span class="math notranslate nohighlight">\(\sum_i w_i = 1\)</span>. En la librería <code class="docutils literal notranslate"><span class="pre">statistics</span></code>, la función <code class="docutils literal notranslate"><span class="pre">fmean</span></code> puede tomar como parámetro los pesos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pm10_dropna</span> <span class="o">=</span> <span class="n">df_pm10</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Con <code class="docutils literal notranslate"><span class="pre">pandas</span></code> se pueden usar filtros para series de tiempo. En el siguiente ejemplo, se utiliza <code class="docutils literal notranslate"><span class="pre">dt</span></code> para acceder a las propiedades de la serie de tiempo. El parámetro <code class="docutils literal notranslate"><span class="pre">day_of_week</span></code> (hay más selectores) asigna <code class="docutils literal notranslate"><span class="pre">0</span></code> al lunes, <code class="docutils literal notranslate"><span class="pre">1</span></code> al martes… <code class="docutils literal notranslate"><span class="pre">6</span></code> al domingo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pm10_dropna</span><span class="p">[</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_of_week</span> <span class="o">==</span> <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>143.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-01-01 01:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>183.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-01-01 02:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>142.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-01-01 03:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>101.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-01-01 04:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>85.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>341574</th>
+      <td>2019-12-29 19:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>47.0</td>
+    </tr>
+    <tr>
+      <th>341575</th>
+      <td>2019-12-29 20:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>46.0</td>
+    </tr>
+    <tr>
+      <th>341576</th>
+      <td>2019-12-29 21:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>46.0</td>
+    </tr>
+    <tr>
+      <th>341577</th>
+      <td>2019-12-29 22:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>32.0</td>
+    </tr>
+    <tr>
+      <th>341578</th>
+      <td>2019-12-29 23:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>43736 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>Supongamos que queremos dar un peso por cada día de la semana, de manera incremental. El lunes pesaría <span class="math notranslate nohighlight">\(1\)</span>, el martes <span class="math notranslate nohighlight">\(2\)</span>… el domingo <span class="math notranslate nohighlight">\(7\)</span>. Como es recomendable que estos pesos sumen <span class="math notranslate nohighlight">\(1\)</span>, se puede hacer una función para obtener la porción equivalente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days_int</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">days_int_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">days_int</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">days_int</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">days_int</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">days_int_sum</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">days_int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>A partir de eso, se pueden asignar pesos a los días de la semana con un ciclo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pm10_dropna</span><span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># Se añade una columna para los pesos</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span> <span class="c1"># Para cada día de la semana</span>
+    <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="c1"># vamos a asignar</span>
+        <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day_of_week</span> <span class="o">==</span> <span class="n">i</span><span class="p">,</span> <span class="c1"># a las filas de ese día</span>
+        <span class="s1">&#39;w&#39;</span> <span class="c1"># en la columna para los pesos</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="n">days_int</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1"># el valor del peso normalizado correspondiente</span>
+<span class="n">df_pm10_dropna</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_5296\665358610.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_pm10_dropna[&#39;w&#39;] = -1 # Se añade una columna para los pesos
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>variable</th>
+      <th>value</th>
+      <th>w</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>143.0</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-01-01 01:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>183.0</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-01-01 02:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>142.0</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-01-01 03:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>101.0</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-01-01 04:00:00</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>85.0</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>341622</th>
+      <td>2019-12-31 19:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>12.0</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>341623</th>
+      <td>2019-12-31 20:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>15.0</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>341624</th>
+      <td>2019-12-31 21:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>20.0</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>341625</th>
+      <td>2019-12-31 22:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>20.0</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>341626</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>20.0</td>
+      <td>0.071429</td>
+    </tr>
+  </tbody>
+</table>
+<p>308536 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ahora ya se puede calcular esta media ponderada</span>
+<span class="n">statistics</span><span class="o">.</span><span class="n">fmean</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>58.91692992393067
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Media armónica</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Media geométrica</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mediana">
+<h3>Mediana<a class="headerlink" href="#mediana" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Tras ordenar un conjunto de <span class="math notranslate nohighlight">\(n\)</span> datos, la mediana es el elemento que se encuentra en la posición <span class="math notranslate nohighlight">\(0.5 (n+1)\)</span> si <span class="math notranslate nohighlight">\(n\)</span> es impar, mientras que para <span class="math notranslate nohighlight">\(n\)</span> par la mediana es la media de las posiciones <span class="math notranslate nohighlight">\(0.5 (n)\)</span> y <span class="math notranslate nohighlight">\(0.5 (n+1)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Exploremos la cantidad de valores <span class="math notranslate nohighlight">\(n\)</span> de <span class="math notranslate nohighlight">\(\text{PM}_{10}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>308536
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como <span class="math notranslate nohighlight">\(n\)</span> es par, entonces podemos pedir los números sobre los que se calcula la media con</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">median_low</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">median_high</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ja, de todas formas parece que hay varios <span class="math notranslate nohighlight">\(49\)</span> por ahí. Lo veremos más adelante cuando hagamos representaciones visuales de estos datos.</p>
+</section>
+<section id="moda">
+<h3>Moda<a class="headerlink" href="#moda" title="Enlazar permanentemente con este título">#</a></h3>
+<p>La moda representa el valor que más se repite en un conjunto de datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Si sólo hay un valor que represente la moda, los datos son unimodales, mientras que si hay empates los datos son multimodales (con dos o más valores que representan la moda). Eso se puede calcular también (aunque aquí nomás hay uno, jeje).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">multimode</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[36.0]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="medidas-de-dispersion">
+<h2>Medidas de dispersión<a class="headerlink" href="#medidas-de-dispersion" title="Enlazar permanentemente con este título">#</a></h2>
+<section id="varianza">
+<h3>Varianza<a class="headerlink" href="#varianza" title="Enlazar permanentemente con este título">#</a></h3>
+<p>La varianza de una muestra <span class="math notranslate nohighlight">\(s^2\)</span> refleja lo alejados que se encuentran <span class="math notranslate nohighlight">\(n\)</span> datos de un conjunto de datos <span class="math notranslate nohighlight">\(x\)</span> de su media <span class="math notranslate nohighlight">\(\bar{x}\)</span>, o sea</p>
+<div class="math notranslate nohighlight">
+\[s^2 = \frac{\sum_i (x_i - \bar{x})^2}{n-1}.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">variance</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1819.9928809995927
+</pre></div>
+</div>
+</div>
+</div>
+<p>La varianza poblacional <span class="math notranslate nohighlight">\(\sigma^2\)</span> se mide a partir de <span class="math notranslate nohighlight">\(n\)</span> datos de una población <span class="math notranslate nohighlight">\(x\)</span> y su distancia respecto a la media poblacional <span class="math notranslate nohighlight">\(\mu\)</span>, a saber</p>
+<div class="math notranslate nohighlight">
+\[\sigma^2 = \frac{\sum_i (x_i - \mu)^2}{n}.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">pvariance</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1819.9869821972454
+</pre></div>
+</div>
+</div>
+</div>
+<p>Cuando se tiene toda la población, se usa la varianza poblacional. En este caso, tenemos una muestra (quitamos los <code class="docutils literal notranslate"><span class="pre">nan</span></code>), así que se usaría la muestral.</p>
+</section>
+<section id="desviacion-estandar">
+<h3>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Raíz cuadrada de la varianza muestral y poblacional, que transforma el estadístico a la misma unidad de medida de los datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">stdev</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42.66137457934979
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">pstdev</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>42.6613054441287
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sesgo-bias">
+<h3>Sesgo (<em>bias</em>)<a class="headerlink" href="#sesgo-bias" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Dirección de desviación de los datos respecto a la media.</p>
+<div class="math notranslate nohighlight">
+\[\frac{\sum_i(x_i − \bar{x})^3 n}{(n − 1)(n − 2)s^3}.\]</div>
+<p>Valores de sesgo negativos indican predominancia de elementos menores a la media, sesgo positivo son mayor cantidad de elementos mayores a la media, y sesgo cercano a <span class="math notranslate nohighlight">\(0\)</span> (entre <span class="math notranslate nohighlight">\(-0.5, 0.5\)</span>) cuenta con elementos distribuidos simétricamente. No existe esta medida en <code class="docutils literal notranslate"><span class="pre">statistics</span></code>, pero sí en <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">skew</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.049912093573379
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cuantiles">
+<h3>Cuantiles<a class="headerlink" href="#cuantiles" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Valores que representan divisiones de <span class="math notranslate nohighlight">\(n\)</span> datos. Usualmente se dividen los datos en cuatro (cuartiles), diez (deciles), cien (percentiles), pero pueden dividirse por cualquir número <span class="math notranslate nohighlight">\(q\)</span>. Una vez determinadas las <span class="math notranslate nohighlight">\(q\)</span> divisiones, se pueden calcular el cuantil <span class="math notranslate nohighlight">\(Q_k\)</span> de una posición <span class="math notranslate nohighlight">\(k: 0 \leq k \leq q\)</span> mediante
+$<span class="math notranslate nohighlight">\(Q_k = \frac{kn}{q}.\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Esto nos da los cuartiles de la muestra</span>
+<span class="n">statistics</span><span class="o">.</span><span class="n">quantiles</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[32.0, 49.0, 74.0]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Si tuviéramos una población, se usaría</span>
+<span class="n">statistics</span><span class="o">.</span><span class="n">quantiles</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;inclusive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[21.0, 29.0, 36.0, 42.0, 49.0, 57.0, 67.0, 81.0, 107.0]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="rangos">
+<h3>Rangos<a class="headerlink" href="#rangos" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Mínimos y máximos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">min</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>791.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="visualizacion">
 <h2>Visualización<a class="headerlink" href="#visualizacion" title="Enlazar permanentemente con este título">#</a></h2>
-</section>
-<section id="pruebas-de-normalidad">
-<h2>Pruebas de normalidad<a class="headerlink" href="#pruebas-de-normalidad" title="Enlazar permanentemente con este título">#</a></h2>
-</section>
-<section id="parametricos-y-no-parametricos">
-<h2>Paramétricos y no paramétricos<a class="headerlink" href="#parametricos-y-no-parametricos" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Todos estos estadísticos pueden representarse en algunos gráficos. La librería <a class="reference external" href="https://matplotlib.org/"><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a> permite generar gráficos en Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Los histogramas permiten visualizar la distribución de los datos, agrupando el conteo de valores de datos en barras de rangos definidos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mf">6.4</span><span class="p">,</span> <span class="mf">4.8</span><span class="p">))</span> <span class="c1"># figura con tamaño por defecto</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">)</span> <span class="c1"># El histograma 🥳</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span> <span class="c1"># Dibujar una línea vertical</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="c1"># En la media de los datos</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;#ff0000&#39;</span><span class="p">,</span> <span class="c1"># De color hexadecimal rojo</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">bar</span><span class="si">{x}</span><span class="s1">$&#39;</span> <span class="c1"># con este identificador</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;No me gusta añadir títulos&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Mucho menos súper títulos&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PM$_</span><span class="si">{10}</span><span class="s1">$&#39;</span><span class="p">)</span> <span class="c1"># Título del eje horizontal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia o conteo&#39;</span><span class="p">)</span> <span class="c1"># Título del eje vertical</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># Muestra identificadores</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1"># Que quepa todo en la imagen guardada</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;../imgs/histogram_example.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_80_0.png" src="../_images/2_estadisticos_80_0.png" />
+</div>
+</div>
+<p>Un diagrama de dispersión nos permite ver todos los datos como puntos individuales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># figura con tamaño horizontal en 20 y vertical 4</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="c1"># Valores del eje horizontal</span>
+    <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="c1"># del eje vertical</span>
+    <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span> <span class="c1"># y tipo de marcador</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_82_0.png" src="../_images/2_estadisticos_82_0.png" />
+</div>
+</div>
+<p>Como esto es una serie de tiempo, tiene más sentido verla como un gráfico lineal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># figura con tamaño horizontal en 20 y vertical 4</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_84_0.png" src="../_images/2_estadisticos_84_0.png" />
+</div>
+</div>
+<p>Se ve feooooo 🤮, pero se puede arreglar ordenando los valores por <code class="docutils literal notranslate"><span class="pre">timestamp</span></code>. También se puede poner como índice, para no batallar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_pm10_dropna</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_5296\3738854755.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df_pm10_dropna.sort_values(&#39;timestamp&#39;, inplace=True)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>variable</th>
+      <th>value</th>
+      <th>w</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.6700</td>
+      <td>-100.3380</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>143.00</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.7500</td>
+      <td>-100.2550</td>
+      <td>476</td>
+      <td>PM10</td>
+      <td>487.00</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.8000</td>
+      <td>-100.3440</td>
+      <td>528</td>
+      <td>PM10</td>
+      <td>132.00</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.6760</td>
+      <td>-100.4640</td>
+      <td>694</td>
+      <td>PM10</td>
+      <td>112.00</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-01-01 00:00:00</td>
+      <td>25.7770</td>
+      <td>-100.1880</td>
+      <td>432</td>
+      <td>PM10</td>
+      <td>238.00</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>308531</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>25.6460</td>
+      <td>-100.0960</td>
+      <td>387</td>
+      <td>PM10</td>
+      <td>31.00</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>308532</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>25.3600</td>
+      <td>-99.9955</td>
+      <td>340</td>
+      <td>PM10</td>
+      <td>64.00</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>308533</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>25.6700</td>
+      <td>-100.3380</td>
+      <td>560</td>
+      <td>PM10</td>
+      <td>76.72</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>308534</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>25.7295</td>
+      <td>-100.3099</td>
+      <td>520</td>
+      <td>PM10</td>
+      <td>20.00</td>
+      <td>0.071429</td>
+    </tr>
+    <tr>
+      <th>308535</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>25.6650</td>
+      <td>-100.4130</td>
+      <td>636</td>
+      <td>PM10</td>
+      <td>20.00</td>
+      <td>0.071429</td>
+    </tr>
+  </tbody>
+</table>
+<p>308536 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># figura con tamaño horizontal en 20 y vertical 4</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+    <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;dashed&#39;</span><span class="p">,</span>
+    <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># Ancho de línea</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_87_0.png" src="../_images/2_estadisticos_87_0.png" />
+</div>
+</div>
+<p>Las gráficas de barras muestran información agrupada en rangos ordenados según un criterio.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reajuste a media por semana</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_5296\753487558.py:2: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  t = df_pm10_dropna.resample(&#39;W&#39;, on=&#39;timestamp&#39;).mean()
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>value</th>
+      <th>w</th>
+    </tr>
+    <tr>
+      <th>timestamp</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2017-01-01</th>
+      <td>25.712111</td>
+      <td>-100.301444</td>
+      <td>530.666667</td>
+      <td>86.976852</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>2017-01-08</th>
+      <td>25.717489</td>
+      <td>-100.321726</td>
+      <td>543.710806</td>
+      <td>63.736415</td>
+      <td>0.144218</td>
+    </tr>
+    <tr>
+      <th>2017-01-15</th>
+      <td>25.717099</td>
+      <td>-100.323742</td>
+      <td>545.411139</td>
+      <td>92.566333</td>
+      <td>0.143259</td>
+    </tr>
+    <tr>
+      <th>2017-01-22</th>
+      <td>25.718287</td>
+      <td>-100.325578</td>
+      <td>546.520619</td>
+      <td>86.035438</td>
+      <td>0.138002</td>
+    </tr>
+    <tr>
+      <th>2017-01-29</th>
+      <td>25.720073</td>
+      <td>-100.331630</td>
+      <td>550.193428</td>
+      <td>71.909485</td>
+      <td>0.141750</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2019-12-08</th>
+      <td>25.676330</td>
+      <td>-100.287480</td>
+      <td>532.255906</td>
+      <td>79.023125</td>
+      <td>0.146495</td>
+    </tr>
+    <tr>
+      <th>2019-12-15</th>
+      <td>25.680165</td>
+      <td>-100.293588</td>
+      <td>535.419125</td>
+      <td>84.037945</td>
+      <td>0.142806</td>
+    </tr>
+    <tr>
+      <th>2019-12-22</th>
+      <td>25.677560</td>
+      <td>-100.296364</td>
+      <td>538.319200</td>
+      <td>60.089157</td>
+      <td>0.143214</td>
+    </tr>
+    <tr>
+      <th>2019-12-29</th>
+      <td>25.681185</td>
+      <td>-100.295974</td>
+      <td>536.483481</td>
+      <td>62.834221</td>
+      <td>0.142774</td>
+    </tr>
+    <tr>
+      <th>2020-01-05</th>
+      <td>25.679699</td>
+      <td>-100.294803</td>
+      <td>536.363940</td>
+      <td>29.517379</td>
+      <td>0.053422</td>
+    </tr>
+  </tbody>
+</table>
+<p>158 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="c1"># figura con tamaño horizontal en 20 y vertical 4</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_90_0.png" src="../_images/2_estadisticos_90_0.png" />
+</div>
+</div>
+<p>Un diagrama de cajas y bigotes (o <em>boxplot</em> en inglés) muestra los valores mínimo, máximo, primer cuartil, segundo cuartil (que corresponde con la mediana), tercer cuartil y <em>outliers</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">vert</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span> <span class="c1"># Esto separa los ejes de la figura</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s1">&#39;Mínimo&#39;</span><span class="p">,</span> 
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="mf">1.05</span><span class="p">),</span> 
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="mf">1.3</span><span class="p">),</span> 
+    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> 
+        <span class="n">width</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">headwidth</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3, rad = -0.01&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s1">&#39;$Q_1$&#39;</span><span class="p">,</span> 
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.25</span><span class="p">),</span> <span class="mf">0.9</span><span class="p">),</span> 
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.25</span><span class="p">),</span> <span class="mf">0.7</span><span class="p">),</span> 
+    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> 
+        <span class="n">width</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">headwidth</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=-0.01&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s1">&#39;$Q_2 =$ Mediana&#39;</span><span class="p">,</span> 
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="mf">1.1</span><span class="p">),</span> 
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="mf">1.3</span><span class="p">),</span> 
+    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> 
+        <span class="n">width</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">headwidth</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=-0.01&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s1">&#39;$Q_3$&#39;</span><span class="p">,</span> 
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.75</span><span class="p">),</span> <span class="mf">0.9</span><span class="p">),</span> 
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">.75</span><span class="p">),</span> <span class="mf">0.7</span><span class="p">),</span> 
+    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> 
+        <span class="n">width</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">headwidth</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=-0.01&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s1">&#39;$Máximo$&#39;</span><span class="p">,</span> 
+    <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="mf">1.1</span><span class="p">),</span> 
+    <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">),</span> <span class="mf">1.3</span><span class="p">),</span> 
+    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> 
+        <span class="n">width</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">headwidth</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="n">connectionstyle</span><span class="o">=</span><span class="s2">&quot;arc3,rad=-0.01&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_92_0.png" src="../_images/2_estadisticos_92_0.png" />
+</div>
+</div>
+<p>Cuando se tienen tantos valores atípicos, es mejor usar un diagrama de violín, que muestra la distribución de los datos espejeada, sobre los valores mínimos y máximos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span> <span class="c1"># Dibujar una línea vertical</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="c1"># En la media de los datos</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;#ff0000&#39;</span><span class="p">,</span> <span class="c1"># De color hexadecimal rojo</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">bar</span><span class="si">{x}</span><span class="s1">$&#39;</span> <span class="c1"># con este identificador</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PM$_</span><span class="si">{10}</span><span class="s1">$&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_94_0.png" src="../_images/2_estadisticos_94_0.png" />
+</div>
+</div>
+<p>Para comparar distribuciones, me agradan los diagramas de surcos (o <em>ridgelines</em>), a los que también les llaman <em>Joyplots</em> por la portada del álbum <a class="reference external" href="https://www.indierocks.mx/musica/articulos/a-40-anos-del-unknown-pleasures-de-joy-division/"><em>Unknown pleasures</em> de Joy Division</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.analyticsvidhya.com/blog/2021/06/ridgeline-plots-visualize-data-with-a-joy/</span>
+<span class="kn">from</span> <span class="nn">joypy</span> <span class="kn">import</span> <span class="n">joyplot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">56</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># https://www.analyticsvidhya.com/blog/2021/06/ridgeline-plots-visualize-data-with-a-joy/</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">joypy</span> <span class="kn">import</span> <span class="n">joyplot</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;joypy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">joyplot</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../_images/2_estadisticos_97_1.png" src="../_images/2_estadisticos_97_1.png" />
+</div>
+</div>
+<p>Para series de tiempo, las vistas de calendario son geniales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">calplot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span><span class="p">,</span> <span class="n">LinearSegmentedColormap</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viridis</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="mi">340</span><span class="p">)</span> <span class="c1"># Se genera un mapa de color de hasta 340 colores</span>
+<span class="n">newcolors</span> <span class="o">=</span> <span class="n">viridis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">340</span><span class="p">))</span> <span class="c1"># Se hace una función lineal del mapa de colores de 0 hasta 340 de 1 en 1</span>
+
+<span class="c1"># Se definen rangos de colores por RGBA normalizado</span>
+<span class="n">newcolors</span><span class="p">[:</span><span class="mi">50</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">21</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">176</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">26</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># Bueno</span>
+<span class="n">newcolors</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">75</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">255</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">255</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">20</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># Regular</span>
+<span class="n">newcolors</span><span class="p">[</span><span class="mi">75</span><span class="p">:</span><span class="mi">155</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">249</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">115</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">6</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># Malo</span>
+<span class="n">newcolors</span><span class="p">[</span><span class="mi">155</span><span class="p">:</span><span class="mi">235</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">299</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">0</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">0</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># Muy malo</span>
+<span class="n">newcolors</span><span class="p">[</span><span class="mi">235</span><span class="p">:</span><span class="mi">340</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">126</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">30</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">156</span><span class="o">/</span><span class="mi">340</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># Extremadamente malo</span>
+<span class="n">newcmp</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">(</span><span class="n">newcolors</span><span class="p">)</span> <span class="c1"># A partir de esos colores, se fija un nuevo mapa de color</span>
+
+<span class="n">calplot</span><span class="o">.</span><span class="n">calplot</span><span class="p">(</span><span class="n">df_pm10_dropna</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">newcmp</span><span class="p">,</span> 
+    <span class="n">yearlabel_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span> <span class="c1"># Esto es nomás porque no tengo Helvetica instalada 😅</span>
+        <span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+        <span class="n">fontname</span><span class="o">=</span><span class="s1">&#39;sans-serif&#39;</span><span class="p">,</span>
+        <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+        <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1250x510 with 4 Axes&gt;,
+ array([&lt;AxesSubplot: ylabel=&#39;2017&#39;&gt;, &lt;AxesSubplot: ylabel=&#39;2018&#39;&gt;,
+        &lt;AxesSubplot: ylabel=&#39;2019&#39;&gt;], dtype=object))
+</pre></div>
+</div>
+<img alt="../_images/2_estadisticos_101_1.png" src="../_images/2_estadisticos_101_1.png" />
+</div>
+</div>
 </section>
 <section id="pruebas-de-correlacion">
 <h2>Pruebas de correlación<a class="headerlink" href="#pruebas-de-correlacion" title="Enlazar permanentemente con este título">#</a></h2>
+<p>La correlación <span class="math notranslate nohighlight">\(\rho\)</span> mide la relación lineal entre dos variables <span class="math notranslate nohighlight">\(x, y\)</span> normalizadas por sus desviaciones estándar <span class="math notranslate nohighlight">\(s_x, s_y\)</span>. Se calcula mediante
+$<span class="math notranslate nohighlight">\(\rho = \frac{\sum(x - \bar{x}) (y - \bar{y})}{s_x s_y}.\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sel</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;timestamp&#39;, &#39;lat&#39;, &#39;lon&#39;, &#39;h&#39;, &#39;variable&#39;, &#39;value&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_by_cols</span> <span class="o">=</span> <span class="n">df_sel</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">],</span> <span class="s1">&#39;variable&#39;</span><span class="p">)</span>
+<span class="n">df_by_cols</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>variable</th>
+      <th>BP</th>
+      <th>CO</th>
+      <th>NO</th>
+      <th>NO2</th>
+      <th>NOX</th>
+      <th>O3</th>
+      <th>PM10</th>
+      <th>PM2_5</th>
+      <th>RF</th>
+      <th>RH</th>
+      <th>SO2</th>
+      <th>SR</th>
+      <th>T</th>
+      <th>WD</th>
+      <th>WV</th>
+    </tr>
+    <tr>
+      <th>timestamp</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">2017-01-01 00:00:00</th>
+      <th>25.646</th>
+      <th>-100.096</th>
+      <th>387</th>
+      <td>721.3</td>
+      <td>NaN</td>
+      <td>32.3</td>
+      <td>35.2</td>
+      <td>66.4</td>
+      <td>6.0</td>
+      <td>299.0</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>61.0</td>
+      <td>18.0</td>
+      <td>0.000</td>
+      <td>18.40</td>
+      <td>NaN</td>
+      <td>5.1</td>
+    </tr>
+    <tr>
+      <th>25.665</th>
+      <th>-100.413</th>
+      <th>636</th>
+      <td>712.5</td>
+      <td>1.10</td>
+      <td>17.0</td>
+      <td>20.1</td>
+      <td>37.0</td>
+      <td>6.0</td>
+      <td>163.0</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>54.0</td>
+      <td>5.0</td>
+      <td>0.000</td>
+      <td>20.68</td>
+      <td>253.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>25.668</th>
+      <th>-100.249</th>
+      <th>492</th>
+      <td>720.5</td>
+      <td>3.77</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>206.0</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>72.0</td>
+      <td>11.8</td>
+      <td>0.007</td>
+      <td>18.71</td>
+      <td>22.0</td>
+      <td>8.8</td>
+    </tr>
+    <tr>
+      <th>25.670</th>
+      <th>-100.338</th>
+      <th>560</th>
+      <td>709.2</td>
+      <td>2.47</td>
+      <td>16.0</td>
+      <td>15.1</td>
+      <td>31.1</td>
+      <td>6.0</td>
+      <td>143.0</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>64.0</td>
+      <td>NaN</td>
+      <td>0.004</td>
+      <td>19.46</td>
+      <td>300.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>25.676</th>
+      <th>-100.464</th>
+      <th>694</th>
+      <td>698.8</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>112.0</td>
+      <td>NaN</td>
+      <td>0.00</td>
+      <td>57.0</td>
+      <td>NaN</td>
+      <td>0.001</td>
+      <td>20.35</td>
+      <td>269.0</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">2019-12-31 23:00:00</th>
+      <th>25.750</th>
+      <th>-100.255</th>
+      <th>476</th>
+      <td>722.0</td>
+      <td>NaN</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>86.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>96.0</td>
+      <td>1.5</td>
+      <td>0.000</td>
+      <td>10.73</td>
+      <td>NaN</td>
+      <td>6.7</td>
+    </tr>
+    <tr>
+      <th>25.757</th>
+      <th>-100.366</th>
+      <th>571</th>
+      <td>715.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>71.0</td>
+      <td>57.71</td>
+      <td>0.00</td>
+      <td>90.0</td>
+      <td>NaN</td>
+      <td>0.002</td>
+      <td>11.02</td>
+      <td>NaN</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
+      <th>25.777</th>
+      <th>-100.188</th>
+      <th>432</th>
+      <td>718.7</td>
+      <td>1.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>17.0</td>
+      <td>10.00</td>
+      <td>0.02</td>
+      <td>94.0</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>11.14</td>
+      <td>NaN</td>
+      <td>4.9</td>
+    </tr>
+    <tr>
+      <th>25.783</th>
+      <th>-100.586</th>
+      <th>716</th>
+      <td>703.4</td>
+      <td>1.58</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>93.81</td>
+      <td>0.00</td>
+      <td>89.0</td>
+      <td>NaN</td>
+      <td>0.002</td>
+      <td>9.94</td>
+      <td>122.0</td>
+      <td>10.4</td>
+    </tr>
+    <tr>
+      <th>25.800</th>
+      <th>-100.344</th>
+      <th>528</th>
+      <td>715.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>44.0</td>
+      <td>40.75</td>
+      <td>0.00</td>
+      <td>87.0</td>
+      <td>NaN</td>
+      <td>0.002</td>
+      <td>10.91</td>
+      <td>102.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>319790 rows × 15 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_</span> <span class="o">=</span> <span class="n">df_by_cols</span><span class="p">[[</span><span class="s1">&#39;PM10&#39;</span><span class="p">,</span> <span class="s1">&#39;PM2_5&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">corr_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>variable</th>
+      <th>PM10</th>
+      <th>PM2_5</th>
+    </tr>
+    <tr>
+      <th>variable</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>PM10</th>
+      <td>1.000000</td>
+      <td>0.643154</td>
+    </tr>
+    <tr>
+      <th>PM2_5</th>
+      <td>0.643154</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Para este tipo de representaciones, un mapa de calor funciona bastante bien.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">corr_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PM$_</span><span class="si">{10}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="s1">&#39;PM$_</span><span class="si">{2.5}</span><span class="s1">$&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PM$_</span><span class="si">{10}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="s1">&#39;PM$_</span><span class="si">{2.5}</span><span class="s1">$&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_107_0.png" src="../_images/2_estadisticos_107_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_</span> <span class="o">=</span> <span class="n">df_by_cols</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">ticks_</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_by_cols</span><span class="o">.</span><span class="n">columns</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">corr_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span> <span class="o">=</span> <span class="n">ticks_</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">df_by_cols</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span> <span class="o">=</span> <span class="n">ticks_</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">df_by_cols</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="n">vmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_108_0.png" src="../_images/2_estadisticos_108_0.png" />
+</div>
+</div>
+</section>
+<section id="pruebas-de-normalidad">
+<h2>Pruebas de normalidad<a class="headerlink" href="#pruebas-de-normalidad" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Los datos pueden seguir una distribución gaussiana o normal. A este tipo de datos se les llama datos paramétricos. Cuando no siguen esta distribución, se consideran no paramétricos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generar datos aleatorios</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">r_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">r_norm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.97118289069541
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistics</span><span class="o">.</span><span class="n">stdev</span><span class="p">(</span><span class="n">r_norm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9996855918833818
+</pre></div>
+</div>
+</div>
+</div>
+<p>Se mantienen relativamente constantes los valores de media y desviación estándar. Visualmente se puede comprobar con histogramas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nos ayudamos de la librería scipy para generar una función de distribución de probabilidad o pdf</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">r_norm</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Curva gaussiana&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2_estadisticos_115_0.png" src="../_images/2_estadisticos_115_0.png" />
+</div>
+</div>
+<p>También los diagramas de cuantil-cuantil son útiles para intuir la normalidad de los datos. Mientras la relación de los cuantiles teóricos y los de la muestra se mantenga sobre la regresión lineal, se considera que los datos son normales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.graphics.gofplots</span> <span class="kn">import</span> <span class="n">qqplot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">qqplot</span><span class="p">(</span><span class="n">r_norm</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../_images/2_estadisticos_118_1.png" src="../_images/2_estadisticos_118_1.png" />
+</div>
+</div>
+<p>Formalmente, esto se realiza con pruebas de normalidad estadísticas. El más usado es el de Shapiro-Wilk, con la salvedad de que se usa en muestras de pocos datos (mil observaciones o menos). La hipótesis nula <span class="math notranslate nohighlight">\(H_0\)</span> de esta prueba supone que una muestra <span class="math notranslate nohighlight">\(x\)</span> proviene de una distribución de probabilidad normalmente distribuida. La prueba se rechaza si el estadístico (con valores entre 0 y 1) es demasiado pequeño (o si el valor <span class="math notranslate nohighlight">\(p\)</span> es mejor que determinado valor <span class="math notranslate nohighlight">\(\alpha\)</span> generalmente <span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">shapiro</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stat</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">shapiro</span><span class="p">(</span><span class="n">r_norm</span><span class="p">)</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;La distribución no parece normal con p = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;La distribución parece normal con p = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s1"> &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La distribución parece normal con p = 0.5702 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Cuando los datos siguen una distribución normal, se pueden usar <a class="reference external" href="https://machinelearningmastery.com/parametric-statistical-significance-tests-in-python/">pruebas estadísticas paramétricas</a> para realizar inferencias sobre ellos. De otra manera, se usan pruebas <a class="reference external" href="https://machinelearningmastery.com/nonparametric-statistical-significance-tests-in-python/">no paramétricas</a>.</p>
+</section>
+<section id="tarea-en-clase-2-puntos">
+<h2>Tarea en clase (2 puntos)<a class="headerlink" href="#tarea-en-clase-2-puntos" title="Enlazar permanentemente con este título">#</a></h2>
+<ul class="simple">
+<li><p>Crear funciones para calcular las medidas de tendencia central y de dispersión con Python puro (sin librerías)</p></li>
+<li><p>Comprueba si tus variables de interés son conjuntos de datos paramétricos o no paramétricos</p></li>
+</ul>
+</section>
+<section id="tarea-8-puntos">
+<h2>Tarea (8 puntos)<a class="headerlink" href="#tarea-8-puntos" title="Enlazar permanentemente con este título">#</a></h2>
+<ul class="simple">
+<li><p>Calcula estadísticos descriptivos básicos para tus datos</p></li>
+<li><p>Haz una matriz de correlación de tus datos y escribe algunas interpretaciones de la misma</p></li>
+<li><p>Realiza alguna prueba de hipótesis a partir de las conclusiones que hayas sacado de la matriz de correlación</p></li>
+<li><p>Presenta tus resultados gráficamente</p></li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference external" href="https://realpython.com/python-statistics/#calculating-descriptive-statistics">https://realpython.com/python-statistics/#calculating-descriptive-statistics</a></p></li>
+<li><p><a class="reference external" href="https://machinelearningmastery.com/statistical-hypothesis-tests/">https://machinelearningmastery.com/statistical-hypothesis-tests/</a></p></li>
+<li><p><a class="reference external" href="https://machinelearningmastery.com/a-gentle-introduction-to-normality-tests-in-python/">https://machinelearningmastery.com/a-gentle-introduction-to-normality-tests-in-python/</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -459,7 +3354,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./caps"
         },
         predefinedOutput: true
@@ -484,7 +3379,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="3_sel_carac.html" title="siguiente página">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">siguiente</p>
-        <p class="prev-next-title">Extracción de características</p>
+        <p class="prev-next-title">Selección de características</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

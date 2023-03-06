@@ -9,8 +9,8 @@ chapters:
 - file: caps/2_estadisticos
 - file: caps/3_sel_carac
 - file: caps/4_no_supervisado
-- file: caps/5_clasificacion
-- file: caps/6_regresion
+- file: caps/5_supervisado
+- file: caps/6_clasificacion
 - file: caps/7_diseno_experimentos
 - file: caps/8_comparativas_desempeno
 - file: caps/9_resultados

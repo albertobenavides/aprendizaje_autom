@@ -51,7 +51,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
@@ -133,7 +133,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="caps/3_sel_carac.html">
-   Extracción de características
+   Selección de características
   </a>
  </li>
  <li class="toctree-l1">
@@ -397,7 +397,7 @@ title="Print to PDF"
 <li class="toctree-l1"><a class="reference internal" href="caps/0_preliminares.html">Preliminares</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caps/1_datos.html">Datos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caps/2_estadisticos.html">Estadística descriptiva básica</a></li>
-<li class="toctree-l1"><a class="reference internal" href="caps/3_sel_carac.html">Extracción de características</a></li>
+<li class="toctree-l1"><a class="reference internal" href="caps/3_sel_carac.html">Selección de características</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caps/4_no_supervisado.html">Aprendizaje no supervisado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caps/5_supervisado.html">Aprendizaje supervisado</a></li>
 <li class="toctree-l1"><a class="reference internal" href="caps/6_clasificacion.html">Clasificación</a></li>
@@ -409,7 +409,14 @@ title="Print to PDF"
 </div>
 <section id="bibliografia">
 <h2>Bibliografía<a class="headerlink" href="#bibliografia" title="Enlazar permanentemente con este título">#</a></h2>
-<span class="target" id="id1"></span></section>
+<span class="target" id="id1"></span><ul class="simple">
+<li><p><a class="reference external" href="https://probml.github.io/pml-book/book1.html">https://probml.github.io/pml-book/book1.html</a></p></li>
+<li><p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2016/06/bayesian-statistics-beginners-simple-english/">https://www.analyticsvidhya.com/blog/2016/06/bayesian-statistics-beginners-simple-english/</a></p></li>
+<li><p><a class="reference external" href="https://stats.stackexchange.com/questions/129017/what-exactly-is-a-bayesian-model">https://stats.stackexchange.com/questions/129017/what-exactly-is-a-bayesian-model</a></p></li>
+<li><p><a class="reference external" href="https://twitter.com/chipro/status/1490924046350909442">https://twitter.com/chipro/status/1490924046350909442</a>
+= <a class="reference external" href="https://hastie.su.domains/ElemStatLearn/datasets/">https://hastie.su.domains/ElemStatLearn/datasets/</a></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -424,7 +431,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true

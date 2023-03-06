@@ -51,7 +51,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
@@ -134,7 +136,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="3_sel_carac.html">
-   Extracción de características
+   Selección de características
   </a>
  </li>
  <li class="toctree-l1">
@@ -223,6 +225,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/albertobenavides/aprendizaje_autom/master?urlpath=tree/docs/caps/6_clasificacion.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -327,12 +358,61 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clasificadores-lineales">
+   Clasificadores lineales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clasificador-de-bayes-ingenuo">
+   Clasificador de Bayes ingenuo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analisis-lineal-de-discriminantes">
+   Análisis lineal de discriminantes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arboles-de-decision">
+   Árboles de decisión
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bosques-aleatorios">
+   Bosques aleatorios
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-10-puntos">
+   Tarea (10 puntos)
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -344,6 +424,44 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clasificadores-lineales">
+   Clasificadores lineales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clasificador-de-bayes-ingenuo">
+   Clasificador de Bayes ingenuo
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analisis-lineal-de-discriminantes">
+   Análisis lineal de discriminantes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arboles-de-decision">
+   Árboles de decisión
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bosques-aleatorios">
+   Bosques aleatorios
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-10-puntos">
+   Tarea (10 puntos)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -353,6 +471,81 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="clasificacion">
 <h1>Clasificación<a class="headerlink" href="#clasificacion" title="Enlazar permanentemente con este título">#</a></h1>
+<p>Los problemas de clasificación buscan predecir las categorías a las que pertenecen las variables dependientes. Por ejemplo, saber si un cliente será moroso, si un paciente tiene cierta enfermedad, etc. son problemas de clasificación.</p>
+<p>Los resultados de los modelos de clasificación pueden ser las clases asignadas o probabilidades de pertenencia a cierta clase.</p>
+<section id="clasificadores-lineales">
+<h2>Clasificadores lineales<a class="headerlink" href="#clasificadores-lineales" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Como ejemplo, empecemos con un método de clasificación lineal basado en funciones discriminantes. Este modelo busca asignar <span class="math notranslate nohighlight">\(K = \{1, 2, ..., k\}\)</span> clases mediante la función de ajuste</p>
+<div class="math notranslate nohighlight">
+\[\hat{f}_k(x) = \beta_{k,0} + \beta_k x.\]</div>
+<p>Para cada par de clases <span class="math notranslate nohighlight">\(i, j\)</span>, existen cotas tales que <span class="math notranslate nohighlight">\(\hat{f}_i(x) = \hat{f}_j(x)\)</span>. De esta manera, el espacio de solución se divide en hiperplanos que corresponden con regiones donde clasificar las variables.</p>
+<p>Otro tipo de modelos lineales de clasificación que entran dentro de las funciones discriminantes, son las que parten de distribuciones de probabilidad <em>a posteriori</em> del tipo</p>
+<div class="math notranslate nohighlight">
+\[P(G = k | X = x),\]</div>
+<p>donde <span class="math notranslate nohighlight">\(G\)</span> es el predictor que se espera sea asignado a la clase <span class="math notranslate nohighlight">\(k\)</span> a partir de que la información observada <span class="math notranslate nohighlight">\(X\)</span> para las variables dependientse <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>Cabe señalar que, pese a que las cotas obtenidas de las funciones de ajuste <span class="math notranslate nohighlight">\(\hat{f}_k(x)\)</span> resulten lineales, es posible generalizarlas mediante el uso de transformaciones de las variables <span class="math notranslate nohighlight">\(p-\text{dimensionales}\)</span> <span class="math notranslate nohighlight">\(X_i, i \in {1, \ldots, p}\)</span> para expandir el número de variables (con base en la transformación aplicada sobre las varaibles). Estas transformaciones generalmente asignan vectores de valores <span class="math notranslate nohighlight">\(C\)</span> y pesos <span class="math notranslate nohighlight">\(W\)</span> a las características <span class="math notranslate nohighlight">\(q\)</span> (o datos de entrada), que se traducen en multiplicaciones matriciales <span class="math notranslate nohighlight">\(C_q \times W_q\)</span>.</p>
+</section>
+<section id="clasificador-de-bayes-ingenuo">
+<h2>Clasificador de Bayes ingenuo<a class="headerlink" href="#clasificador-de-bayes-ingenuo" title="Enlazar permanentemente con este título">#</a></h2>
+<p>El clasificador de Bayes ingenuo (o <em>Naive Bayes</em>) se puede entender desde la premisa de un clasificador bayesiando exacto, en el que</p>
+<ol class="simple">
+<li><p>se toman vectores de variables independiente <span class="math notranslate nohighlight">\(X\)</span> que tengan la misma salida <span class="math notranslate nohighlight">\(Y\)</span>,</p></li>
+<li><p>se determina la clase predominante del conjunto, y</p></li>
+<li><p>se utiliza esta información para asignar el valor de la clase más frecuente a nuevos elementos.</p></li>
+</ol>
+<p>Esta solución podría estar sesgada a las características de los conjuntos. Para paliar dicho sesgo, <em>Naive Bayes</em> sigue estas modificaciones:</p>
+<ul class="simple">
+<li><p>Se usan todo el conjunto de datos.</p></li>
+<li><p>Para cada respuesta <span class="math notranslate nohighlight">\(Y = {1, \ldots, k}\)</span>, se estima la probabilidad condicional del predictor <span class="math notranslate nohighlight">\(P(X_j | Y = i)\)</span></p></li>
+<li><p>Se realiza la probabilidad condicional</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[P(Y = i | X_1, \ldots, X_j) = \frac{P(Y = i) \cdot P(X_1 | Y = i) \ldots P(X_j | Y = i)}{\sum_i P(Y = i) P(X_1, \ldots, X_j)}.\]</div>
+<ul class="simple">
+<li><p>Se asume que las <span class="math notranslate nohighlight">\(X\)</span> son independientes entre sí (al obtener la probabilidad de interacción con <span class="math notranslate nohighlight">\(Y\)</span> de cada una de ellas).</p></li>
+</ul>
+</section>
+<section id="analisis-lineal-de-discriminantes">
+<h2>Análisis lineal de discriminantes<a class="headerlink" href="#analisis-lineal-de-discriminantes" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Este análisis (LDA en inglés, por <em>linear discriminant analysis</em>), parte de la covarianza entre <span class="math notranslate nohighlight">\(n\)</span> datos <span class="math notranslate nohighlight">\(x_i, z_i; i \in {1, \ldots, n}\)</span> dada por $<span class="math notranslate nohighlight">\(s_{x, z} = \frac{\sum_i^n (x_i - \bar{x}) (z_i - \bar{z})}{n - 1},\)</span>$ para calcular la matriz de covarianza</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Sigma = \begin{bmatrix}
+s_x^2 &amp; s_{x, z} \\ 
+s_{z, x} &amp; s_z^2
+\end{bmatrix}\end{split}\]</div>
+<p>que incluye las varianzas individuales <span class="math notranslate nohighlight">\(s_x^2, s_z^2\)</span> y sus covarianzas <span class="math notranslate nohighlight">\(s_{, z}, s_{z, x}\)</span>.</p>
+<p>LDA se enfoca en maximizar la separación entre las medias de las clases <span class="math notranslate nohighlight">\((\bar{x} - \bar{z})^2\)</span> y minimizar la similitud entre miembros de una misma clase, o sea <span class="math notranslate nohighlight">\(s_x^2 + s_z^2\)</span>, de modo que la función objetivo sería</p>
+<div class="math notranslate nohighlight">
+\[\max \frac{(\bar{x} - \bar{z})^2}{s_x^2 + s_z^2}.\]</div>
+<p>Para el caso generalizado de <span class="math notranslate nohighlight">\(p\)</span> dimensiones con <span class="math notranslate nohighlight">\(X_i, i \in {1, \ldots, p}\)</span>, se toma como punto de referencia el centro <span class="math notranslate nohighlight">\(C\)</span> de los datos dado por la media ponderada de todos los datos. Para cada <span class="math notranslate nohighlight">\(X_i\)</span> se mide la distancia <span class="math notranslate nohighlight">\(d_i = (\bar{X_i} - C)^2\)</span>, para obtener una función objetivo</p>
+<div class="math notranslate nohighlight">
+\[\max \sum_i \frac{(\bar{X_i} - C)^2}{s_{X_i}^2}.\]</div>
+</section>
+<section id="arboles-de-decision">
+<h2>Árboles de decisión<a class="headerlink" href="#arboles-de-decision" title="Enlazar permanentemente con este título">#</a></h2>
+<p>En general, los árboles de decisión clasifican datos <span class="math notranslate nohighlight">\(X\)</span> a partir de su separación en <span class="math notranslate nohighlight">\(n\)</span> regiones <span class="math notranslate nohighlight">\(R\)</span> y obtienen una clasificación <span class="math notranslate nohighlight">\(Y\)</span> a partir de las cotas que limitan las regiones. Una vez obtenidas dichas regiones, la función de predicción</p>
+<div class="math notranslate nohighlight">
+\[f(X) = \sum_m^n c_m ~ (X_i, X_j) \in R_m.\]</div>
+<p>Específicamente, en el modelo de clasificación de árboles de decisión, se utiliza una proporción de observaciones</p>
+<div class="math notranslate nohighlight">
+\[p_{mk} = \frac{1}{N_m} \sum_{x_i \in R_m} I(y_i = k),\]</div>
+<p>donde <span class="math notranslate nohighlight">\(N_m\)</span> es la cantidad de observaciones y <span class="math notranslate nohighlight">\(k \in K\)</span> clases. Después, se clasifican las observaciones <span class="math notranslate nohighlight">\(m\)</span> en la clase <span class="math notranslate nohighlight">\(k\)</span> mediante la maximización de esa proporción, es decir $<span class="math notranslate nohighlight">\(k(m) = \arg \max x_k p_{mk}.\)</span><span class="math notranslate nohighlight">\( Finalmente, se tienen medidas acerca de la impureza de los nodos, como por ejemplo el índice Gini que mide la probabilidad de que una observación \)</span>m<span class="math notranslate nohighlight">\( pertenezca a una clase \)</span>k<span class="math notranslate nohighlight">\( respecto a que no pertenezca (\)</span>k”$) a dicha clase, dada por la ecuación</p>
+<div class="math notranslate nohighlight">
+\[\sum_{k \neq k'} p_{mk} p_{mk'} = \sum_{k = 1}^K p_{mk}(1 - p_{mk}).\]</div>
+<p>Para darle un poco de claridad, para una clase, esto puede escribirse como</p>
+<div class="math notranslate nohighlight">
+\[1 - (p_{mk})^2 - (p_{mk'})^2.\]</div>
+</section>
+<section id="bosques-aleatorios">
+<h2>Bosques aleatorios<a class="headerlink" href="#bosques-aleatorios" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Ver pizarra.</p>
+</section>
+<section id="tarea-10-puntos">
+<h2>Tarea (10 puntos)<a class="headerlink" href="#tarea-10-puntos" title="Enlazar permanentemente con este título">#</a></h2>
+<ul class="simple">
+<li><p>Generar la parte de metodología del artículo, explicando los métodos usados con base en la literatura que los sustenta.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -367,7 +560,7 @@ title="Print to PDF"
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./caps"
         },
         predefinedOutput: true

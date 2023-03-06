@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
@@ -136,22 +136,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="3_sel_carac.html">
-   Extracción de características
+   Selección de características
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="4_no_supervisado.html">
    Aprendizaje no supervisado
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="5_supervisado.html">
-   Aprendizaje supervisado
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="6_clasificacion.html">
-   Clasificación
   </a>
  </li>
  <li class="toctree-l1">
@@ -358,12 +348,41 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-en-clase-2-puntos">
+   Tarea en clase (2 puntos)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-8-puntos">
+   Tarea (8 puntos)
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -375,6 +394,24 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-en-clase-2-puntos">
+   Tarea en clase (2 puntos)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-8-puntos">
+   Tarea (8 puntos)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -508,7 +545,205 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_def</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pollutants</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">df_pollutants_def</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_def</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>min_value</th>
+      <th>max_value</th>
+      <th>unit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>$\text{PM}_{10}$</td>
+      <td>2.00</td>
+      <td>850.0</td>
+      <td>$\mu\text{gr}$ / $\text{m}^3$</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>$\text{PM}_{2.5}$</td>
+      <td>2.00</td>
+      <td>850.0</td>
+      <td>$\mu\text{gr}$ / $\text{m}^3$</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>$\text{O}_3$</td>
+      <td>1.00</td>
+      <td>200.0</td>
+      <td>ppb</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NO</td>
+      <td>1.00</td>
+      <td>350.0</td>
+      <td>ppb</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>$\text{NO}_2$</td>
+      <td>1.00</td>
+      <td>150.0</td>
+      <td>ppb</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>$\text{NO}_X$</td>
+      <td>1.00</td>
+      <td>350.0</td>
+      <td>ppb</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>$\text{SO}_2$</td>
+      <td>1.00</td>
+      <td>200.0</td>
+      <td>ppb</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CO</td>
+      <td>0.05</td>
+      <td>15.0</td>
+      <td>ppm</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Temperature</td>
+      <td>-15.00</td>
+      <td>50.0</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Relative humidity</td>
+      <td>0.00</td>
+      <td>100.0</td>
+      <td>%</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Barometric pressure</td>
+      <td>650.00</td>
+      <td>750.0</td>
+      <td>mmHg</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Solar radiation</td>
+      <td>0.00</td>
+      <td>1.2</td>
+      <td>Langley / h</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Rainfall</td>
+      <td>0.00</td>
+      <td>inf</td>
+      <td>mm / h</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Wind velocity</td>
+      <td>0.00</td>
+      <td>60.0</td>
+      <td>Km / h</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Wind direction</td>
+      <td>0.00</td>
+      <td>360.0</td>
+      <td>Azimutales</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_def</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\compat\_optional.py:141,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">141</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+
+<span class="nn">File ~\mambaforge\envs\py311\Lib\importlib\__init__.py:126,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">126</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1206,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1178,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1142,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tabulate&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_pollutants_def</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\core\frame.py:2842,</span> in <span class="ni">DataFrame.to_markdown</span><span class="nt">(self, buf, mode, index, storage_options, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2840</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;tablefmt&quot;</span><span class="p">,</span> <span class="s2">&quot;pipe&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2841</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;showindex&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2842</span> <span class="n">tabulate</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;tabulate&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2843</span> <span class="n">result</span> <span class="o">=</span> <span class="n">tabulate</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2844</span> <span class="k">if</span> <span class="n">buf</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\compat\_optional.py:144,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">144</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="k">return</span> <span class="kc">None</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;tabulate&#39;.  Use pip or conda to install tabulate.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">df_pollutants_def</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -546,6 +781,381 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/all.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_30204\2761215774.py:1: DtypeWarning: Columns (18) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_pollutants_all = pd.read_csv(&quot;../data/all.csv&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_all</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>station</th>
+      <th>CO</th>
+      <th>NO</th>
+      <th>NO2</th>
+      <th>NOX</th>
+      <th>O3</th>
+      <th>PM10</th>
+      <th>PM2_5</th>
+      <th>pressure</th>
+      <th>rainfall</th>
+      <th>humidity</th>
+      <th>SO2</th>
+      <th>solar</th>
+      <th>temperature</th>
+      <th>velocity</th>
+      <th>direction</th>
+      <th>valid</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01-Jan-93 0</td>
+      <td>Sureste</td>
+      <td>0.95</td>
+      <td>0.250000</td>
+      <td>5.750000</td>
+      <td>6.750000</td>
+      <td>19.0</td>
+      <td>41.0</td>
+      <td>NaN</td>
+      <td>774.850000</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>2.50</td>
+      <td>0.007</td>
+      <td>17.25</td>
+      <td>17.54</td>
+      <td>96.84</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>01-Jan-93 0</td>
+      <td>Noreste</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>01-Jan-93 0</td>
+      <td>Centro</td>
+      <td>2.58</td>
+      <td>1.250000</td>
+      <td>11.000000</td>
+      <td>8.500000</td>
+      <td>18.5</td>
+      <td>30.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>NaN</td>
+      <td>17.25</td>
+      <td>11.91</td>
+      <td>86.94</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01-Jan-93 0</td>
+      <td>Noroeste</td>
+      <td>0.98</td>
+      <td>4.250000</td>
+      <td>6.750000</td>
+      <td>11.000000</td>
+      <td>24.5</td>
+      <td>60.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>9.25</td>
+      <td>NaN</td>
+      <td>17.45</td>
+      <td>45.29</td>
+      <td>96.84</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>01-Jan-93 0</td>
+      <td>Suroeste</td>
+      <td>1.65</td>
+      <td>3.000000</td>
+      <td>14.250000</td>
+      <td>17.500000</td>
+      <td>6.0</td>
+      <td>38.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>16.65</td>
+      <td>15.77</td>
+      <td>93.96</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1542691</th>
+      <td>31-Dec-18 23</td>
+      <td>Sureste2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>445.0</td>
+      <td>NaN</td>
+      <td>722.599976</td>
+      <td>0.0</td>
+      <td>71.0</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>11.19</td>
+      <td>1.80</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1542692</th>
+      <td>31-Dec-18 23</td>
+      <td>Suroeste2</td>
+      <td>3.59</td>
+      <td>18.700001</td>
+      <td>8.400000</td>
+      <td>27.000000</td>
+      <td>5.0</td>
+      <td>134.0</td>
+      <td>111.0</td>
+      <td>714.099976</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>5.00</td>
+      <td>0.000</td>
+      <td>10.54</td>
+      <td>NaN</td>
+      <td>226.00</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1542693</th>
+      <td>31-Dec-18 23</td>
+      <td>Sureste3</td>
+      <td>5.97</td>
+      <td>58.400002</td>
+      <td>11.800000</td>
+      <td>70.099998</td>
+      <td>13.0</td>
+      <td>392.0</td>
+      <td>295.0</td>
+      <td>732.200012</td>
+      <td>0.0</td>
+      <td>81.0</td>
+      <td>6.80</td>
+      <td>0.036</td>
+      <td>10.49</td>
+      <td>1.50</td>
+      <td>3.00</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1542694</th>
+      <td>31-Dec-18 23</td>
+      <td>Sur</td>
+      <td>1.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.0</td>
+      <td>8.0</td>
+      <td>706.799988</td>
+      <td>0.0</td>
+      <td>75.0</td>
+      <td>10.60</td>
+      <td>0.002</td>
+      <td>9.73</td>
+      <td>2.10</td>
+      <td>98.00</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1542695</th>
+      <td>31-Dec-18 23</td>
+      <td>Norte2</td>
+      <td>3.39</td>
+      <td>149.399994</td>
+      <td>59.900002</td>
+      <td>185.100006</td>
+      <td>NaN</td>
+      <td>103.0</td>
+      <td>NaN</td>
+      <td>713.700012</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>9.00</td>
+      <td>0.000</td>
+      <td>12.26</td>
+      <td>3.80</td>
+      <td>61.00</td>
+      <td>1</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1542696 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_all</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1542696 entries, 0 to 1542695
+Data columns (total 19 columns):
+ #   Column       Non-Null Count    Dtype  
+---  ------       --------------    -----  
+ 0   timestamp    1542696 non-null  object 
+ 1   station      1542696 non-null  object 
+ 2   CO           1289222 non-null  float64
+ 3   NO           1119998 non-null  float64
+ 4   NO2          1128619 non-null  float64
+ 5   NOX          1128715 non-null  float64
+ 6   O3           1237511 non-null  float64
+ 7   PM10         1382711 non-null  float64
+ 8   PM2_5        528443 non-null   float64
+ 9   pressure     932334 non-null   float64
+ 10  rainfall     1053365 non-null  float64
+ 11  humidity     991728 non-null   float64
+ 12  SO2          1199516 non-null  float64
+ 13  solar        866995 non-null   float64
+ 14  temperature  1433553 non-null  float64
+ 15  velocity     1433106 non-null  float64
+ 16  direction    1364570 non-null  float64
+ 17  valid        1542696 non-null  int64  
+ 18  notes        10335 non-null    object 
+dtypes: float64(15), int64(1), object(3)
+memory usage: 223.6+ MB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_all</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timestamp       object
+station         object
+CO             float64
+NO             float64
+NO2            float64
+NOX            float64
+O3             float64
+PM10           float64
+PM2_5          float64
+pressure       float64
+rainfall       float64
+humidity       float64
+SO2            float64
+solar          float64
+temperature    float64
+velocity       float64
+direction      float64
+valid            int64
+notes           object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/all.csv&quot;</span><span class="p">,</span>
   <span class="c1"># Especifica qué columnas se van a leer</span>
   <span class="n">usecols</span><span class="o">=</span><span class="p">[</span>
@@ -569,7 +1179,7 @@ title="Print to PDF"
     <span class="s1">&#39;valid&#39;</span><span class="p">,</span>
   <span class="p">],</span>
   <span class="c1"># Qué tipo de dato corresponde a cada columna</span>
-  <span class="n">dtype</span><span class="o">=</span><span class="p">{</span>
+  <span class="n">dtype</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;timestamp&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="s1">&#39;station&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="s1">&#39;CO&#39;</span> <span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -597,6 +1207,288 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_all</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>station</th>
+      <th>CO</th>
+      <th>NO</th>
+      <th>NO2</th>
+      <th>NOX</th>
+      <th>O3</th>
+      <th>PM10</th>
+      <th>PM2_5</th>
+      <th>pressure</th>
+      <th>rainfall</th>
+      <th>humidity</th>
+      <th>SO2</th>
+      <th>solar</th>
+      <th>temperature</th>
+      <th>velocity</th>
+      <th>direction</th>
+      <th>valid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1993-01-01 00:00:00</td>
+      <td>Sureste</td>
+      <td>0.95</td>
+      <td>0.250000</td>
+      <td>5.750000</td>
+      <td>6.750000</td>
+      <td>19.0</td>
+      <td>41.0</td>
+      <td>NaN</td>
+      <td>774.850000</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>2.50</td>
+      <td>0.007</td>
+      <td>17.25</td>
+      <td>17.54</td>
+      <td>96.84</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1993-01-01 00:00:00</td>
+      <td>Noreste</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1993-01-01 00:00:00</td>
+      <td>Centro</td>
+      <td>2.58</td>
+      <td>1.250000</td>
+      <td>11.000000</td>
+      <td>8.500000</td>
+      <td>18.5</td>
+      <td>30.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.00</td>
+      <td>NaN</td>
+      <td>17.25</td>
+      <td>11.91</td>
+      <td>86.94</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1993-01-01 00:00:00</td>
+      <td>Noroeste</td>
+      <td>0.98</td>
+      <td>4.250000</td>
+      <td>6.750000</td>
+      <td>11.000000</td>
+      <td>24.5</td>
+      <td>60.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>9.25</td>
+      <td>NaN</td>
+      <td>17.45</td>
+      <td>45.29</td>
+      <td>96.84</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1993-01-01 00:00:00</td>
+      <td>Suroeste</td>
+      <td>1.65</td>
+      <td>3.000000</td>
+      <td>14.250000</td>
+      <td>17.500000</td>
+      <td>6.0</td>
+      <td>38.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.25</td>
+      <td>NaN</td>
+      <td>16.65</td>
+      <td>15.77</td>
+      <td>93.96</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1542691</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Sureste2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>445.0</td>
+      <td>NaN</td>
+      <td>722.599976</td>
+      <td>0.0</td>
+      <td>71.0</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>11.19</td>
+      <td>1.80</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542692</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Suroeste2</td>
+      <td>3.59</td>
+      <td>18.700001</td>
+      <td>8.400000</td>
+      <td>27.000000</td>
+      <td>5.0</td>
+      <td>134.0</td>
+      <td>111.0</td>
+      <td>714.099976</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>5.00</td>
+      <td>0.000</td>
+      <td>10.54</td>
+      <td>NaN</td>
+      <td>226.00</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542693</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Sureste3</td>
+      <td>5.97</td>
+      <td>58.400002</td>
+      <td>11.800000</td>
+      <td>70.099998</td>
+      <td>13.0</td>
+      <td>392.0</td>
+      <td>295.0</td>
+      <td>732.200012</td>
+      <td>0.0</td>
+      <td>81.0</td>
+      <td>6.80</td>
+      <td>0.036</td>
+      <td>10.49</td>
+      <td>1.50</td>
+      <td>3.00</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542694</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Sur</td>
+      <td>1.36</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>40.0</td>
+      <td>8.0</td>
+      <td>706.799988</td>
+      <td>0.0</td>
+      <td>75.0</td>
+      <td>10.60</td>
+      <td>0.002</td>
+      <td>9.73</td>
+      <td>2.10</td>
+      <td>98.00</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542695</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Norte2</td>
+      <td>3.39</td>
+      <td>149.399994</td>
+      <td>59.900002</td>
+      <td>185.100006</td>
+      <td>NaN</td>
+      <td>103.0</td>
+      <td>NaN</td>
+      <td>713.700012</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>9.00</td>
+      <td>0.000</td>
+      <td>12.26</td>
+      <td>3.80</td>
+      <td>61.00</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1542696 rows × 18 columns</p>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -770,7 +1662,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Últimos registros; en ambos se pueden especificar cuántos mostrar</span>
-<span class="n">df_pollutants_all</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df_pollutants_all</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -815,6 +1707,258 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
+      <th>1542681</th>
+      <td>2018-12-31 22:00:00</td>
+      <td>Sur</td>
+      <td>1.45</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>31.0</td>
+      <td>7.000000</td>
+      <td>706.700000</td>
+      <td>0.0</td>
+      <td>74.0</td>
+      <td>10.5</td>
+      <td>0.002</td>
+      <td>10.20</td>
+      <td>2.2</td>
+      <td>108.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542682</th>
+      <td>2018-12-31 22:00:00</td>
+      <td>Norte2</td>
+      <td>1.32</td>
+      <td>71.300000</td>
+      <td>44.700000</td>
+      <td>95.900000</td>
+      <td>NaN</td>
+      <td>93.0</td>
+      <td>47.000000</td>
+      <td>713.600000</td>
+      <td>0.0</td>
+      <td>60.0</td>
+      <td>21.3</td>
+      <td>0.000</td>
+      <td>12.79</td>
+      <td>2.1</td>
+      <td>312.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542683</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Sureste</td>
+      <td>3.37</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.0</td>
+      <td>140.0</td>
+      <td>104.279999</td>
+      <td>726.099976</td>
+      <td>0.0</td>
+      <td>81.0</td>
+      <td>4.6</td>
+      <td>0.007</td>
+      <td>10.56</td>
+      <td>3.5</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542684</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Noreste</td>
+      <td>9.17</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>719.700012</td>
+      <td>0.0</td>
+      <td>80.0</td>
+      <td>4.5</td>
+      <td>0.000</td>
+      <td>10.78</td>
+      <td>2.8</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542685</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Centro</td>
+      <td>3.27</td>
+      <td>52.900002</td>
+      <td>21.600000</td>
+      <td>74.400002</td>
+      <td>7.0</td>
+      <td>82.0</td>
+      <td>74.209999</td>
+      <td>711.700012</td>
+      <td>0.0</td>
+      <td>71.0</td>
+      <td>NaN</td>
+      <td>0.002</td>
+      <td>11.24</td>
+      <td>1.8</td>
+      <td>220.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542686</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Noroeste</td>
+      <td>7.62</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>21.0</td>
+      <td>NaN</td>
+      <td>825.440002</td>
+      <td>710.200012</td>
+      <td>0.0</td>
+      <td>71.0</td>
+      <td>8.1</td>
+      <td>0.003</td>
+      <td>11.01</td>
+      <td>0.2</td>
+      <td>301.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542687</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Suroeste</td>
+      <td>5.84</td>
+      <td>175.800003</td>
+      <td>31.400000</td>
+      <td>207.000000</td>
+      <td>15.0</td>
+      <td>282.0</td>
+      <td>NaN</td>
+      <td>701.200012</td>
+      <td>0.0</td>
+      <td>72.0</td>
+      <td>7.5</td>
+      <td>0.000</td>
+      <td>9.18</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542688</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Noroeste2</td>
+      <td>5.48</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>151.0</td>
+      <td>NaN</td>
+      <td>701.099976</td>
+      <td>0.0</td>
+      <td>72.0</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>8.99</td>
+      <td>2.4</td>
+      <td>277.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542689</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Norte</td>
+      <td>4.10</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>56.0</td>
+      <td>22.580000</td>
+      <td>715.099976</td>
+      <td>0.0</td>
+      <td>57.0</td>
+      <td>NaN</td>
+      <td>0.002</td>
+      <td>12.14</td>
+      <td>NaN</td>
+      <td>220.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542690</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Noreste2</td>
+      <td>4.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>340.0</td>
+      <td>199.000000</td>
+      <td>715.799988</td>
+      <td>0.0</td>
+      <td>78.0</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>10.91</td>
+      <td>1.4</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542691</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Sureste2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>445.0</td>
+      <td>NaN</td>
+      <td>722.599976</td>
+      <td>0.0</td>
+      <td>71.0</td>
+      <td>NaN</td>
+      <td>0.000</td>
+      <td>11.19</td>
+      <td>1.8</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1542692</th>
+      <td>2018-12-31 23:00:00</td>
+      <td>Suroeste2</td>
+      <td>3.59</td>
+      <td>18.700001</td>
+      <td>8.400000</td>
+      <td>27.000000</td>
+      <td>5.0</td>
+      <td>134.0</td>
+      <td>111.000000</td>
+      <td>714.099976</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>5.0</td>
+      <td>0.000</td>
+      <td>10.54</td>
+      <td>NaN</td>
+      <td>226.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
       <th>1542693</th>
       <td>2018-12-31 23:00:00</td>
       <td>Sureste3</td>
@@ -824,7 +1968,7 @@ title="Print to PDF"
       <td>70.099998</td>
       <td>13.0</td>
       <td>392.0</td>
-      <td>295.0</td>
+      <td>295.000000</td>
       <td>732.200012</td>
       <td>0.0</td>
       <td>81.0</td>
@@ -845,7 +1989,7 @@ title="Print to PDF"
       <td>NaN</td>
       <td>NaN</td>
       <td>40.0</td>
-      <td>8.0</td>
+      <td>8.000000</td>
       <td>706.799988</td>
       <td>0.0</td>
       <td>75.0</td>
@@ -929,87 +2073,87 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>1027124</th>
-      <td>2013-09-08 07:00:00</td>
-      <td>Noroeste2</td>
-      <td>0.70</td>
-      <td>6.2</td>
-      <td>3.60</td>
-      <td>5.7</td>
-      <td>14.0</td>
-      <td>90.0</td>
+      <th>447545</th>
+      <td>2003-03-19 13:00:00</td>
+      <td>Sureste</td>
+      <td>0.27</td>
       <td>NaN</td>
-      <td>700.9</td>
       <td>NaN</td>
-      <td>86.0</td>
-      <td>6.6</td>
-      <td>0.093</td>
-      <td>21.82</td>
-      <td>7.10</td>
-      <td>95.00</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1152898</th>
-      <td>2015-02-25 20:00:00</td>
-      <td>Centro</td>
-      <td>1.64</td>
-      <td>9.3</td>
-      <td>24.00</td>
-      <td>33.3</td>
-      <td>5.0</td>
-      <td>82.0</td>
-      <td>21.0</td>
-      <td>708.5</td>
-      <td>0.0</td>
+      <td>NaN</td>
+      <td>52.5</td>
       <td>66.0</td>
       <td>NaN</td>
-      <td>0.000</td>
-      <td>14.26</td>
-      <td>5.90</td>
-      <td>39.00</td>
+      <td>763.88</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.38</td>
+      <td>25.00</td>
+      <td>16.89</td>
+      <td>308.34</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>170321</th>
-      <td>1996-11-20 08:00:00</td>
-      <td>Noreste</td>
-      <td>4.65</td>
-      <td>104.0</td>
-      <td>68.25</td>
-      <td>173.5</td>
-      <td>1.5</td>
+      <th>722234</th>
+      <td>2009-05-05 17:00:00</td>
+      <td>Noroeste</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>13.0</td>
       <td>NaN</td>
-      <td>22.00</td>
-      <td>4.26</td>
-      <td>207.18</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>70631</th>
-      <td>1994-08-12 14:00:00</td>
+      <th>168956</th>
+      <td>1996-11-08 23:00:00</td>
       <td>Noreste</td>
-      <td>0.50</td>
-      <td>6.0</td>
-      <td>9.00</td>
-      <td>14.0</td>
-      <td>33.0</td>
-      <td>29.0</td>
+      <td>1.10</td>
+      <td>6.00</td>
+      <td>39.50</td>
+      <td>46.00</td>
+      <td>10.5</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>28.0</td>
       <td>NaN</td>
-      <td>30.60</td>
-      <td>13.30</td>
-      <td>104.00</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>17.35</td>
+      <td>7.16</td>
+      <td>122.94</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>75368</th>
+      <td>1994-09-21 01:00:00</td>
+      <td>Noroeste</td>
+      <td>0.45</td>
+      <td>0.25</td>
+      <td>11.25</td>
+      <td>12.25</td>
+      <td>21.0</td>
+      <td>46.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>21.5</td>
+      <td>NaN</td>
+      <td>22.30</td>
+      <td>11.75</td>
+      <td>143.82</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1635,7 +2779,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Selector de filas y columnas por índice</span>
-<span class="n">df_pollutants_2019</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># [filas : columnas]</span>
+<span class="n">df_pollutants_2019</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># [filas, columnas]</span>
 </pre></div>
 </div>
 </div>
@@ -1968,7 +3112,7 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Se eliminan las columnas con Unnamed</span>
-<span class="n">df_pollutants_2019_mod</span> <span class="o">=</span> <span class="n">df_pollutants_2019</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">unnamed</span><span class="p">)</span>
+<span class="n">df_pollutants_2019_mod</span> <span class="o">=</span> <span class="n">df_pollutants_2019_mod</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">unnamed</span><span class="p">)</span>
 <span class="n">df_pollutants_2019_mod</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2334,7 +3478,7 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columnas</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span> <span class="c1"># 2: A lista</span>
-    <span class="nb">set</span><span class="p">(</span> <span class="c1"># 1: Sin repetidos</span>
+    <span class="nb">set</span> <span class="p">(</span> <span class="c1"># 1: Sin repetidos</span>
         <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_pollutants_2019_mod</span><span class="o">.</span><span class="n">columns</span><span class="p">)]</span> <span class="c1"># 0: Todos los nombres de columna antes del punto</span>
     <span class="p">)</span>
 <span class="p">)</span>
@@ -2343,20 +3487,20 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Suroeste&#39;,
- &#39;Ce-Met&#39;,
- &#39;Noreste&#39;,
- &#39;Noreste2&#39;,
- &#39;Sur&#39;,
- &#39;Norte 2&#39;,
- &#39;Sureste 3&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Sureste 3&#39;,
  &#39;Norte&#39;,
  &#39;Noroeste&#39;,
+ &#39;Ce-Met&#39;,
+ &#39;Noroeste 2&#39;,
+ &#39;Suroeste&#39;,
+ &#39;Noreste2&#39;,
  &#39;Sureste2&#39;,
  &#39;Centro&#39;,
- &#39;Noroeste 2&#39;,
+ &#39;Sur&#39;,
+ &#39;Norte 2&#39;,
  &#39;Suroeste2&#39;,
- &#39;Sureste&#39;]
+ &#39;Sureste&#39;,
+ &#39;Noreste&#39;]
 </pre></div>
 </div>
 </div>
@@ -2364,7 +3508,8 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># De ahí se eliminan la columna del tiempo</span>
-<span class="n">columnas</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;Ce-Met&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="s1">&#39;Ce-Met&#39;</span> <span class="ow">in</span> <span class="n">columnas</span><span class="p">:</span> <span class="c1"># no lo había pensado</span>
+    <span class="n">columnas</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;Ce-Met&#39;</span><span class="p">)</span>
 <span class="nb">sorted</span><span class="p">(</span><span class="n">columnas</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2461,7 +3606,7 @@ dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>215.45</td>
+      <td>535.88</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2471,91 +3616,91 @@ dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>2019-01-01 00:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.74</td>
+      <td>3.4</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>5</td>
-      <td>242</td>
+      <td>7</td>
+      <td>468</td>
       <td>NaN</td>
-      <td>725.8</td>
+      <td>719.5</td>
       <td>0</td>
-      <td>81</td>
-      <td>4.4</td>
-      <td>0.007</td>
-      <td>9.33</td>
-      <td>3.8</td>
+      <td>82</td>
+      <td>9</td>
+      <td>0</td>
+      <td>9.71</td>
+      <td>2.2</td>
       <td>NaN</td>
       <td>2019-01-01 01:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3.01</td>
+      <td>4.54</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>6</td>
-      <td>281</td>
+      <td>9</td>
       <td>NaN</td>
-      <td>725.7</td>
+      <td>593.09</td>
+      <td>719.3</td>
       <td>0</td>
-      <td>84</td>
-      <td>4.7</td>
-      <td>0.007</td>
-      <td>9.11</td>
-      <td>5</td>
+      <td>80</td>
+      <td>8.6</td>
+      <td>0</td>
+      <td>9.76</td>
+      <td>2.6</td>
       <td>NaN</td>
       <td>2019-01-01 02:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.01</td>
+      <td>5.77</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>4</td>
-      <td>398</td>
-      <td>235.33</td>
-      <td>725.7</td>
+      <td>11</td>
+      <td>NaN</td>
+      <td>658.88</td>
+      <td>719.2</td>
       <td>0</td>
-      <td>80</td>
-      <td>4.5</td>
-      <td>0.007</td>
-      <td>9.19</td>
-      <td>6.4</td>
+      <td>82</td>
+      <td>7</td>
+      <td>0</td>
+      <td>8.84</td>
+      <td>1.7</td>
       <td>NaN</td>
       <td>2019-01-01 03:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.38</td>
+      <td>6.28</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>3</td>
-      <td>203</td>
-      <td>117.41</td>
-      <td>725.8</td>
+      <td>11</td>
+      <td>731</td>
+      <td>660.5</td>
+      <td>719.1</td>
       <td>0</td>
-      <td>79</td>
-      <td>4.2</td>
-      <td>0.007</td>
-      <td>8.6</td>
-      <td>5.5</td>
+      <td>83</td>
+      <td>6.1</td>
+      <td>0</td>
+      <td>8.63</td>
+      <td>2.1</td>
       <td>NaN</td>
       <td>2019-01-01 04:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -2581,87 +3726,87 @@ dtype: int64
     </tr>
     <tr>
       <th>113888</th>
-      <td>0.72</td>
-      <td>0.5</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>28</td>
-      <td>NaN</td>
-      <td>702.9</td>
+      <td>2.1</td>
+      <td>4.5</td>
+      <td>11.5</td>
+      <td>15.9</td>
+      <td>20</td>
+      <td>42</td>
+      <td>19</td>
+      <td>734.7</td>
       <td>0</td>
-      <td>91</td>
-      <td>3</td>
-      <td>0</td>
-      <td>9.14</td>
+      <td>92</td>
       <td>NaN</td>
+      <td>0.037</td>
+      <td>11.18</td>
+      <td>2</td>
       <td>NaN</td>
       <td>2019-12-31 20:00:00</td>
-      <td>Suroeste</td>
-      <td>NaN</td>
+      <td>Sureste3</td>
+      <td>184</td>
     </tr>
     <tr>
       <th>113889</th>
-      <td>0.93</td>
-      <td>0.5</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>47</td>
-      <td>NaN</td>
-      <td>703.3</td>
+      <td>1.99</td>
+      <td>3.3</td>
+      <td>8.9</td>
+      <td>12.2</td>
+      <td>20</td>
+      <td>34</td>
+      <td>14</td>
+      <td>734.8</td>
       <td>0</td>
-      <td>91</td>
-      <td>2.9</td>
-      <td>0</td>
-      <td>9.43</td>
+      <td>93</td>
       <td>NaN</td>
+      <td>0.037</td>
+      <td>11.26</td>
+      <td>1</td>
       <td>NaN</td>
       <td>2019-12-31 21:00:00</td>
-      <td>Suroeste</td>
-      <td>NaN</td>
+      <td>Sureste3</td>
+      <td>175</td>
     </tr>
     <tr>
       <th>113890</th>
-      <td>0.78</td>
-      <td>0.5</td>
+      <td>2.19</td>
+      <td>2.9</td>
+      <td>10.5</td>
+      <td>13.3</td>
+      <td>18</td>
+      <td>41</td>
+      <td>32</td>
+      <td>734.8</td>
+      <td>0.05</td>
+      <td>93</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>703.3</td>
-      <td>0.01</td>
-      <td>91</td>
-      <td>2.4</td>
-      <td>0</td>
-      <td>9.47</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.53</td>
+      <td>1.2</td>
       <td>NaN</td>
       <td>2019-12-31 22:00:00</td>
-      <td>Suroeste</td>
-      <td>NaN</td>
+      <td>Sureste3</td>
+      <td>94</td>
     </tr>
     <tr>
       <th>113891</th>
-      <td>0.8</td>
-      <td>0.5</td>
+      <td>1.85</td>
+      <td>2.1</td>
+      <td>6.9</td>
+      <td>9</td>
+      <td>23</td>
+      <td>64</td>
+      <td>23</td>
+      <td>734.7</td>
+      <td>0.03</td>
+      <td>93</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>52</td>
-      <td>NaN</td>
-      <td>703.3</td>
-      <td>0</td>
-      <td>92</td>
-      <td>2.6</td>
-      <td>0</td>
-      <td>9.58</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.65</td>
+      <td>2</td>
       <td>NaN</td>
       <td>2019-12-31 23:00:00</td>
-      <td>Suroeste</td>
-      <td>NaN</td>
+      <td>Sureste3</td>
+      <td>116</td>
     </tr>
     <tr>
       <th>113892</th>
@@ -2681,7 +3826,7 @@ dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>Suroeste</td>
+      <td>Sureste3</td>
       <td>NaN</td>
     </tr>
   </tbody>
@@ -2701,6 +3846,29 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31165
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtro</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         False
+1         False
+2         False
+3         False
+4         False
+          ...  
+113888    False
+113889    False
+113890    False
+113891    False
+113892    False
+Length: 113893, dtype: bool
 </pre></div>
 </div>
 </div>
@@ -2768,7 +3936,7 @@ dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>215.45</td>
+      <td>535.88</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2777,87 +3945,87 @@ dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>2019-01-01 00:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.74</td>
+      <td>3.4</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>5</td>
-      <td>242</td>
+      <td>7</td>
+      <td>468</td>
       <td>NaN</td>
-      <td>725.8</td>
+      <td>719.5</td>
       <td>0</td>
-      <td>81</td>
-      <td>4.4</td>
-      <td>0.007</td>
-      <td>9.33</td>
-      <td>3.8</td>
+      <td>82</td>
+      <td>9</td>
+      <td>0</td>
+      <td>9.71</td>
+      <td>2.2</td>
       <td>2019-01-01 01:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3.01</td>
+      <td>4.54</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>6</td>
-      <td>281</td>
+      <td>9</td>
       <td>NaN</td>
-      <td>725.7</td>
+      <td>593.09</td>
+      <td>719.3</td>
       <td>0</td>
-      <td>84</td>
-      <td>4.7</td>
-      <td>0.007</td>
-      <td>9.11</td>
-      <td>5</td>
+      <td>80</td>
+      <td>8.6</td>
+      <td>0</td>
+      <td>9.76</td>
+      <td>2.6</td>
       <td>2019-01-01 02:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.01</td>
+      <td>5.77</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>4</td>
-      <td>398</td>
-      <td>235.33</td>
-      <td>725.7</td>
+      <td>11</td>
+      <td>NaN</td>
+      <td>658.88</td>
+      <td>719.2</td>
       <td>0</td>
-      <td>80</td>
-      <td>4.5</td>
-      <td>0.007</td>
-      <td>9.19</td>
-      <td>6.4</td>
+      <td>82</td>
+      <td>7</td>
+      <td>0</td>
+      <td>8.84</td>
+      <td>1.7</td>
       <td>2019-01-01 03:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.38</td>
+      <td>6.28</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>3</td>
-      <td>203</td>
-      <td>117.41</td>
-      <td>725.8</td>
+      <td>11</td>
+      <td>731</td>
+      <td>660.5</td>
+      <td>719.1</td>
       <td>0</td>
-      <td>79</td>
-      <td>4.2</td>
-      <td>0.007</td>
-      <td>8.6</td>
-      <td>5.5</td>
+      <td>83</td>
+      <td>6.1</td>
+      <td>0</td>
+      <td>8.63</td>
+      <td>2.1</td>
       <td>2019-01-01 04:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
   </tbody>
@@ -2865,20 +4033,6 @@ dtype: int64
 </div></div></div>
 </div>
 <p>Se emparejan los nombres de columnas.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_2019_def</span><span class="o">.</span><span class="n">columns</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;CO&#39;, &#39;NO&#39;, &#39;NO2&#39;, &#39;NOX&#39;, &#39;O3&#39;, &#39;PM10&#39;, &#39;PM2.5&#39;, &#39;PRS&#39;, &#39;RAINF&#39;, &#39;RH&#39;,
-       &#39;SO2&#39;, &#39;SR&#39;, &#39;TOUT&#39;, &#39;WSR&#39;, &#39;Date - Time&#39;, &#39;station&#39;, &#39;WDR&#39;],
-      dtype=&#39;object&#39;, name=0)
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_all</span><span class="o">.</span><span class="n">columns</span>
@@ -2898,8 +4052,7 @@ dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_all</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;station&#39;</span><span class="p">,</span> <span class="s1">&#39;CO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2&#39;</span><span class="p">,</span> <span class="s1">&#39;NOX&#39;</span><span class="p">,</span> <span class="s1">&#39;O3&#39;</span><span class="p">,</span> <span class="s1">&#39;PM10&#39;</span><span class="p">,</span> <span class="s1">&#39;PM2_5&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;RF&#39;</span><span class="p">,</span> <span class="s1">&#39;RH&#39;</span><span class="p">,</span> <span class="s1">&#39;SO2&#39;</span><span class="p">,</span> <span class="s1">&#39;SR&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;WV&#39;</span><span class="p">,</span> <span class="s1">&#39;WD&#39;</span><span class="p">,</span> <span class="s1">&#39;valid&#39;</span>
+    <span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;RF&#39;</span><span class="p">,</span> <span class="s1">&#39;RH&#39;</span><span class="p">,</span> <span class="s1">&#39;SO2&#39;</span><span class="p">,</span> <span class="s1">&#39;SR&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;WV&#39;</span><span class="p">,</span> <span class="s1">&#39;WD&#39;</span><span class="p">,</span> <span class="s1">&#39;valid&#39;</span>
 <span class="p">]</span>
 <span class="n">df_pollutants_all</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -3056,9 +4209,23 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_2019_def</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;CO&#39;, &#39;NO&#39;, &#39;NO2&#39;, &#39;NOX&#39;, &#39;O3&#39;, &#39;PM10&#39;, &#39;PM2.5&#39;, &#39;PRS&#39;, &#39;RAINF&#39;, &#39;RH&#39;,
+       &#39;SO2&#39;, &#39;SR&#39;, &#39;TOUT&#39;, &#39;WSR&#39;, &#39;Date - Time&#39;, &#39;station&#39;, &#39;WDR&#39;],
+      dtype=&#39;object&#39;, name=0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_2019_def</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s1">&#39;CO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2&#39;</span><span class="p">,</span> <span class="s1">&#39;NOX&#39;</span><span class="p">,</span> <span class="s1">&#39;O3&#39;</span><span class="p">,</span> <span class="s1">&#39;PM10&#39;</span><span class="p">,</span> <span class="s1">&#39;PM2_5&#39;</span><span class="p">,</span> <span class="s1">&#39;BP&#39;</span><span class="p">,</span> <span class="s1">&#39;RF&#39;</span><span class="p">,</span> <span class="s1">&#39;RH&#39;</span><span class="p">,</span>
-       <span class="s1">&#39;SO2&#39;</span><span class="p">,</span> <span class="s1">&#39;SR&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;WV&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;station&#39;</span><span class="p">,</span> <span class="s1">&#39;WD&#39;</span>
+    <span class="s1">&#39;SO2&#39;</span><span class="p">,</span> <span class="s1">&#39;SR&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;WV&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;station&#39;</span><span class="p">,</span> <span class="s1">&#39;WD&#39;</span>
 <span class="p">]</span>
 <span class="n">df_pollutants_2019_def</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -3111,7 +4278,7 @@ dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>215.45</td>
+      <td>535.88</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3120,87 +4287,87 @@ dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>2019-01-01 00:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.74</td>
+      <td>3.4</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>5</td>
-      <td>242</td>
+      <td>7</td>
+      <td>468</td>
       <td>NaN</td>
-      <td>725.8</td>
+      <td>719.5</td>
       <td>0</td>
-      <td>81</td>
-      <td>4.4</td>
-      <td>0.007</td>
-      <td>9.33</td>
-      <td>3.8</td>
+      <td>82</td>
+      <td>9</td>
+      <td>0</td>
+      <td>9.71</td>
+      <td>2.2</td>
       <td>2019-01-01 01:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>3.01</td>
+      <td>4.54</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>6</td>
-      <td>281</td>
+      <td>9</td>
       <td>NaN</td>
-      <td>725.7</td>
+      <td>593.09</td>
+      <td>719.3</td>
       <td>0</td>
-      <td>84</td>
-      <td>4.7</td>
-      <td>0.007</td>
-      <td>9.11</td>
-      <td>5</td>
+      <td>80</td>
+      <td>8.6</td>
+      <td>0</td>
+      <td>9.76</td>
+      <td>2.6</td>
       <td>2019-01-01 02:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.01</td>
+      <td>5.77</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>4</td>
-      <td>398</td>
-      <td>235.33</td>
-      <td>725.7</td>
+      <td>11</td>
+      <td>NaN</td>
+      <td>658.88</td>
+      <td>719.2</td>
       <td>0</td>
-      <td>80</td>
-      <td>4.5</td>
-      <td>0.007</td>
-      <td>9.19</td>
-      <td>6.4</td>
+      <td>82</td>
+      <td>7</td>
+      <td>0</td>
+      <td>8.84</td>
+      <td>1.7</td>
       <td>2019-01-01 03:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.38</td>
+      <td>6.28</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>3</td>
-      <td>203</td>
-      <td>117.41</td>
-      <td>725.8</td>
+      <td>11</td>
+      <td>731</td>
+      <td>660.5</td>
+      <td>719.1</td>
       <td>0</td>
-      <td>79</td>
-      <td>4.2</td>
-      <td>0.007</td>
-      <td>8.6</td>
-      <td>5.5</td>
+      <td>83</td>
+      <td>6.1</td>
+      <td>0</td>
+      <td>8.63</td>
+      <td>2.1</td>
       <td>2019-01-01 04:00:00</td>
-      <td>Sureste</td>
+      <td>Noreste</td>
       <td>NaN</td>
     </tr>
   </tbody>
@@ -3360,6 +4527,155 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>timestamp</th>
+      <th>station</th>
+      <th>CO</th>
+      <th>NO</th>
+      <th>NO2</th>
+      <th>NOX</th>
+      <th>O3</th>
+      <th>PM10</th>
+      <th>PM2_5</th>
+      <th>BP</th>
+      <th>RF</th>
+      <th>RH</th>
+      <th>SO2</th>
+      <th>SR</th>
+      <th>T</th>
+      <th>WV</th>
+      <th>WD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>113888</th>
+      <td>2019-12-31 20:00:00</td>
+      <td>Sureste3</td>
+      <td>2.1</td>
+      <td>4.5</td>
+      <td>11.5</td>
+      <td>15.9</td>
+      <td>20</td>
+      <td>42</td>
+      <td>19</td>
+      <td>734.7</td>
+      <td>0</td>
+      <td>92</td>
+      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.18</td>
+      <td>2</td>
+      <td>184</td>
+    </tr>
+    <tr>
+      <th>113889</th>
+      <td>2019-12-31 21:00:00</td>
+      <td>Sureste3</td>
+      <td>1.99</td>
+      <td>3.3</td>
+      <td>8.9</td>
+      <td>12.2</td>
+      <td>20</td>
+      <td>34</td>
+      <td>14</td>
+      <td>734.8</td>
+      <td>0</td>
+      <td>93</td>
+      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.26</td>
+      <td>1</td>
+      <td>175</td>
+    </tr>
+    <tr>
+      <th>113890</th>
+      <td>2019-12-31 22:00:00</td>
+      <td>Sureste3</td>
+      <td>2.19</td>
+      <td>2.9</td>
+      <td>10.5</td>
+      <td>13.3</td>
+      <td>18</td>
+      <td>41</td>
+      <td>32</td>
+      <td>734.8</td>
+      <td>0.05</td>
+      <td>93</td>
+      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.53</td>
+      <td>1.2</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>113891</th>
+      <td>2019-12-31 23:00:00</td>
+      <td>Sureste3</td>
+      <td>1.85</td>
+      <td>2.1</td>
+      <td>6.9</td>
+      <td>9</td>
+      <td>23</td>
+      <td>64</td>
+      <td>23</td>
+      <td>734.7</td>
+      <td>0.03</td>
+      <td>93</td>
+      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.65</td>
+      <td>2</td>
+      <td>116</td>
+    </tr>
+    <tr>
+      <th>113892</th>
+      <td>NaN</td>
+      <td>Sureste3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Guardar registros con tiempo</span>
 <span class="n">df_pollutants</span> <span class="o">=</span> <span class="n">df_pollutants</span><span class="p">[</span><span class="o">~</span><span class="n">df_pollutants</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
 </pre></div>
@@ -3377,7 +4693,7 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Primer y último registro</span>
-<span class="n">df_pollutants</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],]</span>
+<span class="n">df_pollutants</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -3443,22 +4759,22 @@ dtype: int64
     <tr>
       <th>113891</th>
       <td>2019-12-31 23:00:00</td>
-      <td>Suroeste</td>
-      <td>0.8</td>
-      <td>0.5</td>
+      <td>Sureste3</td>
+      <td>1.85</td>
+      <td>2.1</td>
+      <td>6.9</td>
+      <td>9</td>
+      <td>23</td>
+      <td>64</td>
+      <td>23</td>
+      <td>734.7</td>
+      <td>0.03</td>
+      <td>93</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>52</td>
-      <td>NaN</td>
-      <td>703.3</td>
-      <td>0</td>
-      <td>92</td>
-      <td>2.6</td>
-      <td>0</td>
-      <td>9.58</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.65</td>
+      <td>2</td>
+      <td>116</td>
     </tr>
   </tbody>
 </table>
@@ -3972,102 +5288,102 @@ dtype: int64
     <tr>
       <th>113887</th>
       <td>2019-12-31 19:00:00</td>
-      <td>Suroeste</td>
-      <td>0.69</td>
+      <td>Sureste3</td>
+      <td>2.35</td>
+      <td>8.1</td>
+      <td>16.1</td>
+      <td>24.1</td>
+      <td>16</td>
+      <td>45</td>
+      <td>27</td>
+      <td>735.1</td>
+      <td>0.01</td>
+      <td>92</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>24</td>
-      <td>22.15</td>
-      <td>703.3</td>
-      <td>0</td>
-      <td>90</td>
-      <td>2.3</td>
-      <td>0</td>
-      <td>9.18</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.19</td>
+      <td>1.4</td>
+      <td>207</td>
     </tr>
     <tr>
       <th>113888</th>
       <td>2019-12-31 20:00:00</td>
-      <td>Suroeste</td>
-      <td>0.72</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>28</td>
-      <td>NaN</td>
-      <td>702.9</td>
+      <td>Sureste3</td>
+      <td>2.1</td>
+      <td>4.5</td>
+      <td>11.5</td>
+      <td>15.9</td>
+      <td>20</td>
+      <td>42</td>
+      <td>19</td>
+      <td>734.7</td>
       <td>0</td>
-      <td>91</td>
-      <td>3</td>
-      <td>0</td>
-      <td>9.14</td>
+      <td>92</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.18</td>
+      <td>2</td>
+      <td>184</td>
     </tr>
     <tr>
       <th>113889</th>
       <td>2019-12-31 21:00:00</td>
-      <td>Suroeste</td>
-      <td>0.93</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>47</td>
-      <td>NaN</td>
-      <td>703.3</td>
+      <td>Sureste3</td>
+      <td>1.99</td>
+      <td>3.3</td>
+      <td>8.9</td>
+      <td>12.2</td>
+      <td>20</td>
+      <td>34</td>
+      <td>14</td>
+      <td>734.8</td>
       <td>0</td>
-      <td>91</td>
-      <td>2.9</td>
-      <td>0</td>
-      <td>9.43</td>
+      <td>93</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.26</td>
+      <td>1</td>
+      <td>175</td>
     </tr>
     <tr>
       <th>113890</th>
       <td>2019-12-31 22:00:00</td>
-      <td>Suroeste</td>
-      <td>0.78</td>
+      <td>Sureste3</td>
+      <td>2.19</td>
+      <td>2.9</td>
+      <td>10.5</td>
+      <td>13.3</td>
+      <td>18</td>
+      <td>41</td>
+      <td>32</td>
+      <td>734.8</td>
+      <td>0.05</td>
+      <td>93</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>703.3</td>
-      <td>0.01</td>
-      <td>91</td>
-      <td>2.4</td>
-      <td>0</td>
-      <td>9.47</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.53</td>
+      <td>1.2</td>
+      <td>94</td>
     </tr>
     <tr>
       <th>113891</th>
       <td>2019-12-31 23:00:00</td>
-      <td>Suroeste</td>
-      <td>0.8</td>
+      <td>Sureste3</td>
+      <td>1.85</td>
+      <td>2.1</td>
+      <td>6.9</td>
+      <td>9</td>
+      <td>23</td>
+      <td>64</td>
+      <td>23</td>
+      <td>734.7</td>
+      <td>0.03</td>
+      <td>93</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>52</td>
-      <td>NaN</td>
-      <td>703.3</td>
-      <td>0</td>
-      <td>92</td>
-      <td>2.6</td>
-      <td>0</td>
-      <td>9.58</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.65</td>
+      <td>2</td>
+      <td>116</td>
     </tr>
   </tbody>
 </table>
@@ -4108,13 +5424,13 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1_datos_60_0.png" src="../_images/1_datos_60_0.png" />
+<img alt="../_images/1_datos_70_0.png" src="../_images/1_datos_70_0.png" />
 </div>
 </div>
 <p>Se selecciona un rango con el que trabajar. En este caso, de 01-01-2017 a 31-12-2019.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_2017</span> <span class="o">=</span> <span class="n">df_pollutants</span><span class="p">[</span><span class="n">df_pollutants</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;=</span> <span class="mi">2017</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_2017</span> <span class="o">=</span> <span class="n">df_pollutants_copy</span><span class="p">[</span><span class="n">df_pollutants_copy</span><span class="o">.</span><span class="n">timestamp</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;=</span> <span class="mi">2017</span><span class="p">]</span>
 <span class="n">df_pollutants_2017</span>
 </pre></div>
 </div>
@@ -4281,102 +5597,102 @@ dtype: int64
     <tr>
       <th>113887</th>
       <td>2019-12-31 19:00:00</td>
-      <td>Suroeste</td>
-      <td>0.69</td>
-      <td>0.5</td>
+      <td>Sureste3</td>
+      <td>2.35</td>
+      <td>8.1</td>
+      <td>16.1</td>
+      <td>24.1</td>
+      <td>16</td>
+      <td>45</td>
+      <td>27</td>
+      <td>735.1</td>
+      <td>0.01</td>
+      <td>92</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>24</td>
-      <td>22.15</td>
-      <td>703.3</td>
-      <td>0</td>
-      <td>90</td>
-      <td>2.3</td>
-      <td>0</td>
-      <td>9.18</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.19</td>
+      <td>1.4</td>
+      <td>207</td>
     </tr>
     <tr>
       <th>113888</th>
       <td>2019-12-31 20:00:00</td>
-      <td>Suroeste</td>
-      <td>0.72</td>
-      <td>0.5</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>28</td>
-      <td>NaN</td>
-      <td>702.9</td>
+      <td>Sureste3</td>
+      <td>2.1</td>
+      <td>4.5</td>
+      <td>11.5</td>
+      <td>15.9</td>
+      <td>20</td>
+      <td>42</td>
+      <td>19</td>
+      <td>734.7</td>
       <td>0</td>
-      <td>91</td>
-      <td>3</td>
-      <td>0</td>
-      <td>9.14</td>
+      <td>92</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.18</td>
+      <td>2</td>
+      <td>184</td>
     </tr>
     <tr>
       <th>113889</th>
       <td>2019-12-31 21:00:00</td>
-      <td>Suroeste</td>
-      <td>0.93</td>
-      <td>0.5</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>47</td>
-      <td>NaN</td>
-      <td>703.3</td>
+      <td>Sureste3</td>
+      <td>1.99</td>
+      <td>3.3</td>
+      <td>8.9</td>
+      <td>12.2</td>
+      <td>20</td>
+      <td>34</td>
+      <td>14</td>
+      <td>734.8</td>
       <td>0</td>
-      <td>91</td>
-      <td>2.9</td>
-      <td>0</td>
-      <td>9.43</td>
+      <td>93</td>
       <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.26</td>
+      <td>1</td>
+      <td>175</td>
     </tr>
     <tr>
       <th>113890</th>
       <td>2019-12-31 22:00:00</td>
-      <td>Suroeste</td>
-      <td>0.78</td>
-      <td>0.5</td>
+      <td>Sureste3</td>
+      <td>2.19</td>
+      <td>2.9</td>
+      <td>10.5</td>
+      <td>13.3</td>
+      <td>18</td>
+      <td>41</td>
+      <td>32</td>
+      <td>734.8</td>
+      <td>0.05</td>
+      <td>93</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>703.3</td>
-      <td>0.01</td>
-      <td>91</td>
-      <td>2.4</td>
-      <td>0</td>
-      <td>9.47</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.53</td>
+      <td>1.2</td>
+      <td>94</td>
     </tr>
     <tr>
       <th>113891</th>
       <td>2019-12-31 23:00:00</td>
-      <td>Suroeste</td>
-      <td>0.8</td>
-      <td>0.5</td>
+      <td>Sureste3</td>
+      <td>1.85</td>
+      <td>2.1</td>
+      <td>6.9</td>
+      <td>9</td>
+      <td>23</td>
+      <td>64</td>
+      <td>23</td>
+      <td>734.7</td>
+      <td>0.03</td>
+      <td>93</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>52</td>
-      <td>NaN</td>
-      <td>703.3</td>
-      <td>0</td>
-      <td>92</td>
-      <td>2.6</td>
-      <td>0</td>
-      <td>9.58</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.037</td>
+      <td>11.65</td>
+      <td>2</td>
+      <td>116</td>
     </tr>
   </tbody>
 </table>
@@ -4440,7 +5756,7 @@ dtype: int64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CO
 </pre></div>
 </div>
-<img alt="../_images/1_datos_64_1.png" src="../_images/1_datos_64_1.png" />
+<img alt="../_images/1_datos_74_1.png" src="../_images/1_datos_74_1.png" />
 </div>
 </div>
 <p>Ahora se agrega información geográfica de las estaciones de monitoreo.</p>
@@ -4790,9 +6106,9 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NO     221971
-NO2    230756
-NOX    224879
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NO     228468
+NO2    231640
+NOX    226917
 dtype: int64
 </pre></div>
 </div>
@@ -4837,10 +6153,336 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NO      782
-NO2    4936
-NOX      38
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NO     1578
+NO2    4772
+NOX      60
 dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_coords</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station</th>
+      <th>abbr</th>
+      <th>lat</th>
+      <th>lon</th>
+      <th>h</th>
+      <th>timestamp</th>
+      <th>CO</th>
+      <th>NO</th>
+      <th>NO2</th>
+      <th>NOX</th>
+      <th>...</th>
+      <th>PM10</th>
+      <th>PM2_5</th>
+      <th>BP</th>
+      <th>RF</th>
+      <th>RH</th>
+      <th>SO2</th>
+      <th>SR</th>
+      <th>T</th>
+      <th>WV</th>
+      <th>WD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Centro</td>
+      <td>C</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>2017-01-01 00:00:00</td>
+      <td>2.47</td>
+      <td>16.0</td>
+      <td>15.1</td>
+      <td>31.1</td>
+      <td>...</td>
+      <td>143.0</td>
+      <td>NaN</td>
+      <td>709.2</td>
+      <td>0.0</td>
+      <td>64.0</td>
+      <td>NaN</td>
+      <td>0.004</td>
+      <td>19.46</td>
+      <td>3.0</td>
+      <td>300.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Centro</td>
+      <td>C</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>2017-01-01 01:00:00</td>
+      <td>2.18</td>
+      <td>8.9</td>
+      <td>11.7</td>
+      <td>20.6</td>
+      <td>...</td>
+      <td>183.0</td>
+      <td>NaN</td>
+      <td>708.9</td>
+      <td>0.0</td>
+      <td>66.0</td>
+      <td>NaN</td>
+      <td>0.004</td>
+      <td>18.92</td>
+      <td>2.0</td>
+      <td>226.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Centro</td>
+      <td>C</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>2017-01-01 02:00:00</td>
+      <td>1.77</td>
+      <td>2.0</td>
+      <td>8.6</td>
+      <td>10.5</td>
+      <td>...</td>
+      <td>142.0</td>
+      <td>NaN</td>
+      <td>708.5</td>
+      <td>0.0</td>
+      <td>56.0</td>
+      <td>NaN</td>
+      <td>0.004</td>
+      <td>20.42</td>
+      <td>2.6</td>
+      <td>246.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Centro</td>
+      <td>C</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>2017-01-01 03:00:00</td>
+      <td>1.93</td>
+      <td>7.2</td>
+      <td>10.0</td>
+      <td>17.2</td>
+      <td>...</td>
+      <td>101.0</td>
+      <td>NaN</td>
+      <td>708.2</td>
+      <td>0.0</td>
+      <td>52.0</td>
+      <td>NaN</td>
+      <td>0.004</td>
+      <td>21.21</td>
+      <td>5.4</td>
+      <td>152.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Centro</td>
+      <td>C</td>
+      <td>25.670</td>
+      <td>-100.338</td>
+      <td>560</td>
+      <td>2017-01-01 04:00:00</td>
+      <td>1.7</td>
+      <td>2.1</td>
+      <td>8.6</td>
+      <td>10.7</td>
+      <td>...</td>
+      <td>85.0</td>
+      <td>NaN</td>
+      <td>707.9</td>
+      <td>0.0</td>
+      <td>54.0</td>
+      <td>NaN</td>
+      <td>0.004</td>
+      <td>20.47</td>
+      <td>3.6</td>
+      <td>232.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>341622</th>
+      <td>Suroeste2</td>
+      <td>SO2</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>2019-12-31 19:00:00</td>
+      <td>2.29</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>12</td>
+      <td>NaN</td>
+      <td>715.1</td>
+      <td>0.02</td>
+      <td>88</td>
+      <td>3</td>
+      <td>0</td>
+      <td>9.64</td>
+      <td>0.6</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>341623</th>
+      <td>Suroeste2</td>
+      <td>SO2</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>2019-12-31 20:00:00</td>
+      <td>2.33</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>15</td>
+      <td>NaN</td>
+      <td>714.9</td>
+      <td>0.02</td>
+      <td>88</td>
+      <td>3.9</td>
+      <td>0</td>
+      <td>9.71</td>
+      <td>0.6</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>341624</th>
+      <td>Suroeste2</td>
+      <td>SO2</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>2019-12-31 21:00:00</td>
+      <td>2.35</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>20</td>
+      <td>NaN</td>
+      <td>715</td>
+      <td>0.01</td>
+      <td>88</td>
+      <td>4.5</td>
+      <td>0</td>
+      <td>9.99</td>
+      <td>NaN</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>341625</th>
+      <td>Suroeste2</td>
+      <td>SO2</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>2019-12-31 22:00:00</td>
+      <td>2.42</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>20</td>
+      <td>16</td>
+      <td>715.1</td>
+      <td>0.02</td>
+      <td>88</td>
+      <td>3.6</td>
+      <td>0</td>
+      <td>9.94</td>
+      <td>NaN</td>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th>341626</th>
+      <td>Suroeste2</td>
+      <td>SO2</td>
+      <td>25.665</td>
+      <td>-100.413</td>
+      <td>636</td>
+      <td>2019-12-31 23:00:00</td>
+      <td>2.44</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>20</td>
+      <td>NaN</td>
+      <td>715</td>
+      <td>0.01</td>
+      <td>89</td>
+      <td>3.2</td>
+      <td>0</td>
+      <td>10.12</td>
+      <td>NaN</td>
+      <td>137</td>
+    </tr>
+  </tbody>
+</table>
+<p>341627 rows × 21 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Guardar datos</span>
+<span class="n">df_pollutants_coords</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/results/df_pollutants_coords.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5014,6 +6656,13 @@ dtype: int64
 <p>5124405 rows × 8 columns</p>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pollutants_melt</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/results/df_pollutants_melt.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Para interpolar, no hace falta el nombre de la estación ni su abreviatura.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5154,6 +6803,14 @@ dtype: int64
 <p>5124405 rows × 6 columns</p>
 </div></div></div>
 </div>
+<p>Éste es un buen punto para guardar la base de datos que se tiene, lo cual se logra con la función <code class="docutils literal notranslate"><span class="pre">to_csv</span></code> de los <code class="docutils literal notranslate"><span class="pre">dataframe</span></code> de pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sel</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/results/df_sel.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Más preprocesamiento, pero ahora enfocado a los métodos que nos interesan. Como los métodos de AA no trabajan con fechas, se convierten las fechas a enteros basados en la medida de <a class="reference external" href="https://docs.python.org/3/library/time.html">inicio de época de Unix</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5165,7 +6822,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_21920\1444388773.py:3: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_30204\1444388773.py:3: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -5681,7 +7338,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.075931</td>
+      <td>0.193371</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5704,7 +7361,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.094495</td>
+      <td>0.240651</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5727,7 +7384,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.075466</td>
+      <td>0.192189</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5750,7 +7407,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.056437</td>
+      <td>0.143728</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5773,7 +7430,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.049011</td>
+      <td>0.124817</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5819,7 +7476,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.047619</td>
+      <td>0.121271</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5842,7 +7499,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.049940</td>
+      <td>0.127181</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5865,7 +7522,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.055045</td>
+      <td>0.140182</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5888,7 +7545,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.057830</td>
+      <td>0.147274</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5911,7 +7568,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.073146</td>
+      <td>0.186280</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -5989,7 +7646,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.075931</td>
+      <td>0.193371</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6012,7 +7669,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.094495</td>
+      <td>0.240651</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6035,7 +7692,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.075466</td>
+      <td>0.192189</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6058,7 +7715,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.056437</td>
+      <td>0.143728</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6081,7 +7738,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.704545</td>
       <td>0.419983</td>
       <td>0.585106</td>
-      <td>0.049011</td>
+      <td>0.124817</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6127,7 +7784,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.047619</td>
+      <td>0.121271</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6150,7 +7807,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.049940</td>
+      <td>0.127181</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6173,7 +7830,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.055045</td>
+      <td>0.140182</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6196,7 +7853,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.057830</td>
+      <td>0.147274</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6219,7 +7876,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>0.693182</td>
       <td>0.292972</td>
       <td>0.787234</td>
-      <td>0.073146</td>
+      <td>0.186280</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
@@ -6238,8 +7895,15 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     </tr>
   </tbody>
 </table>
-<p>3441764 rows × 20 columns</p>
+<p>3429819 rows × 20 columns</p>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_dropna</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/results/df_dropna.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>Separación en conjuntos de entrenamiento y prueba.</p>
 <p>Entrenamiento</p>
@@ -6264,6 +7928,26 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://penandpants.com/2014/09/05/performance-of-pandas-series-vs-numpy-arrays/">https://penandpants.com/2014/09/05/performance-of-pandas-series-vs-numpy-arrays/</a></p></li>
+</ul>
+<section id="tarea-en-clase-2-puntos">
+<h2>Tarea en clase (2 puntos)<a class="headerlink" href="#tarea-en-clase-2-puntos" title="Enlazar permanentemente con este título">#</a></h2>
+<ul class="simple">
+<li><p>Cargar conjunto de datos mediante <code class="docutils literal notranslate"><span class="pre">pandas</span></code></p></li>
+<li><p>Especificar el tipo de datos de cada columna</p></li>
+<li><p>Si es necesario, asignar una columna como índice</p></li>
+</ul>
+</section>
+<section id="tarea-8-puntos">
+<h2>Tarea (8 puntos)<a class="headerlink" href="#tarea-8-puntos" title="Enlazar permanentemente con este título">#</a></h2>
+<ul class="simple">
+<li><p>Crear, modificar o eliminar columnas</p></li>
+<li><p>Filtrar registros</p></li>
+<li><p>Crear subconjutos de datos</p></li>
+<li><p>Crear grupos de datos</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -6278,7 +7962,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./caps"
         },
         predefinedOutput: true

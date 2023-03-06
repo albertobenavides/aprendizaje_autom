@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" />
@@ -134,22 +134,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../caps/3_sel_carac.html">
-   Extracción de características
+   Selección de características
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../caps/4_no_supervisado.html">
    Aprendizaje no supervisado
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../caps/5_supervisado.html">
-   Aprendizaje supervisado
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../caps/6_clasificacion.html">
-   Clasificación
   </a>
  </li>
  <li class="toctree-l1">
@@ -355,6 +345,16 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ponderacion-del-curso">
+   Ponderación del curso
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sesiones">
+   Sesiones
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    Aprendizaje automático
   </a>
@@ -447,6 +447,16 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ponderacion-del-curso">
+   Ponderación del curso
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sesiones">
+   Sesiones
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    Aprendizaje automático
   </a>
@@ -527,6 +537,63 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="aprendizaje-automatico">
 <h1>Aprendizaje automático<a class="headerlink" href="#aprendizaje-automatico" title="Enlazar permanentemente con este título">#</a></h1>
 <p>Presentación</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="ponderacion-del-curso">
+<h1>Ponderación del curso<a class="headerlink" href="#ponderacion-del-curso" title="Enlazar permanentemente con este título">#</a></h1>
+<center>
+  <table>
+    <tr>
+      <th>Descripción</th>
+      <th>Cantidad</th>
+      <th>Puntos</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <td>Actividades en clase</td>
+      <td style="text-align:center">10</td>
+      <td style="text-align:center">2</td>
+      <td style="text-align:center">20</td>
+    </tr>
+    <tr>
+      <td>Tareas</td>
+      <td style="text-align:center">10</td>
+      <td style="text-align:center">8</td>
+      <td style="text-align:center">80</td>
+    </tr>
+    <tr>
+      <td>PIA (Artículo)</td>
+      <td style="text-align:center">10</td>
+      <td style="text-align:center">1</td>
+      <td style="text-align:center">10</td>
+    </tr>
+    <tr>
+      <td colspan="3">Total</td>
+      <td style="text-align:center">110</td>
+    </tr>
+  </table>
+</center>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="sesiones">
+<h1>Sesiones<a class="headerlink" href="#sesiones" title="Enlazar permanentemente con este título">#</a></h1>
+<div class="columns">
+<div>
+<p><strong>9 enero</strong>: Presentación del curso
+<strong>16 enero</strong>: Carga de datos y preprocesamiento
+<strong>23 enero</strong>: Estadística descriptiva básica
+<strong>30 enero</strong>: Selección de características
+<strong>6 febrero (asueto)</strong>: Aprendizaje no supervisado</p>
+</div>
+<div>
+<p><strong>13 febrero</strong>: Clasificación
+<strong>20 febrero</strong>: Regresión
+<strong>27 febrero</strong>: Diseño de experimentos
+<strong>6 marzo</strong>: Comparativas de desempeño
+<strong>20 marzo (asueto)</strong>: Latex y artículo
+<strong>27 marzo</strong>: Artículo</p>
+</div>
+</div>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="id1">
@@ -649,8 +716,8 @@ Párrafo con <span class="ge">*cursiva*</span>, <span class="gs">**negritas**</s
 <span class="k">1.</span> Lista
 <span class="k">2.</span> Numerada
 
-<span class="k">*</span> Lista
-<span class="k">*</span> No ordenada
+<span class="k">*</span><span class="w"> </span>Lista
+<span class="k">*</span><span class="w"> </span>No ordenada
 
 [<span class="nt">Vínculo a Google</span>](<span class="na">www.google.com</span>)
 
@@ -668,6 +735,7 @@ Párrafo con <span class="ge">*cursiva*</span>, <span class="gs">**negritas**</s
 </section>
 <section id="tutorial">
 <h2>🤓 <a class="reference external" href="https://colab.research.google.com/drive/1uoxgduAnH3e4Pz0YHLAyMnw2Cpilqqpy?usp=sharing">Tutorial</a><a class="headerlink" href="#tutorial" title="Enlazar permanentemente con este título">#</a></h2>
+<p>Ver integración entre Google Collab y Github.</p>
 </section>
 </section>
 <hr class="docutils" />
@@ -677,8 +745,8 @@ Párrafo con <span class="ge">*cursiva*</span>, <span class="gs">**negritas**</s
 <li><p>2 puntos extra</p></li>
 <li><p>Crear repositorio para el curso que contenga</p>
 <ul>
-<li><p>en el <code class="docutils literal notranslate"><span class="pre">read.me</span></code>, una breve descripción de tu repositorio para este curso (primer commit)</p></li>
-<li><p>un archivo Jupyter para la primera tarea (segundo commit)</p></li>
+<li><p>en el <code class="docutils literal notranslate"><span class="pre">read.me</span></code>, una breve descripción de tu repositorio para este curso (primer <em>commit</em>)</p></li>
+<li><p>un archivo Jupyter para la primera tarea con un ejemplo de regresión lineal o correlación hecho en puro Python (segundo <em>commit</em>)</p></li>
 </ul>
 </li>
 </ul>
@@ -687,10 +755,11 @@ Párrafo con <span class="ge">*cursiva*</span>, <span class="gs">**negritas**</s
 <section class="tex2jax_ignore mathjax_ignore" id="tarea">
 <h1>Tarea<a class="headerlink" href="#tarea" title="Enlazar permanentemente con este título">#</a></h1>
 <ul class="simple">
-<li><p>10 puntos</p></li>
+<li><p>8 puntos</p></li>
 <li><p>Definir un conjunto de datos sobre el que se trabajará durante el curso</p></li>
 <li><p>Justificar su elección</p></li>
 <li><p>Establecer objetivos a lograr en el curso</p></li>
+<li><p>Subir explicación en el repositorio en un cuaderno de Jupyter</p></li>
 </ul>
 </section>
 
@@ -706,7 +775,7 @@ Párrafo con <span class="ge">*cursiva*</span>, <span class="gs">**negritas**</s
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./presentation"
         },
         predefinedOutput: true
