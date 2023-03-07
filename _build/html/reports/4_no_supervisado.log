@@ -43,14 +43,6 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-plt.figure()
-plt.scatter(
-    df_scaled.timestamp, 
-    df_scaled.value, 
-    s = 0.1, # tamaño de los marcadores
-    c = kmeans.labels_
-)
-plt.scatter(df_centers.x, df_centers.y, s=10, c='k')
-plt.show()
+silhouette_score(df_scaled, kmeans.labels_, metric = 'euclidean', sample_size = len(df_scaled) // 30, n_jobs = 8)
 -------------------
 

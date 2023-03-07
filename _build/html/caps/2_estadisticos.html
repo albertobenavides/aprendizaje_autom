@@ -1822,7 +1822,7 @@ Name: value, Length: 341627, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_20348\665358610.py:1: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_16040\665358610.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -2307,7 +2307,7 @@ $<span class="math notranslate nohighlight">\(Q_k = \frac{kn}{q}.\)</span>$</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_20348\3738854755.py:1: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_16040\3738854755.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
@@ -2482,7 +2482,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_20348\753487558.py:2: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_16040\753487558.py:2: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
   t = df_pm10_dropna.resample(&#39;W&#39;, on=&#39;timestamp&#39;).mean()
 </pre></div>
 </div>
@@ -2731,17 +2731,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">56</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># https://www.analyticsvidhya.com/blog/2021/06/ridgeline-plots-visualize-data-with-a-joy/</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">joypy</span> <span class="kn">import</span> <span class="n">joyplot</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;joypy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2800,12 +2789,16 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1250x510 with 4 Axes&gt;,
- array([&lt;AxesSubplot: ylabel=&#39;2017&#39;&gt;, &lt;AxesSubplot: ylabel=&#39;2018&#39;&gt;,
-        &lt;AxesSubplot: ylabel=&#39;2019&#39;&gt;], dtype=object))
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_16040\1840914690.py:1: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+  viridis = cm.get_cmap(&#39;viridis&#39;, 340) # Se genera un mapa de color de hasta 340 colores
 </pre></div>
 </div>
-<img alt="../_images/2_estadisticos_101_1.png" src="../_images/2_estadisticos_101_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 1250x510 with 4 Axes&gt;,
+ array([&lt;Axes: ylabel=&#39;2017&#39;&gt;, &lt;Axes: ylabel=&#39;2018&#39;&gt;,
+        &lt;Axes: ylabel=&#39;2019&#39;&gt;], dtype=object))
+</pre></div>
+</div>
+<img alt="../_images/2_estadisticos_101_2.png" src="../_images/2_estadisticos_101_2.png" />
 </div>
 </div>
 </section>
@@ -3022,7 +3015,7 @@ $<span class="math notranslate nohighlight">\(\rho = \frac{\sum(x - \bar{x}) (y 
       <th>476</th>
       <td>722.0</td>
       <td>NaN</td>
-      <td>0.5</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3160,11 +3153,11 @@ $<span class="math notranslate nohighlight">\(\rho = \frac{\sum(x - \bar{x}) (y 
     <tr>
       <th>PM10</th>
       <td>1.000000</td>
-      <td>0.643154</td>
+      <td>0.643152</td>
     </tr>
     <tr>
       <th>PM2_5</th>
-      <td>0.643154</td>
+      <td>0.643152</td>
       <td>1.000000</td>
     </tr>
   </tbody>
@@ -3228,7 +3221,7 @@ $<span class="math notranslate nohighlight">\(\rho = \frac{\sum(x - \bar{x}) (y 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.97118289069541
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.966276931281657
 </pre></div>
 </div>
 </div>
@@ -3240,7 +3233,7 @@ $<span class="math notranslate nohighlight">\(\rho = \frac{\sum(x - \bar{x}) (y 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9996855918833818
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9700567326028002
 </pre></div>
 </div>
 </div>
@@ -3312,7 +3305,11 @@ $<span class="math notranslate nohighlight">\(\rho = \frac{\sum(x - \bar{x}) (y 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La distribución parece normal con p = 0.5702 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>La distribución parece normal con p = 0.7905 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\mambaforge\envs\py311\Lib\site-packages\scipy\stats\_morestats.py:1816: UserWarning: p-value may not be accurate for N &gt; 5000.
+  warnings.warn(&quot;p-value may not be accurate for N &gt; 5000.&quot;)
 </pre></div>
 </div>
 </div>

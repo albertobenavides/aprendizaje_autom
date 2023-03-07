@@ -391,14 +391,6 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#media-g">
-     Media-
-     <span class="math notranslate nohighlight">
-      \(G\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#valor-f">
      Valor-
      <span class="math notranslate nohighlight">
@@ -410,6 +402,14 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#f-beta">
      <span class="math notranslate nohighlight">
       \(F_{\beta}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#media-g">
+     Media-
+     <span class="math notranslate nohighlight">
+      \(G\)
      </span>
     </a>
    </li>
@@ -489,14 +489,6 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#media-g">
-     Media-
-     <span class="math notranslate nohighlight">
-      \(G\)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#valor-f">
      Valor-
      <span class="math notranslate nohighlight">
@@ -508,6 +500,14 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#f-beta">
      <span class="math notranslate nohighlight">
       \(F_{\beta}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#media-g">
+     Media-
+     <span class="math notranslate nohighlight">
+      \(G\)
      </span>
     </a>
    </li>
@@ -597,6 +597,34 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x257f72083d0&gt;]
+</pre></div>
+</div>
+<img alt="../_images/7_metricas_desempeno_6_1.png" src="../_images/7_metricas_desempeno_6_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x257f86ee950&gt;]
+</pre></div>
+</div>
+<img alt="../_images/7_metricas_desempeno_7_1.png" src="../_images/7_metricas_desempeno_7_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">cm_display</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valor real $Y$&#39;</span><span class="p">)</span>
@@ -609,7 +637,7 @@ title="Print to PDF"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="../_images/7_metricas_desempeno_6_1.png" src="../_images/7_metricas_desempeno_6_1.png" />
+<img alt="../_images/7_metricas_desempeno_8_1.png" src="../_images/7_metricas_desempeno_8_1.png" />
 </div>
 </div>
 <p>En esta matriz, se tienen cuatro posibilidades</p>
@@ -626,11 +654,7 @@ title="Print to PDF"
 <li><p>la <strong>sensibilidad</strong> (<em>recall</em> o <em>sensitivity</em>) corresponde a la proporción de verdaderos positivos dados todos los positivos, a saber <span class="math notranslate nohighlight">\(VP / (VP + FN)\)</span>; y</p></li>
 <li><p>la <strong>especificidad</strong> (<em>specificity</em>) es la proporción de verdaderos negativos, tal que <span class="math notranslate nohighlight">\(VN / (VN + FP)\)</span>.</p></li>
 </ul>
-<p>También es posible calcular la <strong>tasa de falsos negativos</strong> (o tasa de error) como <span class="math notranslate nohighlight">\(FN / (FN + VP)\)</span>, el  <span class="math notranslate nohighlight">\(VP / (VP + FN)\)</span>.</p>
-</section>
-<section id="media-g">
-<h3>Media-<span class="math notranslate nohighlight">\(G\)</span><a class="headerlink" href="#media-g" title="Enlazar permanentemente con este título">#</a></h3>
-<p>Se llama <span class="math notranslate nohighlight">\(G\)</span>-mean en inglés y se usa cuando hay una gran desproporción entre los elementos clasificados positiva y negativamente (<span class="math notranslate nohighlight">\(80\%/20\%\)</span>, por ejemplo). Se calcula mediante <span class="math notranslate nohighlight">\(\sqrt{\text{sensibilidad} \cdot \text{precisión}}\)</span>.</p>
+<p>También es posible calcular la <strong>tasa de falsos negativos</strong> (o tasa de error) como <span class="math notranslate nohighlight">\(FN / (FN + VP)\)</span>.</p>
 </section>
 <section id="valor-f">
 <h3>Valor-<span class="math notranslate nohighlight">\(F\)</span><a class="headerlink" href="#valor-f" title="Enlazar permanentemente con este título">#</a></h3>
@@ -639,7 +663,7 @@ title="Print to PDF"
 \[
 F_1 = 2 \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\text{sensibilidad} + \text{precisión}}.
 \]</div>
-<p>El valor-<span class="math notranslate nohighlight">\(F\)</span> pertenece al intervalo de solución <span class="math notranslate nohighlight">\([0, 1]\)</span>. Cuando el valor_<span class="math notranslate nohighlight">\(F = 1\)</span>, se tiene la mejor sensibilidad y precisión, lo que quiere decir que no se equivoca en clasificar positivos, prácticamente, o también se puede interpretar como que un modelo clasifica un valor-<span class="math notranslate nohighlight">\(F\)</span> de las veces los valores positivos.</p>
+<p>El valor-<span class="math notranslate nohighlight">\(F\)</span> pertenece al intervalo de solución <span class="math notranslate nohighlight">\([0, 1]\)</span>. Cuando el valor-<span class="math notranslate nohighlight">\(F= 1\)</span>, se tiene la mejor sensibilidad y precisión, lo que quiere decir que no se equivoca en clasificar positivos, prácticamente, o también se puede interpretar como que un modelo clasifica un valor-<span class="math notranslate nohighlight">\(F\)</span> de las veces los valores positivos.</p>
 </section>
 <section id="f-beta">
 <h3><span class="math notranslate nohighlight">\(F_{\beta}\)</span><a class="headerlink" href="#f-beta" title="Enlazar permanentemente con este título">#</a></h3>
@@ -648,6 +672,10 @@ F_1 = 2 \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\text{sensibili
 \[
 F_\beta = (1 + \beta) \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\text{sensibilidad} + (\beta^2 \cdot \text{precisión})}.
 \]</div>
+</section>
+<section id="media-g">
+<h3>Media-<span class="math notranslate nohighlight">\(G\)</span><a class="headerlink" href="#media-g" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Se llama <span class="math notranslate nohighlight">\(G\)</span>-mean en inglés y se usa cuando hay una gran desproporción entre los elementos clasificados positiva y negativamente (<span class="math notranslate nohighlight">\(80\%/20\%\)</span>, por ejemplo). Se calcula mediante <span class="math notranslate nohighlight">\(\sqrt{\text{sensibilidad} \cdot \text{precisión}}\)</span>.</p>
 </section>
 <section id="auc-y-roc">
 <h3>AUC y ROC<a class="headerlink" href="#auc-y-roc" title="Enlazar permanentemente con este título">#</a></h3>
@@ -688,7 +716,7 @@ F_\beta = (1 + \beta) \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7_metricas_desempeno_16_0.png" src="../_images/7_metricas_desempeno_16_0.png" />
+<img alt="../_images/7_metricas_desempeno_18_0.png" src="../_images/7_metricas_desempeno_18_0.png" />
 </div>
 </div>
 <p>Los valores arriba y a la izquierda de la línea punteada son los valores con mejor sensibilidad (tasa de verdaderos positivos) y menor tasa de falsos positivos. Los valores sobre la línea punteada representan la misma cantidad de verdaderos positivos frente a falsos positivos. Si hubiera valores por debajo de esa línea, serían predicciones peores que el azar.</p>
@@ -703,6 +731,7 @@ F_\beta = (1 + \beta) \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\
 \[
 \text{MSE} = \frac{\sum_i (Y - \hat{Y})^2}{N}.
 \]</div>
+<p>Se relaciona con la varianza. Valores menores son mejores.</p>
 </section>
 <section id="rmse">
 <h3>RMSE<a class="headerlink" href="#rmse" title="Enlazar permanentemente con este título">#</a></h3>
@@ -711,10 +740,11 @@ F_\beta = (1 + \beta) \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\
 \[
 \text{RMSE} = \sqrt{\frac{\sum_{i} (Y - \hat{Y})^2}{N}}.
 \]</div>
+<p>Se relaciona con la desviación estándar. Valores menores son mejores.</p>
 </section>
 <section id="r-2">
 <h3><span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#r-2" title="Enlazar permanentemente con este título">#</a></h3>
-<p>Mide qué tan bueno es un modelo con base en la predicción a partir de la media.</p>
+<p>Mide qué tan bueno es un modelo con base en la predicción a partir de la media. En otras palabras, mide la cantidad de varianza que explica un modelo con respecto a la varianza total del problema. Sus valores van entre <span class="math notranslate nohighlight">\(0\)</span> y <span class="math notranslate nohighlight">\(1\)</span>. Un modelo con <span class="math notranslate nohighlight">\(R^2 = 1\)</span> quiere decir que explica por completo las variaciones respecto a la media, o sea que está ajustado.</p>
 <div class="math notranslate nohighlight">
 \[
 R^2 = 1 - \frac{\text{MSE}}{\sum_i (\bar{Y} - \hat{Y})^2}.
@@ -725,16 +755,18 @@ R^2 = 1 - \frac{\text{MSE}}{\sum_i (\bar{Y} - \hat{Y})^2}.
 <p>Error absoluto medio (<em>Mean Absolute Error</em>) se calcula como</p>
 <div class="math notranslate nohighlight">
 \[
-\text{MSE} = \frac{\sum_i |Y - \hat{Y}|}{N}.
+\text{MAE} = \frac{\sum_i |Y - \hat{Y}|}{N}.
 \]</div>
+<p>Se expresa en las unidades de medida. Valores menores son mejores.</p>
 </section>
 <section id="mape">
 <h3>MAPE<a class="headerlink" href="#mape" title="Enlazar permanentemente con este título">#</a></h3>
 <p>Error absoluto medio (<em>Mean Absolute Error</em>) se calcula como</p>
 <div class="math notranslate nohighlight">
 \[
-\text{MSE} = \frac{100}{N} \cdot\frac{\sum_i |Y - \hat{Y}|}{Y}.
+\text{MAPE} = \frac{100}{N} \cdot\frac{\sum_i |Y - \hat{Y}|}{Y}.
 \]</div>
+<p>Se expresa normalizado entre <span class="math notranslate nohighlight">\(0\)</span> y <span class="math notranslate nohighlight">\(1\)</span>. Valores menores son mejores.</p>
 </section>
 </section>
 <section id="tarea-10-puntos">

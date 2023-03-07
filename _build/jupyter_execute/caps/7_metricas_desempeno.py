@@ -33,6 +33,20 @@ cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix = confusion_matrix,
 # In[3]:
 
 
+plt.figure(figsize=(20, 2))
+plt.plot(actual, '.')
+
+
+# In[4]:
+
+
+plt.figure(figsize=(20, 2))
+plt.plot(predicted, '.')
+
+
+# In[5]:
+
+
 plt.figure()
 cm_display.plot()
 plt.ylabel('Valor real $Y$')
@@ -52,11 +66,7 @@ plt.show()
 # - la **sensibilidad** (_recall_ o _sensitivity_) corresponde a la proporción de verdaderos positivos dados todos los positivos, a saber $VP / (VP + FN)$; y
 # - la **especificidad** (_specificity_) es la proporción de verdaderos negativos, tal que $VN / (VN + FP)$.
 # 
-# También es posible calcular la **tasa de falsos negativos** (o tasa de error) como $FN / (FN + VP)$, el  $VP / (VP + FN)$.
-
-# ### Media-$G$
-# 
-# Se llama $G$-mean en inglés y se usa cuando hay una gran desproporción entre los elementos clasificados positiva y negativamente ($80\%/20\%$, por ejemplo). Se calcula mediante $\sqrt{\text{sensibilidad} \cdot \text{precisión}}$.
+# También es posible calcular la **tasa de falsos negativos** (o tasa de error) como $FN / (FN + VP)$.
 
 # ### Valor-$F$
 
@@ -66,7 +76,7 @@ plt.show()
 # F_1 = 2 \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\text{sensibilidad} + \text{precisión}}.
 # $$
 # 
-# El valor-$F$ pertenece al intervalo de solución $[0, 1]$. Cuando el valor_$F = 1$, se tiene la mejor sensibilidad y precisión, lo que quiere decir que no se equivoca en clasificar positivos, prácticamente, o también se puede interpretar como que un modelo clasifica un valor-$F$ de las veces los valores positivos.
+# El valor-$F$ pertenece al intervalo de solución $[0, 1]$. Cuando el valor-$F= 1$, se tiene la mejor sensibilidad y precisión, lo que quiere decir que no se equivoca en clasificar positivos, prácticamente, o también se puede interpretar como que un modelo clasifica un valor-$F$ de las veces los valores positivos.
 
 # ### $F_{\beta}$
 
@@ -76,11 +86,15 @@ plt.show()
 # F_\beta = (1 + \beta) \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\text{sensibilidad} + (\beta^2 \cdot \text{precisión})}.
 # $$
 
+# ### Media-$G$
+# 
+# Se llama $G$-mean en inglés y se usa cuando hay una gran desproporción entre los elementos clasificados positiva y negativamente ($80\%/20\%$, por ejemplo). Se calcula mediante $\sqrt{\text{sensibilidad} \cdot \text{precisión}}$.
+
 # ### AUC y ROC
 
 # El área bajo la curva (_Area Under the Curve_) y la característica operativa del receptor 😕 (_Receiver Operating Characteristic_) representan gráficamente la capacidad de un modelo de clasificar los verdaderos positivos, dada la gráfica
 
-# In[4]:
+# In[6]:
 
 
 # https://www.themachinelearners.com/curva-roc-vs-prec-recall/
@@ -126,6 +140,8 @@ plt.show()
 # $$
 # \text{MSE} = \frac{\sum_i (Y - \hat{Y})^2}{N}.
 # $$
+# 
+# Se relaciona con la varianza. Valores menores son mejores.
 
 # ### RMSE
 # 
@@ -134,10 +150,12 @@ plt.show()
 # $$
 # \text{RMSE} = \sqrt{\frac{\sum_{i} (Y - \hat{Y})^2}{N}}.
 # $$
+# 
+# Se relaciona con la desviación estándar. Valores menores son mejores.
 
 # ### $R^2$
 # 
-# Mide qué tan bueno es un modelo con base en la predicción a partir de la media.
+# Mide qué tan bueno es un modelo con base en la predicción a partir de la media. En otras palabras, mide la cantidad de varianza que explica un modelo con respecto a la varianza total del problema. Sus valores van entre $0$ y $1$. Un modelo con $R^2 = 1$ quiere decir que explica por completo las variaciones respecto a la media, o sea que está ajustado.
 # 
 # $$
 # R^2 = 1 - \frac{\text{MSE}}{\sum_i (\bar{Y} - \hat{Y})^2}.
@@ -148,16 +166,20 @@ plt.show()
 # Error absoluto medio (_Mean Absolute Error_) se calcula como
 # 
 # $$
-# \text{MSE} = \frac{\sum_i |Y - \hat{Y}|}{N}.
+# \text{MAE} = \frac{\sum_i |Y - \hat{Y}|}{N}.
 # $$
+# 
+# Se expresa en las unidades de medida. Valores menores son mejores.
 
 # ### MAPE
 # 
 # Error absoluto medio (_Mean Absolute Error_) se calcula como
 # 
 # $$
-# \text{MSE} = \frac{100}{N} \cdot\frac{\sum_i |Y - \hat{Y}|}{Y}.
+# \text{MAPE} = \frac{100}{N} \cdot\frac{\sum_i |Y - \hat{Y}|}{Y}.
 # $$
+# 
+# Se expresa normalizado entre $0$ y $1$. Valores menores son mejores.
 
 # ## Tarea (10 puntos)
 # 

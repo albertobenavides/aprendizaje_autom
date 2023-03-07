@@ -594,7 +594,7 @@ plt.show()
 from joypy import joyplot
 
 
-# In[93]:
+# In[57]:
 
 
 plt.figure()
@@ -604,13 +604,13 @@ plt.show()
 
 # Para series de tiempo, las vistas de calendario son geniales.
 
-# In[94]:
+# In[58]:
 
 
 import calplot
 
 
-# In[95]:
+# In[59]:
 
 
 from matplotlib import cm
@@ -618,7 +618,7 @@ from matplotlib.colors import ListedColormap, LinearSegmentedColormap
 import numpy as np
 
 
-# In[96]:
+# In[60]:
 
 
 viridis = cm.get_cmap('viridis', 340) # Se genera un mapa de color de hasta 340 colores
@@ -647,20 +647,20 @@ calplot.calplot(df_pm10_dropna.set_index('timestamp').value, cmap = newcmp,
 # La correlación $\rho$ mide la relación lineal entre dos variables $x, y$ normalizadas por sus desviaciones estándar $s_x, s_y$. Se calcula mediante
 # $$\rho = \frac{\sum(x - \bar{x}) (y - \bar{y})}{s_x s_y}.$$
 
-# In[97]:
+# In[61]:
 
 
 df_sel.columns
 
 
-# In[98]:
+# In[62]:
 
 
 df_by_cols = df_sel.pivot_table('value', ['timestamp', 'lat', 'lon', 'h'], 'variable')
 df_by_cols
 
 
-# In[99]:
+# In[63]:
 
 
 corr_ = df_by_cols[['PM10', 'PM2_5']].corr()
@@ -669,7 +669,7 @@ corr_
 
 # Para este tipo de representaciones, un mapa de calor funciona bastante bien.
 
-# In[103]:
+# In[64]:
 
 
 plt.figure()
@@ -681,7 +681,7 @@ plt.colorbar()
 plt.show()
 
 
-# In[105]:
+# In[65]:
 
 
 corr_ = df_by_cols.corr()
@@ -699,7 +699,7 @@ plt.show()
 # 
 # Los datos pueden seguir una distribución gaussiana o normal. A este tipo de datos se les llama datos paramétricos. Cuando no siguen esta distribución, se consideran no paramétricos.
 
-# In[106]:
+# In[66]:
 
 
 # Generar datos aleatorios
@@ -709,13 +709,13 @@ n = 1000
 r_norm = np.random.normal(mu, sigma, 10000)
 
 
-# In[107]:
+# In[67]:
 
 
 statistics.mean(r_norm)
 
 
-# In[108]:
+# In[68]:
 
 
 statistics.stdev(r_norm)
@@ -723,14 +723,14 @@ statistics.stdev(r_norm)
 
 # Se mantienen relativamente constantes los valores de media y desviación estándar. Visualmente se puede comprobar con histogramas.
 
-# In[109]:
+# In[69]:
 
 
 # Nos ayudamos de la librería scipy para generar una función de distribución de probabilidad o pdf
 from scipy.stats import norm
 
 
-# In[113]:
+# In[70]:
 
 
 plt.figure()
@@ -743,13 +743,13 @@ plt.show()
 
 # También los diagramas de cuantil-cuantil son útiles para intuir la normalidad de los datos. Mientras la relación de los cuantiles teóricos y los de la muestra se mantenga sobre la regresión lineal, se considera que los datos son normales.
 
-# In[114]:
+# In[71]:
 
 
 from statsmodels.graphics.gofplots import qqplot
 
 
-# In[115]:
+# In[72]:
 
 
 plt.figure()
@@ -759,13 +759,13 @@ plt.show()
 
 # Formalmente, esto se realiza con pruebas de normalidad estadísticas. El más usado es el de Shapiro-Wilk, con la salvedad de que se usa en muestras de pocos datos (mil observaciones o menos). La hipótesis nula $H_0$ de esta prueba supone que una muestra $x$ proviene de una distribución de probabilidad normalmente distribuida. La prueba se rechaza si el estadístico (con valores entre 0 y 1) es demasiado pequeño (o si el valor $p$ es mejor que determinado valor $\alpha$ generalmente $\alpha = 0.05$).
 
-# In[116]:
+# In[73]:
 
 
 from scipy.stats import shapiro
 
 
-# In[118]:
+# In[74]:
 
 
 stat, p = shapiro(r_norm)

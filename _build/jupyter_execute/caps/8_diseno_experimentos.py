@@ -34,14 +34,19 @@ df
 # In[3]:
 
 
+niveles1 = [0, 1, 2]
+niveles2 = [0, 45, 90, 135, 180, 225, 270, 315, 360]
+
 n1 = [] # Niveles para x1
 n2 = [] # Niveles para x2
 t = [] # Tratamientos
-for i in [0, 1, 2]:
-    for j in [0, 45, 90, 135, 180, 225, 270, 315, 360]:
-        n1.append(i)
-        n2.append(j)
-        t.append(i + j)
+k = 0
+for i in range(len(niveles1)):
+    for j in range(len(niveles2)):
+        n1.append(niveles1[i])
+        n2.append(niveles2[j])
+        t.append(k)
+        k += 1
 
 df_tratamientos = pd.DataFrame({
     'n1' : n1,
