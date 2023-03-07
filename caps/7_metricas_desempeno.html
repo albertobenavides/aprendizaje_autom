@@ -1,0 +1,816 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Métricas de desempeño &#8212; Aprendizaje automático</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Diseño de experimentos" href="8_diseno_experimentos.html" />
+    <link rel="prev" title="Clasificación" href="6_clasificacion.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="es">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Aprendizaje automático</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Aprendizaje automático
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0_preliminares.html">
+   Preliminares
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_datos.html">
+   Datos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_estadisticos.html">
+   Estadística descriptiva básica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_sel_carac.html">
+   Selección de características
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_no_supervisado.html">
+   Aprendizaje no supervisado
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_supervisado.html">
+   Aprendizaje supervisado
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_clasificacion.html">
+   Clasificación
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Métricas de desempeño
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_diseno_experimentos.html">
+   Diseño de experimentos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="9_resultados.html">
+   Resultados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_articulo.html">
+   Artículo científico
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/albertobenavides/aprendizaje_autom/master?urlpath=tree/docs/caps/7_metricas_desempeno.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/albertobenavides/aprendizaje_autom"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/albertobenavides/aprendizaje_autom/issues/new?title=Issue%20on%20page%20%2Fcaps/7_metricas_desempeno.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/caps/7_metricas_desempeno.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clasificacion">
+   Clasificación
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matriz-de-confusion">
+     Matriz de confusión
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#media-g">
+     Media-
+     <span class="math notranslate nohighlight">
+      \(G\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valor-f">
+     Valor-
+     <span class="math notranslate nohighlight">
+      \(F\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-beta">
+     <span class="math notranslate nohighlight">
+      \(F_{\beta}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#auc-y-roc">
+     AUC y ROC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regresion">
+   Regresión
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mse">
+     MSE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rmse">
+     RMSE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#r-2">
+     <span class="math notranslate nohighlight">
+      \(R^2\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mae">
+     MAE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mape">
+     MAPE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-10-puntos">
+   Tarea (10 puntos)
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Métricas de desempeño</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clasificacion">
+   Clasificación
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matriz-de-confusion">
+     Matriz de confusión
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#media-g">
+     Media-
+     <span class="math notranslate nohighlight">
+      \(G\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valor-f">
+     Valor-
+     <span class="math notranslate nohighlight">
+      \(F\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#f-beta">
+     <span class="math notranslate nohighlight">
+      \(F_{\beta}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#auc-y-roc">
+     AUC y ROC
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regresion">
+   Regresión
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mse">
+     MSE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rmse">
+     RMSE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#r-2">
+     <span class="math notranslate nohighlight">
+      \(R^2\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mae">
+     MAE
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mape">
+     MAPE
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-10-puntos">
+   Tarea (10 puntos)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="metricas-de-desempeno">
+<h1>Métricas de desempeño<a class="headerlink" href="#metricas-de-desempeno" title="Enlazar permanentemente con este título">#</a></h1>
+<section id="clasificacion">
+<h2>Clasificación<a class="headerlink" href="#clasificacion" title="Enlazar permanentemente con este título">#</a></h2>
+<section id="matriz-de-confusion">
+<h3>Matriz de confusión<a class="headerlink" href="#matriz-de-confusion" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Una matriz de confusión mide la cantidad de clasificaciones correctas e incorrectas en un modelo. Estas predicciones aparecen en forma de matriz, tal que</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">actual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)</span>
+<span class="n">cm_display</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">display_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Falso&#39;</span><span class="p">,</span> <span class="s1">&#39;Verdadero&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">cm_display</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Valor real $Y$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Valor predecido $\hat</span><span class="si">{Y}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../_images/7_metricas_desempeno_6_1.png" src="../_images/7_metricas_desempeno_6_1.png" />
+</div>
+</div>
+<p>En esta matriz, se tienen cuatro posibilidades</p>
+<ul class="simple">
+<li><p>un <em>verdadero positivo</em> (VP) son los resultados correctamente clasificado como positivo;</p></li>
+<li><p>un <em>verdadero negativo</em> (VN) se trata de los resultados correctamente clasificado como negativo;</p></li>
+<li><p>un <em>falso positivo</em> (FP) son los errores de clasificación de resultado positivo, conocido como Error tipo I; y</p></li>
+<li><p>un <em>falso negativo</em> (FN) representa los errores de clasificación de resultado negativo, o Error tipo II.</p></li>
+</ul>
+<p>A partir de estos valores, se pueden calcular</p>
+<ul class="simple">
+<li><p>la <strong>exactitud</strong> (<em>accuracy</em>) como la proporción de clasificaciones positivas que fueron correctas, es decir <span class="math notranslate nohighlight">\((VP + VN) / (VP + VN + FP + FN)\)</span>;</p></li>
+<li><p>la <strong>precisión</strong> o <strong>valor predictivo positivo</strong> (<em>precision</em> o <em>positive predictive value</em>) en tanto la proporción de clasificaciones verdaderas positivas entre las clasificaciones verdaderas, o sea <span class="math notranslate nohighlight">\(VP / (VP + FP)\)</span>;</p></li>
+<li><p>la <strong>sensibilidad</strong> (<em>recall</em> o <em>sensitivity</em>) corresponde a la proporción de verdaderos positivos dados todos los positivos, a saber <span class="math notranslate nohighlight">\(VP / (VP + FN)\)</span>; y</p></li>
+<li><p>la <strong>especificidad</strong> (<em>specificity</em>) es la proporción de verdaderos negativos, tal que <span class="math notranslate nohighlight">\(VN / (VN + FP)\)</span>.</p></li>
+</ul>
+<p>También es posible calcular la <strong>tasa de falsos negativos</strong> (o tasa de error) como <span class="math notranslate nohighlight">\(FN / (FN + VP)\)</span>, el  <span class="math notranslate nohighlight">\(VP / (VP + FN)\)</span>.</p>
+</section>
+<section id="media-g">
+<h3>Media-<span class="math notranslate nohighlight">\(G\)</span><a class="headerlink" href="#media-g" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Se llama <span class="math notranslate nohighlight">\(G\)</span>-mean en inglés y se usa cuando hay una gran desproporción entre los elementos clasificados positiva y negativamente (<span class="math notranslate nohighlight">\(80\%/20\%\)</span>, por ejemplo). Se calcula mediante <span class="math notranslate nohighlight">\(\sqrt{\text{sensibilidad} \cdot \text{precisión}}\)</span>.</p>
+</section>
+<section id="valor-f">
+<h3>Valor-<span class="math notranslate nohighlight">\(F\)</span><a class="headerlink" href="#valor-f" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Se trata de obtener la mejor precisión y sensibilidad, mediante la fórmula</p>
+<div class="math notranslate nohighlight">
+\[
+F_1 = 2 \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\text{sensibilidad} + \text{precisión}}.
+\]</div>
+<p>El valor-<span class="math notranslate nohighlight">\(F\)</span> pertenece al intervalo de solución <span class="math notranslate nohighlight">\([0, 1]\)</span>. Cuando el valor_<span class="math notranslate nohighlight">\(F = 1\)</span>, se tiene la mejor sensibilidad y precisión, lo que quiere decir que no se equivoca en clasificar positivos, prácticamente, o también se puede interpretar como que un modelo clasifica un valor-<span class="math notranslate nohighlight">\(F\)</span> de las veces los valores positivos.</p>
+</section>
+<section id="f-beta">
+<h3><span class="math notranslate nohighlight">\(F_{\beta}\)</span><a class="headerlink" href="#f-beta" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Para dar una proporción distinta entre los valores de sensibilidad y precisión en <span class="math notranslate nohighlight">\(F_1\)</span>, se puede asignar un coeficiente <span class="math notranslate nohighlight">\(\beta\)</span> a la precisión, de modo que</p>
+<div class="math notranslate nohighlight">
+\[
+F_\beta = (1 + \beta) \cdot \frac{\text{sensibilidad} \cdot \text{precisión}}{\text{sensibilidad} + (\beta^2 \cdot \text{precisión})}.
+\]</div>
+</section>
+<section id="auc-y-roc">
+<h3>AUC y ROC<a class="headerlink" href="#auc-y-roc" title="Enlazar permanentemente con este título">#</a></h3>
+<p>El área bajo la curva (<em>Area Under the Curve</em>) y la característica operativa del receptor 😕 (<em>Receiver Operating Characteristic</em>) representan gráficamente la capacidad de un modelo de clasificar los verdaderos positivos, dada la gráfica</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://www.themachinelearners.com/curva-roc-vs-prec-recall/</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">trainX</span><span class="p">,</span> <span class="n">testX</span><span class="p">,</span> <span class="n">trainy</span><span class="p">,</span> <span class="n">testy</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainy</span><span class="p">)</span>
+
+<span class="c1"># Predecimos las probabilidades</span>
+<span class="n">lr_probs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">testX</span><span class="p">)</span>
+
+<span class="c1">#Nos quedamos con las probabilidades de la clase positiva (la probabilidad de 1)</span>
+<span class="n">lr_probs</span> <span class="o">=</span> <span class="n">lr_probs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">ns_probs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">testy</span><span class="p">))]</span>
+
+<span class="n">ns_fpr</span><span class="p">,</span> <span class="n">ns_tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">testy</span><span class="p">,</span> <span class="n">ns_probs</span><span class="p">)</span>
+<span class="n">lr_fpr</span><span class="p">,</span> <span class="n">lr_tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">testy</span><span class="p">,</span> <span class="n">lr_probs</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ns_fpr</span><span class="p">,</span> <span class="n">ns_tpr</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sin entrenar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lr_fpr</span><span class="p">,</span> <span class="n">lr_tpr</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Regresión Logística&#39;</span><span class="p">)</span>
+
+<span class="c1"># Etiquetas de los ejes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tasa de Falsos Positivos&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Tasa de Verdaderos Positivos&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7_metricas_desempeno_16_0.png" src="../_images/7_metricas_desempeno_16_0.png" />
+</div>
+</div>
+<p>Los valores arriba y a la izquierda de la línea punteada son los valores con mejor sensibilidad (tasa de verdaderos positivos) y menor tasa de falsos positivos. Los valores sobre la línea punteada representan la misma cantidad de verdaderos positivos frente a falsos positivos. Si hubiera valores por debajo de esa línea, serían predicciones peores que el azar.</p>
+</section>
+</section>
+<section id="regresion">
+<h2>Regresión<a class="headerlink" href="#regresion" title="Enlazar permanentemente con este título">#</a></h2>
+<section id="mse">
+<h3>MSE<a class="headerlink" href="#mse" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Error cuadrático medio (<em>Mean Squared Error</em>) se calcula como</p>
+<div class="math notranslate nohighlight">
+\[
+\text{MSE} = \frac{\sum_i (Y - \hat{Y})^2}{N}.
+\]</div>
+</section>
+<section id="rmse">
+<h3>RMSE<a class="headerlink" href="#rmse" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Error de raíz cuadrada media (<em>Root Mean Squared Error</em>), dado por</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RMSE} = \sqrt{\frac{\sum_{i} (Y - \hat{Y})^2}{N}}.
+\]</div>
+</section>
+<section id="r-2">
+<h3><span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#r-2" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Mide qué tan bueno es un modelo con base en la predicción a partir de la media.</p>
+<div class="math notranslate nohighlight">
+\[
+R^2 = 1 - \frac{\text{MSE}}{\sum_i (\bar{Y} - \hat{Y})^2}.
+\]</div>
+</section>
+<section id="mae">
+<h3>MAE<a class="headerlink" href="#mae" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Error absoluto medio (<em>Mean Absolute Error</em>) se calcula como</p>
+<div class="math notranslate nohighlight">
+\[
+\text{MSE} = \frac{\sum_i |Y - \hat{Y}|}{N}.
+\]</div>
+</section>
+<section id="mape">
+<h3>MAPE<a class="headerlink" href="#mape" title="Enlazar permanentemente con este título">#</a></h3>
+<p>Error absoluto medio (<em>Mean Absolute Error</em>) se calcula como</p>
+<div class="math notranslate nohighlight">
+\[
+\text{MSE} = \frac{100}{N} \cdot\frac{\sum_i |Y - \hat{Y}|}{Y}.
+\]</div>
+</section>
+</section>
+<section id="tarea-10-puntos">
+<h2>Tarea (10 puntos)<a class="headerlink" href="#tarea-10-puntos" title="Enlazar permanentemente con este título">#</a></h2>
+<ul class="simple">
+<li><p>Revisa en la literatura las métricas de desempeño que se utilizan en tu problema.</p></li>
+<li><p>Elige al menos una métrica para aplicar a tus modelos.</p></li>
+<li><p>Reporta estos hallazgos en el marco teórico de tu artículo.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./caps"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="6_clasificacion.html" title="anterior página">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">anterior</p>
+            <p class="prev-next-title">Clasificación</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="8_diseno_experimentos.html" title="siguiente página">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Diseño de experimentos</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Alberto Benavides<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

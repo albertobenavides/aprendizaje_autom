@@ -1,0 +1,885 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Diseño de experimentos &#8212; Aprendizaje automático</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Resultados" href="9_resultados.html" />
+    <link rel="prev" title="Métricas de desempeño" href="7_metricas_desempeno.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="es">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Aprendizaje automático</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Aprendizaje automático
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0_preliminares.html">
+   Preliminares
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_datos.html">
+   Datos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="2_estadisticos.html">
+   Estadística descriptiva básica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_sel_carac.html">
+   Selección de características
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="4_no_supervisado.html">
+   Aprendizaje no supervisado
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="5_supervisado.html">
+   Aprendizaje supervisado
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="6_clasificacion.html">
+   Clasificación
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_metricas_desempeno.html">
+   Métricas de desempeño
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Diseño de experimentos
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="9_resultados.html">
+   Resultados
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10_articulo.html">
+   Artículo científico
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/albertobenavides/aprendizaje_autom/master?urlpath=tree/docs/caps/8_diseno_experimentos.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/albertobenavides/aprendizaje_autom"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/albertobenavides/aprendizaje_autom/issues/new?title=Issue%20on%20page%20%2Fcaps/8_diseno_experimentos.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/caps/8_diseno_experimentos.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-10-puntos">
+   Tarea (10 puntos)
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Diseño de experimentos</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tarea-10-puntos">
+   Tarea (10 puntos)
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="diseno-de-experimentos">
+<h1>Diseño de experimentos<a class="headerlink" href="#diseno-de-experimentos" title="Enlazar permanentemente con este título">#</a></h1>
+<p>El diseño de experimentos consiste en idear una manera de generar nuevos conocimientos sobre relaciones causa-efecto entre variables de un problema científico.</p>
+<p>En este contexto, un <strong>experimento</strong> representa un cambio en las condiciones del problema de estudio. En el problema hay <strong>variables independientes</strong> y <strong>variables dependientes</strong>. Para el diseño de experimentos, también se consideran <strong>niveles</strong> y <strong>tratamientos</strong> de estas variables. Los niveles son los valores que toman las variables independientes, mientras que los tratamientos son los valores únicos que se asignan a cada combinación de niveles en el problema.</p>
+<p>Por ejemplo, supongamos que se tiene un conjunto de datos como el que sigue.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;x1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
+    <span class="s1">&#39;x2&#39;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">x1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">x2</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x1</th>
+      <th>x2</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>208</td>
+      <td>7.703541</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>156</td>
+      <td>0.442972</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>137</td>
+      <td>0.442972</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>117</td>
+      <td>0.442972</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>326</td>
+      <td>6.132745</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>349</td>
+      <td>12.625370</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>337</td>
+      <td>12.206491</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>20</td>
+      <td>0.792038</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>10</td>
+      <td>0.442972</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>204</td>
+      <td>4.003443</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2</td>
+      <td>6</td>
+      <td>0.652411</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2</td>
+      <td>212</td>
+      <td>7.843168</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0</td>
+      <td>73</td>
+      <td>0.442972</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1</td>
+      <td>6</td>
+      <td>0.547692</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2</td>
+      <td>120</td>
+      <td>4.631762</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2</td>
+      <td>261</td>
+      <td>9.553590</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2</td>
+      <td>315</td>
+      <td>11.438546</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2</td>
+      <td>185</td>
+      <td>6.900690</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0</td>
+      <td>216</td>
+      <td>0.442972</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0</td>
+      <td>313</td>
+      <td>0.442972</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Donde <span class="math notranslate nohighlight">\(x_1\)</span> corresponde con valores aleatorios en el conjunto <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span>, mientras que los valoes que puede tomar <span class="math notranslate nohighlight">\(x_2\)</span> se encuentran en el rango <span class="math notranslate nohighlight">\([0, 360] \in \mathbb{N}\)</span>. Para este caso, los niveles para <span class="math notranslate nohighlight">\(x_1\)</span> podrían ser los valores <span class="math notranslate nohighlight">\(\{0, 1, 2\}\)</span>. Sin embargo, para <span class="math notranslate nohighlight">\(x_2\)</span>, se pueden especificar niveles en rangos que vayan en incrementos de cada <span class="math notranslate nohighlight">\(10, 20, 45\ldots\)</span> La siguiente tabla muestra un ejemplo de estos niveles asociados a sus tratamientos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n1</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Niveles para x1</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Niveles para x2</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Tratamientos</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">315</span><span class="p">,</span> <span class="mi">360</span><span class="p">]:</span>
+        <span class="n">n1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">n2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span>
+
+<span class="n">df_tratamientos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;n1&#39;</span> <span class="p">:</span> <span class="n">n1</span><span class="p">,</span>
+    <span class="s1">&#39;n2&#39;</span> <span class="p">:</span> <span class="n">n2</span><span class="p">,</span>
+    <span class="s1">&#39;t&#39;</span> <span class="p">:</span> <span class="n">t</span>
+<span class="p">})</span>
+
+<span class="n">df_tratamientos</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>n1</th>
+      <th>n2</th>
+      <th>t</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>45</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>135</td>
+      <td>135</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>180</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>225</td>
+      <td>225</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>270</td>
+      <td>270</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>315</td>
+      <td>315</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>360</td>
+      <td>360</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+      <td>45</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1</td>
+      <td>90</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>1</td>
+      <td>135</td>
+      <td>136</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>1</td>
+      <td>180</td>
+      <td>181</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>1</td>
+      <td>225</td>
+      <td>226</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1</td>
+      <td>270</td>
+      <td>271</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>1</td>
+      <td>315</td>
+      <td>316</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>360</td>
+      <td>361</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2</td>
+      <td>45</td>
+      <td>47</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2</td>
+      <td>90</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2</td>
+      <td>135</td>
+      <td>137</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2</td>
+      <td>180</td>
+      <td>182</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2</td>
+      <td>225</td>
+      <td>227</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2</td>
+      <td>270</td>
+      <td>272</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2</td>
+      <td>315</td>
+      <td>317</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2</td>
+      <td>360</td>
+      <td>362</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>La cantidad de tratamientos es la combinación de elementos de <span class="math notranslate nohighlight">\(n_1\)</span> y <span class="math notranslate nohighlight">\(n_2\)</span>, es decir <span class="math notranslate nohighlight">\(2 \times 9 = 27\)</span>. Estas combinaciones de niveles, dados por los tratamientos, pueden procesarse mediante algún modelo y estudiar los resultados obtenidos de manera estadística.</p>
+<p>En el ámbito del aprendizaje automático, es común realizar un diseño de experimentos que incluya métricas de evaluación como variable de estudio.</p>
+<section id="tarea-10-puntos">
+<h2>Tarea (10 puntos)<a class="headerlink" href="#tarea-10-puntos" title="Enlazar permanentemente con este título">#</a></h2>
+<ul class="simple">
+<li><p>Realizar un diseño de experimentos para tu problema de estudio en la que indiques los niveles y tratamientos de interés.</p></li>
+<li><p>Reporta en la metodología de tu artículo el diseño de experimentos que realizaste.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./caps"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="7_metricas_desempeno.html" title="anterior página">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">anterior</p>
+            <p class="prev-next-title">Métricas de desempeño</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="9_resultados.html" title="siguiente página">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Resultados</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Alberto Benavides<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
