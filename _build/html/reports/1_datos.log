@@ -25,7 +25,8 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-df_pollutants_def.to_markdown(index = False)
+df_pollutants_2019 = pd.read_excel("../data/2019_pollutants.xlsx")
+df_pollutants_2019
 ------------------
 
 [1;31m---------------------------------------------------------------------------[0m
@@ -45,20 +46,59 @@ File [1;32m<frozen importlib._bootstrap>:1178[0m, in [0;36m_find_and_load[1;
 
 File [1;32m<frozen importlib._bootstrap>:1142[0m, in [0;36m_find_and_load_unlocked[1;34m(name, import_)[0m
 
-[1;31mModuleNotFoundError[0m: No module named 'tabulate'
+[1;31mModuleNotFoundError[0m: No module named 'openpyxl'
 
 During handling of the above exception, another exception occurred:
 
 [1;31mImportError[0m                               Traceback (most recent call last)
-Cell [1;32mIn[6], line 1[0m
-[1;32m----> 1[0m [43mdf_pollutants_def[49m[38;5;241;43m.[39;49m[43mto_markdown[49m[43m([49m[43mindex[49m[43m [49m[38;5;241;43m=[39;49m[43m [49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+Cell [1;32mIn[19], line 1[0m
+[1;32m----> 1[0m df_pollutants_2019 [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_excel[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43m../data/2019_pollutants.xlsx[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[0;32m      2[0m df_pollutants_2019
 
-File [1;32m~\mambaforge\envs\py311\Lib\site-packages\pandas\core\frame.py:2842[0m, in [0;36mDataFrame.to_markdown[1;34m(self, buf, mode, index, storage_options, **kwargs)[0m
-[0;32m   2840[0m kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mtablefmt[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpipe[39m[38;5;124m"[39m)
-[0;32m   2841[0m kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mshowindex[39m[38;5;124m"[39m, index)
-[1;32m-> 2842[0m tabulate [38;5;241m=[39m [43mimport_optional_dependency[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mtabulate[39;49m[38;5;124;43m"[39;49m[43m)[49m
-[0;32m   2843[0m result [38;5;241m=[39m tabulate[38;5;241m.[39mtabulate([38;5;28mself[39m, [38;5;241m*[39m[38;5;241m*[39mkwargs)
-[0;32m   2844[0m [38;5;28;01mif[39;00m buf [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+File [1;32m~\mambaforge\envs\py311\Lib\site-packages\pandas\util\_decorators.py:211[0m, in [0;36mdeprecate_kwarg.<locals>._deprecate_kwarg.<locals>.wrapper[1;34m(*args, **kwargs)[0m
+[0;32m    209[0m     [38;5;28;01melse[39;00m:
+[0;32m    210[0m         kwargs[new_arg_name] [38;5;241m=[39m new_arg_value
+[1;32m--> 211[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [1;32m~\mambaforge\envs\py311\Lib\site-packages\pandas\util\_decorators.py:331[0m, in [0;36mdeprecate_nonkeyword_arguments.<locals>.decorate.<locals>.wrapper[1;34m(*args, **kwargs)[0m
+[0;32m    325[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(args) [38;5;241m>[39m num_allow_args:
+[0;32m    326[0m     warnings[38;5;241m.[39mwarn(
+[0;32m    327[0m         msg[38;5;241m.[39mformat(arguments[38;5;241m=[39m_format_argument_list(allow_args)),
+[0;32m    328[0m         [38;5;167;01mFutureWarning[39;00m,
+[0;32m    329[0m         stacklevel[38;5;241m=[39mfind_stack_level(),
+[0;32m    330[0m     )
+[1;32m--> 331[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [1;32m~\mambaforge\envs\py311\Lib\site-packages\pandas\io\excel\_base.py:482[0m, in [0;36mread_excel[1;34m(io, sheet_name, header, names, index_col, usecols, squeeze, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, thousands, decimal, comment, skipfooter, convert_float, mangle_dupe_cols, storage_options)[0m
+[0;32m    480[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(io, ExcelFile):
+[0;32m    481[0m     should_close [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[1;32m--> 482[0m     io [38;5;241m=[39m [43mExcelFile[49m[43m([49m[43mio[49m[43m,[49m[43m [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mstorage_options[49m[43m,[49m[43m [49m[43mengine[49m[38;5;241;43m=[39;49m[43mengine[49m[43m)[49m
+[0;32m    483[0m [38;5;28;01melif[39;00m engine [38;5;129;01mand[39;00m engine [38;5;241m!=[39m io[38;5;241m.[39mengine:
+[0;32m    484[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[0;32m    485[0m         [38;5;124m"[39m[38;5;124mEngine should not be specified when passing [39m[38;5;124m"[39m
+[0;32m    486[0m         [38;5;124m"[39m[38;5;124man ExcelFile - ExcelFile already has the engine set[39m[38;5;124m"[39m
+[0;32m    487[0m     )
+
+File [1;32m~\mambaforge\envs\py311\Lib\site-packages\pandas\io\excel\_base.py:1695[0m, in [0;36mExcelFile.__init__[1;34m(self, path_or_buffer, engine, storage_options)[0m
+[0;32m   1692[0m [38;5;28mself[39m[38;5;241m.[39mengine [38;5;241m=[39m engine
+[0;32m   1693[0m [38;5;28mself[39m[38;5;241m.[39mstorage_options [38;5;241m=[39m storage_options
+[1;32m-> 1695[0m [38;5;28mself[39m[38;5;241m.[39m_reader [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_engines[49m[43m[[49m[43mengine[49m[43m][49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_io[49m[43m,[49m[43m [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[43mstorage_options[49m[43m)[49m
+
+File [1;32m~\mambaforge\envs\py311\Lib\site-packages\pandas\io\excel\_openpyxl.py:556[0m, in [0;36mOpenpyxlReader.__init__[1;34m(self, filepath_or_buffer, storage_options)[0m
+[0;32m    541[0m [38;5;129m@doc[39m(storage_options[38;5;241m=[39m_shared_docs[[38;5;124m"[39m[38;5;124mstorage_options[39m[38;5;124m"[39m])
+[0;32m    542[0m [38;5;28;01mdef[39;00m [38;5;21m__init__[39m(
+[0;32m    543[0m     [38;5;28mself[39m,
+[0;32m    544[0m     filepath_or_buffer: FilePath [38;5;241m|[39m ReadBuffer[[38;5;28mbytes[39m],
+[0;32m    545[0m     storage_options: StorageOptions [38;5;241m=[39m [38;5;28;01mNone[39;00m,
+[0;32m    546[0m ) [38;5;241m-[39m[38;5;241m>[39m [38;5;28;01mNone[39;00m:
+[0;32m    547[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[0;32m    548[0m [38;5;124;03m    Reader using openpyxl engine.[39;00m
+[0;32m    549[0m 
+[1;32m   (...)[0m
+[0;32m    554[0m [38;5;124;03m    {storage_options}[39;00m
+[0;32m    555[0m [38;5;124;03m    """[39;00m
+[1;32m--> 556[0m     [43mimport_optional_dependency[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mopenpyxl[39;49m[38;5;124;43m"[39;49m[43m)[49m
+[0;32m    557[0m     [38;5;28msuper[39m()[38;5;241m.[39m[38;5;21m__init__[39m(filepath_or_buffer, storage_options[38;5;241m=[39mstorage_options)
 
 File [1;32m~\mambaforge\envs\py311\Lib\site-packages\pandas\compat\_optional.py:144[0m, in [0;36mimport_optional_dependency[1;34m(name, extra, errors, min_version)[0m
 [0;32m    142[0m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
@@ -67,6 +107,6 @@ File [1;32m~\mambaforge\envs\py311\Lib\site-packages\pandas\compat\_optional.py
 [0;32m    145[0m     [38;5;28;01melse[39;00m:
 [0;32m    146[0m         [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
 
-[1;31mImportError[0m: Missing optional dependency 'tabulate'.  Use pip or conda to install tabulate.
-ImportError: Missing optional dependency 'tabulate'.  Use pip or conda to install tabulate.
+[1;31mImportError[0m: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+ImportError: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
 

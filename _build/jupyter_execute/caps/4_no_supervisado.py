@@ -87,6 +87,7 @@ df_dropna
 gp = df_dropna.groupby(['station', 'variable']).mean()
 gp_unstacked = gp.unstack().dropna()
 gp_unstacked.columns = gp_unstacked.columns.droplevel()
+# https://github.com/executablebooks/jupyter-book/issues/1891#issuecomment-1413830585
 gp_unstacked
 
 

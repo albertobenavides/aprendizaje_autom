@@ -145,13 +145,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="7_diseno_experimentos.html">
-   Diseño de experimentos
+  <a class="reference internal" href="5_supervisado.html">
+   Aprendizaje supervisado
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="8_comparativas_desempeno.html">
-   Comparativas de desempeño
+  <a class="reference internal" href="6_clasificacion.html">
+   Clasificación
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="7_metricas_desempeno.html">
+   Métricas de desempeño
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_diseno_experimentos.html">
+   Diseño de experimentos
   </a>
  </li>
  <li class="toctree-l1">
@@ -697,46 +707,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\compat\_optional.py:141,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
-<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">141</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-
-<span class="nn">File ~\mambaforge\envs\py311\Lib\importlib\__init__.py:126,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">--&gt; </span><span class="mi">126</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1206,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1178,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
-
-<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1142,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;tabulate&#39;
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_pollutants_def</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-
-<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\core\frame.py:2842,</span> in <span class="ni">DataFrame.to_markdown</span><span class="nt">(self, buf, mode, index, storage_options, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2840</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;tablefmt&quot;</span><span class="p">,</span> <span class="s2">&quot;pipe&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2841</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;showindex&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2842</span> <span class="n">tabulate</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;tabulate&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2843</span> <span class="n">result</span> <span class="o">=</span> <span class="n">tabulate</span><span class="o">.</span><span class="n">tabulate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2844</span> <span class="k">if</span> <span class="n">buf</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\compat\_optional.py:144,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">144</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="k">return</span> <span class="kc">None</span>
-
-<span class="ne">ImportError</span>: Missing optional dependency &#39;tabulate&#39;.  Use pip or conda to install tabulate.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;| name                |   min_value |   max_value | unit                          |\n|:--------------------|------------:|------------:|:------------------------------|\n| $\\text{PM}_{10}$    |        2    |       850   | $\\mu\\text{gr}$ / $\\text{m}^3$ |\n| $\\text{PM}_{2.5}$   |        2    |       850   | $\\mu\\text{gr}$ / $\\text{m}^3$ |\n| $\\text{O}_3$        |        1    |       200   | ppb                           |\n| NO                  |        1    |       350   | ppb                           |\n| $\\text{NO}_2$       |        1    |       150   | ppb                           |\n| $\\text{NO}_X$       |        1    |       350   | ppb                           |\n| $\\text{SO}_2$       |        1    |       200   | ppb                           |\n| CO                  |        0.05 |        15   | ppm                           |\n| Temperature         |      -15    |        50   | C                             |\n| Relative humidity   |        0    |       100   | %                             |\n| Barometric pressure |      650    |       750   | mmHg                          |\n| Solar radiation     |        0    |         1.2 | Langley / h                   |\n| Rainfall            |        0    |       inf   | mm / h                        |\n| Wind velocity       |        0    |        60   | Km / h                        |\n| Wind direction      |        0    |       360   | Azimutales                    |&#39;
 </pre></div>
 </div>
 </div>
@@ -786,7 +757,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_30204\2761215774.py:1: DtypeWarning: Columns (18) have mixed types. Specify dtype option on import or set low_memory=False.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\user\AppData\Local\Temp\ipykernel_13340\2761215774.py:1: DtypeWarning: Columns (18) have mixed types. Specify dtype option on import or set low_memory=False.
   df_pollutants_all = pd.read_csv(&quot;../data/all.csv&quot;)
 </pre></div>
 </div>
@@ -2073,88 +2044,88 @@ dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>447545</th>
-      <td>2003-03-19 13:00:00</td>
+      <th>1284056</th>
+      <td>2016-08-25 08:00:00</td>
       <td>Sureste</td>
-      <td>0.27</td>
+      <td>0.74</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>52.5</td>
-      <td>66.0</td>
+      <td>5.0</td>
+      <td>65.0</td>
       <td>NaN</td>
-      <td>763.88</td>
+      <td>723.8</td>
       <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.38</td>
-      <td>25.00</td>
-      <td>16.89</td>
-      <td>308.34</td>
+      <td>81.0</td>
+      <td>7.8</td>
+      <td>0.084</td>
+      <td>23.97</td>
+      <td>3.20</td>
+      <td>30.00</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>722234</th>
-      <td>2009-05-05 17:00:00</td>
-      <td>Noroeste</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>168956</th>
-      <td>1996-11-08 23:00:00</td>
+      <th>475401</th>
+      <td>2003-11-06 16:00:00</td>
       <td>Noreste</td>
-      <td>1.10</td>
-      <td>6.00</td>
-      <td>39.50</td>
-      <td>46.00</td>
-      <td>10.5</td>
+      <td>1.75</td>
+      <td>7.6</td>
+      <td>12.9</td>
+      <td>20.4</td>
+      <td>9.0</td>
+      <td>89.0</td>
+      <td>35.0</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>68.0</td>
+      <td>23.4</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>NaN</td>
-      <td>17.35</td>
-      <td>7.16</td>
-      <td>122.94</td>
+      <td>6.10</td>
+      <td>109.00</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>75368</th>
-      <td>1994-09-21 01:00:00</td>
+      <th>1427377</th>
+      <td>2017-12-27 09:00:00</td>
+      <td>Suroeste</td>
+      <td>2.31</td>
+      <td>9.9</td>
+      <td>21.1</td>
+      <td>30.9</td>
+      <td>4.0</td>
+      <td>18.0</td>
+      <td>NaN</td>
+      <td>708.0</td>
+      <td>0.0</td>
+      <td>91.0</td>
+      <td>6.3</td>
+      <td>0.020</td>
+      <td>10.82</td>
+      <td>7.90</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>376888</th>
+      <td>2001-08-07 17:00:00</td>
       <td>Noroeste</td>
-      <td>0.45</td>
-      <td>0.25</td>
-      <td>11.25</td>
-      <td>12.25</td>
-      <td>21.0</td>
-      <td>46.0</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>2.5</td>
+      <td>-14.0</td>
+      <td>37.0</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>21.5</td>
+      <td>0.0</td>
       <td>NaN</td>
-      <td>22.30</td>
-      <td>11.75</td>
-      <td>143.82</td>
-      <td>1</td>
+      <td>28.45</td>
+      <td>16.33</td>
+      <td>92.88</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -2169,316 +2140,88 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\compat\_optional.py:141,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">141</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">File ~\mambaforge\envs\py311\Lib\importlib\__init__.py:126,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">126</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>CE-MET</th>
-      <th>Unnamed: 1</th>
-      <th>SURESTE</th>
-      <th>SURESTE.1</th>
-      <th>SURESTE.2</th>
-      <th>SURESTE.3</th>
-      <th>SURESTE.4</th>
-      <th>SURESTE.5</th>
-      <th>SURESTE.6</th>
-      <th>SURESTE.7</th>
-      <th>...</th>
-      <th>NORTE 2.7</th>
-      <th>NORTE 2.8</th>
-      <th>NORTE 2.9</th>
-      <th>NORTE 2.10</th>
-      <th>NORTE 2.11</th>
-      <th>NORTE 2.12</th>
-      <th>NORTE 2.13</th>
-      <th>NORTE 2.14</th>
-      <th>Unnamed: 209</th>
-      <th>Unnamed: 210</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Date - Time</td>
-      <td>NaT</td>
-      <td>CO</td>
-      <td>NO</td>
-      <td>NO2</td>
-      <td>NOX</td>
-      <td>O3</td>
-      <td>PM10</td>
-      <td>PM2.5</td>
-      <td>PRS</td>
-      <td>...</td>
-      <td>PRS</td>
-      <td>RAINF</td>
-      <td>RH</td>
-      <td>SO2</td>
-      <td>SR</td>
-      <td>TOUT</td>
-      <td>WSR</td>
-      <td>WDR</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>NaT</td>
-      <td>ppm</td>
-      <td>ppb</td>
-      <td>ppb</td>
-      <td>ppb</td>
-      <td>ppb</td>
-      <td>ug/m3</td>
-      <td>ug/m3</td>
-      <td>mmhg</td>
-      <td>...</td>
-      <td>mmhg</td>
-      <td>mm/hr</td>
-      <td>%</td>
-      <td>ppb</td>
-      <td>KW/m2</td>
-      <td>degC</td>
-      <td>KMPH</td>
-      <td>DEG</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2019-01-01 00:00:00</td>
-      <td>2019-01-01 00:00:00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>215.45</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019-01-01 01:00:00</td>
-      <td>2019-01-01 01:00:00</td>
-      <td>2.74</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>5</td>
-      <td>242</td>
-      <td>NaN</td>
-      <td>725.8</td>
-      <td>...</td>
-      <td>713.5</td>
-      <td>0</td>
-      <td>77</td>
-      <td>11.6</td>
-      <td>0</td>
-      <td>10.41</td>
-      <td>2.2</td>
-      <td>23</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2019-01-01 02:00:00</td>
-      <td>2019-01-01 02:00:00</td>
-      <td>3.01</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>6</td>
-      <td>281</td>
-      <td>NaN</td>
-      <td>725.7</td>
-      <td>...</td>
-      <td>713.3</td>
-      <td>0</td>
-      <td>74</td>
-      <td>26.6</td>
-      <td>0</td>
-      <td>10.47</td>
-      <td>2.9</td>
-      <td>269</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>8758</th>
-      <td>2019-12-31 20:00:00</td>
-      <td>2019-12-31 20:00:00</td>
-      <td>1.47</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>22</td>
-      <td>25</td>
-      <td>23.84</td>
-      <td>735.5</td>
-      <td>...</td>
-      <td>715.6</td>
-      <td>0</td>
-      <td>90</td>
-      <td>19.1</td>
-      <td>0</td>
-      <td>10.73</td>
-      <td>7.4</td>
-      <td>109</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>8759</th>
-      <td>2019-12-31 21:00:00</td>
-      <td>2019-12-31 21:00:00</td>
-      <td>1.59</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>23</td>
-      <td>37</td>
-      <td>31.97</td>
-      <td>735.9</td>
-      <td>...</td>
-      <td>716</td>
-      <td>0</td>
-      <td>90</td>
-      <td>19.9</td>
-      <td>0</td>
-      <td>10.89</td>
-      <td>5.7</td>
-      <td>86</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>8760</th>
-      <td>2019-12-31 22:00:00</td>
-      <td>2019-12-31 22:00:00</td>
-      <td>1.76</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>16</td>
-      <td>46</td>
-      <td>NaN</td>
-      <td>735.9</td>
-      <td>...</td>
-      <td>715.9</td>
-      <td>0</td>
-      <td>91</td>
-      <td>21.8</td>
-      <td>0</td>
-      <td>10.93</td>
-      <td>4.6</td>
-      <td>107</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>8761</th>
-      <td>2019-12-31 23:00:00</td>
-      <td>2019-12-31 23:00:00</td>
-      <td>1.69</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>20</td>
-      <td>60</td>
-      <td>55.31</td>
-      <td>735.7</td>
-      <td>...</td>
-      <td>715.8</td>
-      <td>0</td>
-      <td>91</td>
-      <td>20.7</td>
-      <td>0</td>
-      <td>11.05</td>
-      <td>5.6</td>
-      <td>85</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>8762</th>
-      <td>NaN</td>
-      <td>NaT</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>8763 rows × 211 columns</p>
-</div></div></div>
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1206,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1178,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1142,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;openpyxl&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_pollutants_2019</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;../data/2019_pollutants.xlsx&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df_pollutants_2019</span>
+
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\util\_decorators.py:211,</span> in <span class="ni">deprecate_kwarg.&lt;locals&gt;._deprecate_kwarg.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="n">kwargs</span><span class="p">[</span><span class="n">new_arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_arg_value</span>
+<span class="ne">--&gt; </span><span class="mi">211</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\util\_decorators.py:331,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">_format_argument_list</span><span class="p">(</span><span class="n">allow_args</span><span class="p">)),</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">331</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\io\excel\_base.py:482,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, squeeze, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, thousands, decimal, comment, skipfooter, convert_float, mangle_dupe_cols, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">482</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">486</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span>     <span class="p">)</span>
+
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\io\excel\_base.py:1695,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1692</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
+<span class="g g-Whitespace">   </span><span class="mi">1693</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
+<span class="ne">-&gt; </span><span class="mi">1695</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\io\excel\_openpyxl.py:556,</span> in <span class="ni">OpenpyxlReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span> <span class="nd">@doc</span><span class="p">(</span><span class="n">storage_options</span><span class="o">=</span><span class="n">_shared_docs</span><span class="p">[</span><span class="s2">&quot;storage_options&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">544</span>     <span class="n">filepath_or_buffer</span><span class="p">:</span> <span class="n">FilePath</span> <span class="o">|</span> <span class="n">ReadBuffer</span><span class="p">[</span><span class="nb">bytes</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">545</span>     <span class="n">storage_options</span><span class="p">:</span> <span class="n">StorageOptions</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">546</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">547</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">548</span><span class="sd">     Reader using openpyxl engine.</span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span><span class="sd">     {storage_options}</span>
+<span class="g g-Whitespace">    </span><span class="mi">555</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">556</span>     <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;openpyxl&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+
+<span class="nn">File ~\mambaforge\envs\py311\Lib\site-packages\pandas\compat\_optional.py:144,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">144</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="k">return</span> <span class="kc">None</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;openpyxl&#39;.  Use pip or conda to install openpyxl.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Esta base de datos tiene la información organizada de una manera muy distinta a como aparece en <code class="docutils literal notranslate"><span class="pre">df_pollutants_all</span></code>. Las primeras dos columnas muetran la fecha del registro. Las siguientes llevan el nombre de la estación donde se hace el resgistro, seguida por un número entero. La primera fila muestra, para cada una de esas estaciones, la variable que están registrando. Hay que lidiar con todo eso.</p>
 <div class="cell docutils container">
