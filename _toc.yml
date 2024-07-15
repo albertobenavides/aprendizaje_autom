@@ -4,14 +4,16 @@
 format: jb-book
 root: intro
 chapters:
-- file: caps/0_preliminares
-- file: caps/1_datos
-- file: caps/2_estadisticos
-- file: caps/3_sel_carac
-- file: caps/4_no_supervisado
-- file: caps/5_supervisado
-- file: caps/6_clasificacion
-- file: caps/7_metricas_desempeno
-- file: caps/8_diseno_experimentos
-- file: caps/9_resultados
-- file: caps/10_articulo
+- file: caps/0_tareas
+- file: caps/1_preliminares
+- file: caps/2_datos
+- file: caps/3_estadisticos
+- file: caps/4_sel_carac
+- file: caps/5_no_supervisado
+- file: caps/6_supervisado
+- file: caps/7_clasificacion
+- file: caps/8_metricas_desempeno
+- file: caps/9_diseno_experimentos
+- file: caps/10_resultados
+- file: caps/11_articulo
+- file: caps/12_extras
